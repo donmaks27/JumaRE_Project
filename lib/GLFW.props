@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <GLFW_VERSION>3.3.8</GLFW_VERSION>
+    <GLFW_DIR>$(LIBS_DIR)GLFW\</GLFW_DIR>
+    <GLFW_LIB_SHARED>false</GLFW_LIB_SHARED>
+    <GLFW_AUTO_LIB_SUFFIX1 Condition="'$(GLFW_LIB_SHARED)'!='true'">s</GLFW_AUTO_LIB_SUFFIX1>
+    <GLFW_AUTO_LIB_SUFFIX1 Condition="'$(GLFW_LIB_SHARED)'=='true'" />
+    <GLFW_AUTO_LIB_SUFFIX2 Condition="'$(Configuration)'=='Debug'">d</GLFW_AUTO_LIB_SUFFIX2>
+    <GLFW_AUTO_LIB_SUFFIX2 Condition="'$(Configuration)'!='Debug'" />
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(GLFW_DIR)include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>INCLUDE_LIB_GLFW;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(GLFW_DIR)lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3$(GLFW_AUTO_LIB_SUFFIX1)$(GLFW_AUTO_LIB_SUFFIX2).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+    </Link>
+    <PreBuildEvent>
+      <Command>%(Command)
+if '$(GLFW_LIB_SHARED)'=='true' (
+    copy /y "$(GLFW_DIR)bin\glfw3$(GLFW_AUTO_LIB_SUFFIX2).dll" "$(OutDir)"
+)
+</Command>
+    </PreBuildEvent>
+    <Lib>
+      <AdditionalDependencies>glfw3$(GLFW_AUTO_LIB_SUFFIX1)$(GLFW_AUTO_LIB_SUFFIX2).lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
+    <Lib>
+      <AdditionalLibraryDirectories>$(GLFW_DIR)lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <BuildMacro Include="GLFW_VERSION">
+      <Value>$(GLFW_VERSION)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GLFW_DIR">
+      <Value>$(GLFW_DIR)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GLFW_LIB_SHARED">
+      <Value>$(GLFW_LIB_SHARED)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GLFW_AUTO_LIB_SUFFIX1">
+      <Value>$(GLFW_AUTO_LIB_SUFFIX1)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GLFW_AUTO_LIB_SUFFIX2">
+      <Value>$(GLFW_AUTO_LIB_SUFFIX2)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>

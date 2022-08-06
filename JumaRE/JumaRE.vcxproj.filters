@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\material">
+      <UniqueIdentifier>{02612a02-0be4-45d8-8981-5255294e2c1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\texture">
+      <UniqueIdentifier>{f75e5253-b300-456b-b2a9-15ac15a02319}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\window">
+      <UniqueIdentifier>{1448d7b9-cd02-4747-b7b8-c24c3fada389}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\vertex">
+      <UniqueIdentifier>{4dae2c00-af81-49a7-9350-e754e595cf78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\core">
+      <UniqueIdentifier>{7609c762-a26a-4ba4-8655-4f3c52cafc00}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="JumaRE\include\JumaRE\core.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\include\JumaRE\RenderAPI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\include\JumaRE\RenderEngine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\include\JumaRE\RenderEngineContextObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\include\JumaRE\RenderEngineImpl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\include\JumaRE\RenderOptions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\include\JumaRE\RenderPipeline.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\include\JumaRE\RenderTarget.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\include\JumaRE\window\window_id.h">
+      <Filter>Header Files\window</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\include\JumaRE\window\WindowController.h">
+      <Filter>Header Files\window</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\include\JumaRE\vertex\Vertex2D.h">
+      <Filter>Header Files\vertex</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\include\JumaRE\vertex\Vertex2D_TexCoord.h">
+      <Filter>Header Files\vertex</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\include\JumaRE\vertex\VertexBuffer.h">
+      <Filter>Header Files\vertex</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\include\JumaRE\vertex\VertexBufferData.h">
+      <Filter>Header Files\vertex</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\include\JumaRE\vertex\VertexDescription.h">
+      <Filter>Header Files\vertex</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\include\JumaRE\vertex\VertexInfo.h">
+      <Filter>Header Files\vertex</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\include\JumaRE\texture\Texture.h">
+      <Filter>Header Files\texture</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\include\JumaRE\texture\TextureBase.h">
+      <Filter>Header Files\texture</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\include\JumaRE\texture\TextureFormat.h">
+      <Filter>Header Files\texture</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\include\JumaRE\texture\TextureSamplerType.h">
+      <Filter>Header Files\texture</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\include\JumaRE\texture\TextureSamples.h">
+      <Filter>Header Files\texture</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\include\JumaRE\material\Material.h">
+      <Filter>Header Files\material</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\include\JumaRE\material\MaterialParamsStorage.h">
+      <Filter>Header Files\material</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\include\JumaRE\material\Shader.h">
+      <Filter>Header Files\material</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\include\JumaRE\material\ShaderUniform.h">
+      <Filter>Header Files\material</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\include\JumaRE\material\ShaderUniformInfo.h">
+      <Filter>Header Files\material</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="JumaRE\src\core\Material.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\core\MaterialParamsStorage.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\core\RenderEngine.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\core\RenderPipeline.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\core\RenderTarget.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\core\Shader.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\core\Texture.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\core\VertexBuffer.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\core\WindowController.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

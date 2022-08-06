@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="JumaRE\include\JumaRE\core.h" />
+    <ClInclude Include="JumaRE\include\JumaRE\material\Material.h" />
+    <ClInclude Include="JumaRE\include\JumaRE\material\MaterialParamsStorage.h" />
+    <ClInclude Include="JumaRE\include\JumaRE\material\Shader.h" />
+    <ClInclude Include="JumaRE\include\JumaRE\material\ShaderUniform.h" />
+    <ClInclude Include="JumaRE\include\JumaRE\material\ShaderUniformInfo.h" />
+    <ClInclude Include="JumaRE\include\JumaRE\RenderAPI.h" />
+    <ClInclude Include="JumaRE\include\JumaRE\RenderEngine.h" />
+    <ClInclude Include="JumaRE\include\JumaRE\RenderEngineContextObject.h" />
+    <ClInclude Include="JumaRE\include\JumaRE\RenderEngineImpl.h" />
+    <ClInclude Include="JumaRE\include\JumaRE\RenderOptions.h" />
+    <ClInclude Include="JumaRE\include\JumaRE\RenderPipeline.h" />
+    <ClInclude Include="JumaRE\include\JumaRE\RenderTarget.h" />
+    <ClInclude Include="JumaRE\include\JumaRE\texture\Texture.h" />
+    <ClInclude Include="JumaRE\include\JumaRE\texture\TextureBase.h" />
+    <ClInclude Include="JumaRE\include\JumaRE\texture\TextureFormat.h" />
+    <ClInclude Include="JumaRE\include\JumaRE\texture\TextureSamplerType.h" />
+    <ClInclude Include="JumaRE\include\JumaRE\texture\TextureSamples.h" />
+    <ClInclude Include="JumaRE\include\JumaRE\vertex\Vertex2D.h" />
+    <ClInclude Include="JumaRE\include\JumaRE\vertex\Vertex2D_TexCoord.h" />
+    <ClInclude Include="JumaRE\include\JumaRE\vertex\VertexBuffer.h" />
+    <ClInclude Include="JumaRE\include\JumaRE\vertex\VertexBufferData.h" />
+    <ClInclude Include="JumaRE\include\JumaRE\vertex\VertexDescription.h" />
+    <ClInclude Include="JumaRE\include\JumaRE\vertex\VertexInfo.h" />
+    <ClInclude Include="JumaRE\include\JumaRE\window\WindowController.h" />
+    <ClInclude Include="JumaRE\include\JumaRE\window\window_id.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="JumaRE\src\core\Material.cpp" />
+    <ClCompile Include="JumaRE\src\core\MaterialParamsStorage.cpp" />
+    <ClCompile Include="JumaRE\src\core\RenderEngine.cpp" />
+    <ClCompile Include="JumaRE\src\core\RenderPipeline.cpp" />
+    <ClCompile Include="JumaRE\src\core\RenderTarget.cpp" />
+    <ClCompile Include="JumaRE\src\core\Shader.cpp" />
+    <ClCompile Include="JumaRE\src\core\Texture.cpp" />
+    <ClCompile Include="JumaRE\src\core\VertexBuffer.cpp" />
+    <ClCompile Include="JumaRE\src\core\WindowController.cpp" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{2F7EC153-702A-4458-9B3F-FF7E9CD4D734}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>JumaRE</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\lib\libs.props" />
+    <Import Project="..\lib\fmt.props" />
+    <Import Project="..\lib\jutils.props" />
+    <Import Project="..\lib\GLEW.props" />
+    <Import Project="..\lib\GLFW.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\lib\libs.props" />
+    <Import Project="..\lib\fmt.props" />
+    <Import Project="..\lib\jutils.props" />
+    <Import Project="..\lib\GLEW.props" />
+    <Import Project="..\lib\GLFW.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir)JumaRE\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
