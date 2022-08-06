@@ -15,13 +15,11 @@
     <ItemDefinitionGroup Condition="'$(JUMARE_OPENGL_ENABLED)'=='true'">
         <ClCompile>
             <AdditionalIncludeDirectories>$(GLFW_DIR)include\;$(GLEW_DIR)include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-            <PreprocessorDefinitions>INCLUDE_LIB_GLFW;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+            <PreprocessorDefinitions>JUMARE_ENABLE_OPENGL_GLFW;JUMARE_ENABLE_OPENGL;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
         </ClCompile>
         <Lib>
+            <AdditionalLibraryDirectories>$(GLFW_DIR)lib\;$(GLEW_DIR)lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
             <AdditionalDependencies>glfw3$(GLFW_AUTO_LIB_SUFFIX).lib;glew32$(GLEW_AUTO_LIB_SUFFIX).lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-        </Lib>
-        <Lib>
-            <AdditionalLibraryDirectories>$(GLFW_DIR)lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
         </Lib>
         <ProjectReference>
             <LinkLibraryDependencies>true</LinkLibraryDependencies>
