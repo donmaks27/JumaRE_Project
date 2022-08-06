@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <ImportGroup Label="PropertySheets" />
+    <PropertyGroup Label="UserMacros">
+        <JUMARE_OPENGL_ENABLED>true</JUMARE_OPENGL_ENABLED>
+        <GLFW_VERSION>3.3.8</GLFW_VERSION>
+        <GLFW_DIR>$(LIBS_DIR)GLFW\</GLFW_DIR>
+        <GLFW_AUTO_LIB_SUFFIX Condition="'$(Configuration)'=='Debug'">d</GLFW_AUTO_LIB_SUFFIX>
+        <GLFW_AUTO_LIB_SUFFIX Condition="'$(Configuration)'!='Debug'" />
+        <GLEW_VERSION>2.2.0</GLEW_VERSION>
+        <GLEW_DIR>$(LIBS_DIR)GLEW\</GLEW_DIR>
+        <GLEW_AUTO_LIB_SUFFIX Condition="'$(Configuration)'=='Debug'">d</GLEW_AUTO_LIB_SUFFIX>
+        <GLEW_AUTO_LIB_SUFFIX Condition="'$(Configuration)'!='Debug'" />
+    </PropertyGroup>
+    <ItemDefinitionGroup Condition="'$(JUMARE_OPENGL_ENABLED)'=='true'">
+        <ClCompile>
+            <AdditionalIncludeDirectories>$(GLFW_DIR)include\;$(GLEW_DIR)include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+            <PreprocessorDefinitions>INCLUDE_LIB_GLFW;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+        </ClCompile>
+        <Lib>
+            <AdditionalDependencies>glfw3$(GLFW_AUTO_LIB_SUFFIX).lib;glew32$(GLEW_AUTO_LIB_SUFFIX).lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+        </Lib>
+        <Lib>
+            <AdditionalLibraryDirectories>$(GLFW_DIR)lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+        </Lib>
+        <ProjectReference>
+            <LinkLibraryDependencies>true</LinkLibraryDependencies>
+        </ProjectReference>
+    </ItemDefinitionGroup>
+    <ItemGroup>
+        <BuildMacro Include="JUMARE_OPENGL_ENABLED">
+            <Value>$(JUMARE_OPENGL_ENABLED)</Value>
+        </BuildMacro>
+        <BuildMacro Include="GLFW_VERSION">
+            <Value>$(GLFW_VERSION)</Value>
+        </BuildMacro>
+        <BuildMacro Include="GLFW_DIR">
+            <Value>$(GLFW_DIR)</Value>
+        </BuildMacro>
+        <BuildMacro Include="GLFW_AUTO_LIB_SUFFIX">
+            <Value>$(GLFW_AUTO_LIB_SUFFIX)</Value>
+        </BuildMacro>
+        <BuildMacro Include="GLEW_VERSION">
+            <Value>$(GLEW_VERSION)</Value>
+        </BuildMacro>
+        <BuildMacro Include="GLEW_DIR">
+            <Value>$(GLEW_DIR)</Value>
+        </BuildMacro>
+        <BuildMacro Include="GLEW_AUTO_LIB_SUFFIX">
+            <Value>$(GLEW_AUTO_LIB_SUFFIX)</Value>
+        </BuildMacro>
+    </ItemGroup>
+</Project>
