@@ -21,6 +21,7 @@
     <ClInclude Include="JumaRE\include\JumaRE\RenderEngine.h" />
     <ClInclude Include="JumaRE\include\JumaRE\RenderEngineContextObject.h" />
     <ClInclude Include="JumaRE\include\JumaRE\RenderEngineImpl.h" />
+    <ClInclude Include="JumaRE\include\JumaRE\RenderEngineImpl_OpenGL.h" />
     <ClInclude Include="JumaRE\include\JumaRE\RenderOptions.h" />
     <ClInclude Include="JumaRE\include\JumaRE\RenderPipeline.h" />
     <ClInclude Include="JumaRE\include\JumaRE\RenderTarget.h" />
@@ -37,6 +38,16 @@
     <ClInclude Include="JumaRE\include\JumaRE\vertex\VertexInfo.h" />
     <ClInclude Include="JumaRE\include\JumaRE\window\WindowController.h" />
     <ClInclude Include="JumaRE\include\JumaRE\window\window_id.h" />
+    <ClInclude Include="JumaRE\src\OpenGL\Material_OpenGL.h" />
+    <ClInclude Include="JumaRE\src\OpenGL\RenderEngine_OpenGL.h" />
+    <ClInclude Include="JumaRE\src\OpenGL\RenderTarget_OpenGL.h" />
+    <ClInclude Include="JumaRE\src\OpenGL\Shader_OpenGL.h" />
+    <ClInclude Include="JumaRE\src\OpenGL\TextureFormat_OpenGL.h" />
+    <ClInclude Include="JumaRE\src\OpenGL\Texture_OpenGL.h" />
+    <ClInclude Include="JumaRE\src\OpenGL\VertexBuffer_OpenGL.h" />
+    <ClInclude Include="JumaRE\src\OpenGL\window\WindowControllerImpl_OpenGL.h" />
+    <ClInclude Include="JumaRE\src\OpenGL\window\WindowController_OpenGL.h" />
+    <ClInclude Include="JumaRE\src\OpenGL\window\WindowController_OpenGL_GLFW.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="JumaRE\src\core\Material.cpp" />
@@ -48,6 +59,16 @@
     <ClCompile Include="JumaRE\src\core\Texture.cpp" />
     <ClCompile Include="JumaRE\src\core\VertexBuffer.cpp" />
     <ClCompile Include="JumaRE\src\core\WindowController.cpp" />
+    <ClCompile Include="JumaRE\src\OpenGL\Material_OpenGL.cpp" />
+    <ClCompile Include="JumaRE\src\OpenGL\RenderEngineImpl_OpenGL.cpp" />
+    <ClCompile Include="JumaRE\src\OpenGL\RenderEngine_OpenGL.cpp" />
+    <ClCompile Include="JumaRE\src\OpenGL\RenderTarget_OpenGL.cpp" />
+    <ClCompile Include="JumaRE\src\OpenGL\Shader_OpenGL.cpp" />
+    <ClCompile Include="JumaRE\src\OpenGL\Texture_OpenGL.cpp" />
+    <ClCompile Include="JumaRE\src\OpenGL\VertexBuffer_OpenGL.cpp" />
+    <ClCompile Include="JumaRE\src\OpenGL\window\WindowControllerImpl_OpenGL.cpp" />
+    <ClCompile Include="JumaRE\src\OpenGL\window\WindowController_OpenGL.cpp" />
+    <ClCompile Include="JumaRE\src\OpenGL\window\WindowController_OpenGL_GLFW.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -80,16 +101,16 @@
     <Import Project="..\lib\libs.props" />
     <Import Project="..\lib\fmt.props" />
     <Import Project="..\lib\jutils.props" />
-    <Import Project="..\lib\GLEW.props" />
     <Import Project="..\lib\GLFW.props" />
+    <Import Project="..\lib\GLEW.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\lib\libs.props" />
     <Import Project="..\lib\fmt.props" />
     <Import Project="..\lib\jutils.props" />
-    <Import Project="..\lib\GLEW.props" />
     <Import Project="..\lib\GLFW.props" />
+    <Import Project="..\lib\GLEW.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -100,29 +121,29 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)JumaRE\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>JUMARE_INCLUDE_RENDER_API_OPENGL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PreprocessorDefinitions>JUMARE_INCLUDE_RENDER_API_OPENGL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -130,6 +151,9 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -28,6 +28,12 @@
     <Filter Include="Source Files\core">
       <UniqueIdentifier>{7609c762-a26a-4ba4-8655-4f3c52cafc00}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\OpenGL">
+      <UniqueIdentifier>{6c1e77dd-00c7-4165-8c4a-1f0027b38a44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\OpenGL\window">
+      <UniqueIdentifier>{acfb86b6-9489-4947-b1df-1239a543164e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="JumaRE\include\JumaRE\core.h">
@@ -108,6 +114,39 @@
     <ClInclude Include="JumaRE\include\JumaRE\material\ShaderUniformInfo.h">
       <Filter>Header Files\material</Filter>
     </ClInclude>
+    <ClInclude Include="JumaRE\include\JumaRE\RenderEngineImpl_OpenGL.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\OpenGL\Material_OpenGL.h">
+      <Filter>Source Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\OpenGL\RenderEngine_OpenGL.h">
+      <Filter>Source Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\OpenGL\RenderTarget_OpenGL.h">
+      <Filter>Source Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\OpenGL\Shader_OpenGL.h">
+      <Filter>Source Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\OpenGL\Texture_OpenGL.h">
+      <Filter>Source Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\OpenGL\TextureFormat_OpenGL.h">
+      <Filter>Source Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\OpenGL\VertexBuffer_OpenGL.h">
+      <Filter>Source Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\OpenGL\window\WindowController_OpenGL.h">
+      <Filter>Source Files\OpenGL\window</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\OpenGL\window\WindowController_OpenGL_GLFW.h">
+      <Filter>Source Files\OpenGL\window</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\OpenGL\window\WindowControllerImpl_OpenGL.h">
+      <Filter>Source Files\OpenGL\window</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="JumaRE\src\core\Material.cpp">
@@ -136,6 +175,36 @@
     </ClCompile>
     <ClCompile Include="JumaRE\src\core\WindowController.cpp">
       <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\OpenGL\RenderEngineImpl_OpenGL.cpp">
+      <Filter>Source Files\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\OpenGL\Material_OpenGL.cpp">
+      <Filter>Source Files\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\OpenGL\RenderEngine_OpenGL.cpp">
+      <Filter>Source Files\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\OpenGL\RenderTarget_OpenGL.cpp">
+      <Filter>Source Files\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\OpenGL\Shader_OpenGL.cpp">
+      <Filter>Source Files\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\OpenGL\Texture_OpenGL.cpp">
+      <Filter>Source Files\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\OpenGL\VertexBuffer_OpenGL.cpp">
+      <Filter>Source Files\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\OpenGL\window\WindowController_OpenGL.cpp">
+      <Filter>Source Files\OpenGL\window</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\OpenGL\window\WindowController_OpenGL_GLFW.cpp">
+      <Filter>Source Files\OpenGL\window</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\OpenGL\window\WindowControllerImpl_OpenGL.cpp">
+      <Filter>Source Files\OpenGL\window</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
