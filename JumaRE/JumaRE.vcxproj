@@ -21,7 +21,9 @@
     <ClInclude Include="JumaRE\include\JumaRE\RenderEngine.h" />
     <ClInclude Include="JumaRE\include\JumaRE\RenderEngineContextObject.h" />
     <ClInclude Include="JumaRE\include\JumaRE\RenderEngineImpl.h" />
+    <ClInclude Include="JumaRE\include\JumaRE\RenderEngineImpl_DirectX11.h" />
     <ClInclude Include="JumaRE\include\JumaRE\RenderEngineImpl_OpenGL.h" />
+    <ClInclude Include="JumaRE\include\JumaRE\RenderEngineImpl_Vulkan.h" />
     <ClInclude Include="JumaRE\include\JumaRE\RenderOptions.h" />
     <ClInclude Include="JumaRE\include\JumaRE\RenderPipeline.h" />
     <ClInclude Include="JumaRE\include\JumaRE\RenderTarget.h" />
@@ -38,6 +40,16 @@
     <ClInclude Include="JumaRE\include\JumaRE\vertex\VertexInfo.h" />
     <ClInclude Include="JumaRE\include\JumaRE\window\WindowController.h" />
     <ClInclude Include="JumaRE\include\JumaRE\window\window_id.h" />
+    <ClInclude Include="JumaRE\src\DirectX11\Material_DirectX11.h" />
+    <ClInclude Include="JumaRE\src\DirectX11\RenderEngine_DirectX11.h" />
+    <ClInclude Include="JumaRE\src\DirectX11\RenderTarget_DirectX11.h" />
+    <ClInclude Include="JumaRE\src\DirectX11\Shader_DirectX11.h" />
+    <ClInclude Include="JumaRE\src\DirectX11\TextureFormat_DirectX11.h" />
+    <ClInclude Include="JumaRE\src\DirectX11\Texture_DirectX11.h" />
+    <ClInclude Include="JumaRE\src\DirectX11\VertexBuffer_DirectX11.h" />
+    <ClInclude Include="JumaRE\src\DirectX11\window\WindowControllerImpl_DirectX11.h" />
+    <ClInclude Include="JumaRE\src\DirectX11\window\WindowController_DirectX11.h" />
+    <ClInclude Include="JumaRE\src\DirectX11\window\WindowController_DirectX11_GLFW.h" />
     <ClInclude Include="JumaRE\src\OpenGL\Material_OpenGL.h" />
     <ClInclude Include="JumaRE\src\OpenGL\RenderEngine_OpenGL.h" />
     <ClInclude Include="JumaRE\src\OpenGL\RenderTarget_OpenGL.h" />
@@ -48,6 +60,27 @@
     <ClInclude Include="JumaRE\src\OpenGL\window\WindowControllerImpl_OpenGL.h" />
     <ClInclude Include="JumaRE\src\OpenGL\window\WindowController_OpenGL.h" />
     <ClInclude Include="JumaRE\src\OpenGL\window\WindowController_OpenGL_GLFW.h" />
+    <ClInclude Include="JumaRE\src\Vulkan\Material_Vulkan.h" />
+    <ClInclude Include="JumaRE\src\Vulkan\RenderEngine_Vulkan.h" />
+    <ClInclude Include="JumaRE\src\Vulkan\RenderOptions_Vulkan.h" />
+    <ClInclude Include="JumaRE\src\Vulkan\RenderPipeline_Vulkan.h" />
+    <ClInclude Include="JumaRE\src\Vulkan\RenderTarget_Vulkan.h" />
+    <ClInclude Include="JumaRE\src\Vulkan\Shader_Vulkan.h" />
+    <ClInclude Include="JumaRE\src\Vulkan\TextureFormat_Vulkan.h" />
+    <ClInclude Include="JumaRE\src\Vulkan\Texture_Vulkan.h" />
+    <ClInclude Include="JumaRE\src\Vulkan\VertexBuffer_Vulkan.h" />
+    <ClInclude Include="JumaRE\src\Vulkan\vulkanObjects\VulkanBuffer.h" />
+    <ClInclude Include="JumaRE\src\Vulkan\vulkanObjects\VulkanCommandBuffer.h" />
+    <ClInclude Include="JumaRE\src\Vulkan\vulkanObjects\VulkanCommandPool.h" />
+    <ClInclude Include="JumaRE\src\Vulkan\vulkanObjects\VulkanFramebufferData.h" />
+    <ClInclude Include="JumaRE\src\Vulkan\vulkanObjects\VulkanImage.h" />
+    <ClInclude Include="JumaRE\src\Vulkan\vulkanObjects\VulkanQueueType.h" />
+    <ClInclude Include="JumaRE\src\Vulkan\vulkanObjects\VulkanRenderPass.h" />
+    <ClInclude Include="JumaRE\src\Vulkan\vulkanObjects\VulkanRenderPassDescription.h" />
+    <ClInclude Include="JumaRE\src\Vulkan\vulkanObjects\VulkanSwapchain.h" />
+    <ClInclude Include="JumaRE\src\Vulkan\window\WindowControllerImpl_Vulkan.h" />
+    <ClInclude Include="JumaRE\src\Vulkan\window\WindowController_Vulkan.h" />
+    <ClInclude Include="JumaRE\src\Vulkan\window\WindowController_Vulkan_GLFW.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="JumaRE\src\core\Material.cpp" />
@@ -59,6 +92,16 @@
     <ClCompile Include="JumaRE\src\core\Texture.cpp" />
     <ClCompile Include="JumaRE\src\core\VertexBuffer.cpp" />
     <ClCompile Include="JumaRE\src\core\WindowController.cpp" />
+    <ClCompile Include="JumaRE\src\DirectX11\Material_DirectX11.cpp" />
+    <ClCompile Include="JumaRE\src\DirectX11\RenderEngineImpl_DirectX11.cpp" />
+    <ClCompile Include="JumaRE\src\DirectX11\RenderEngine_DirectX11.cpp" />
+    <ClCompile Include="JumaRE\src\DirectX11\RenderTarget_DirectX11.cpp" />
+    <ClCompile Include="JumaRE\src\DirectX11\Shader_DirectX11.cpp" />
+    <ClCompile Include="JumaRE\src\DirectX11\Texture_DirectX11.cpp" />
+    <ClCompile Include="JumaRE\src\DirectX11\VertexBuffer_DirectX11.cpp" />
+    <ClCompile Include="JumaRE\src\DirectX11\window\WindowControllerImpl_DirectX11.cpp" />
+    <ClCompile Include="JumaRE\src\DirectX11\window\WindowController_DirectX11.cpp" />
+    <ClCompile Include="JumaRE\src\DirectX11\window\WindowController_DirectX11_GLFW.cpp" />
     <ClCompile Include="JumaRE\src\OpenGL\Material_OpenGL.cpp" />
     <ClCompile Include="JumaRE\src\OpenGL\RenderEngineImpl_OpenGL.cpp" />
     <ClCompile Include="JumaRE\src\OpenGL\RenderEngine_OpenGL.cpp" />
@@ -69,6 +112,23 @@
     <ClCompile Include="JumaRE\src\OpenGL\window\WindowControllerImpl_OpenGL.cpp" />
     <ClCompile Include="JumaRE\src\OpenGL\window\WindowController_OpenGL.cpp" />
     <ClCompile Include="JumaRE\src\OpenGL\window\WindowController_OpenGL_GLFW.cpp" />
+    <ClCompile Include="JumaRE\src\Vulkan\Material_Vulkan.cpp" />
+    <ClCompile Include="JumaRE\src\Vulkan\RenderEngineImpl_Vulkan.cpp" />
+    <ClCompile Include="JumaRE\src\Vulkan\RenderEngine_Vulkan.cpp" />
+    <ClCompile Include="JumaRE\src\Vulkan\RenderPipeline_Vulkan.cpp" />
+    <ClCompile Include="JumaRE\src\Vulkan\RenderTarget_Vulkan.cpp" />
+    <ClCompile Include="JumaRE\src\Vulkan\Shader_Vulkan.cpp" />
+    <ClCompile Include="JumaRE\src\Vulkan\Texture_Vulkan.cpp" />
+    <ClCompile Include="JumaRE\src\Vulkan\VertexBuffer_Vulkan.cpp" />
+    <ClCompile Include="JumaRE\src\Vulkan\vulkanObjects\VulkanBuffer.cpp" />
+    <ClCompile Include="JumaRE\src\Vulkan\vulkanObjects\VulkanCommandBuffer.cpp" />
+    <ClCompile Include="JumaRE\src\Vulkan\vulkanObjects\VulkanCommandPool.cpp" />
+    <ClCompile Include="JumaRE\src\Vulkan\vulkanObjects\VulkanImage.cpp" />
+    <ClCompile Include="JumaRE\src\Vulkan\vulkanObjects\VulkanRenderPass.cpp" />
+    <ClCompile Include="JumaRE\src\Vulkan\vulkanObjects\VulkanSwapchain.cpp" />
+    <ClCompile Include="JumaRE\src\Vulkan\window\WindowControllerImpl_Vulkan.cpp" />
+    <ClCompile Include="JumaRE\src\Vulkan\window\WindowController_Vulkan.cpp" />
+    <ClCompile Include="JumaRE\src\Vulkan\window\WindowController_Vulkan_GLFW.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -100,13 +160,17 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\lib\libs.props" />
     <Import Project="..\lib\jutils.props" />
+    <Import Project="..\lib\GLFW.props" />
     <Import Project="..\lib\JumaRE_OpenGL.props" />
+    <Import Project="..\lib\JumaRE_Vulkan.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\lib\libs.props" />
     <Import Project="..\lib\jutils.props" />
+    <Import Project="..\lib\GLFW.props" />
     <Import Project="..\lib\JumaRE_OpenGL.props" />
+    <Import Project="..\lib\JumaRE_Vulkan.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -121,6 +185,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <PreprocessorDefinitions>WIN32_LEAN_AND_MEAN;JUMARE_ENABLE_DX11;JUMARE_ENABLE_DX12;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -138,6 +203,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <PreprocessorDefinitions>WIN32_LEAN_AND_MEAN;JUMARE_ENABLE_DX11;JUMARE_ENABLE_DX12;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -148,6 +214,10 @@
     <ProjectReference>
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
     </ProjectReference>
+    <Lib>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+    </Lib>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

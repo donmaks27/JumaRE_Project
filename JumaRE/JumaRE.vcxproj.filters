@@ -34,6 +34,21 @@
     <Filter Include="Source Files\OpenGL\window">
       <UniqueIdentifier>{acfb86b6-9489-4947-b1df-1239a543164e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Vulkan">
+      <UniqueIdentifier>{1fb5fec8-f6f7-4f12-8957-3e3a54778432}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Vulkan\window">
+      <UniqueIdentifier>{906bfa06-187c-4b85-85e5-71a86053efd5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Vulkan\vulkanObjects">
+      <UniqueIdentifier>{47f05d98-3e42-42e1-b337-12529eba06ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DirectX11">
+      <UniqueIdentifier>{51f150d2-2229-4ef4-8f94-233d58199409}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DirectX11\window">
+      <UniqueIdentifier>{585757f6-3844-41b6-91a3-2383352bb772}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="JumaRE\include\JumaRE\core.h">
@@ -147,6 +162,105 @@
     <ClInclude Include="JumaRE\src\OpenGL\window\WindowControllerImpl_OpenGL.h">
       <Filter>Source Files\OpenGL\window</Filter>
     </ClInclude>
+    <ClInclude Include="JumaRE\include\JumaRE\RenderEngineImpl_Vulkan.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\Vulkan\RenderEngine_Vulkan.h">
+      <Filter>Source Files\Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\Vulkan\Material_Vulkan.h">
+      <Filter>Source Files\Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\Vulkan\RenderOptions_Vulkan.h">
+      <Filter>Source Files\Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\Vulkan\RenderPipeline_Vulkan.h">
+      <Filter>Source Files\Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\Vulkan\RenderTarget_Vulkan.h">
+      <Filter>Source Files\Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\Vulkan\Shader_Vulkan.h">
+      <Filter>Source Files\Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\Vulkan\Texture_Vulkan.h">
+      <Filter>Source Files\Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\Vulkan\VertexBuffer_Vulkan.h">
+      <Filter>Source Files\Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\Vulkan\window\WindowController_Vulkan.h">
+      <Filter>Source Files\Vulkan\window</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\Vulkan\window\WindowController_Vulkan_GLFW.h">
+      <Filter>Source Files\Vulkan\window</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\Vulkan\window\WindowControllerImpl_Vulkan.h">
+      <Filter>Source Files\Vulkan\window</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\Vulkan\vulkanObjects\VulkanBuffer.h">
+      <Filter>Source Files\Vulkan\vulkanObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\Vulkan\vulkanObjects\VulkanCommandBuffer.h">
+      <Filter>Source Files\Vulkan\vulkanObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\Vulkan\vulkanObjects\VulkanCommandPool.h">
+      <Filter>Source Files\Vulkan\vulkanObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\Vulkan\vulkanObjects\VulkanFramebufferData.h">
+      <Filter>Source Files\Vulkan\vulkanObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\Vulkan\vulkanObjects\VulkanImage.h">
+      <Filter>Source Files\Vulkan\vulkanObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\Vulkan\vulkanObjects\VulkanQueueType.h">
+      <Filter>Source Files\Vulkan\vulkanObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\Vulkan\vulkanObjects\VulkanRenderPass.h">
+      <Filter>Source Files\Vulkan\vulkanObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\Vulkan\vulkanObjects\VulkanRenderPassDescription.h">
+      <Filter>Source Files\Vulkan\vulkanObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\Vulkan\vulkanObjects\VulkanSwapchain.h">
+      <Filter>Source Files\Vulkan\vulkanObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\Vulkan\TextureFormat_Vulkan.h">
+      <Filter>Source Files\Vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\DirectX11\RenderEngine_DirectX11.h">
+      <Filter>Source Files\DirectX11</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\DirectX11\window\WindowController_DirectX11.h">
+      <Filter>Source Files\DirectX11\window</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\DirectX11\window\WindowController_DirectX11_GLFW.h">
+      <Filter>Source Files\DirectX11\window</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\DirectX11\Material_DirectX11.h">
+      <Filter>Source Files\DirectX11</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\DirectX11\RenderTarget_DirectX11.h">
+      <Filter>Source Files\DirectX11</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\DirectX11\Shader_DirectX11.h">
+      <Filter>Source Files\DirectX11</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\DirectX11\Texture_DirectX11.h">
+      <Filter>Source Files\DirectX11</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\DirectX11\TextureFormat_DirectX11.h">
+      <Filter>Source Files\DirectX11</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\DirectX11\VertexBuffer_DirectX11.h">
+      <Filter>Source Files\DirectX11</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\DirectX11\window\WindowControllerImpl_DirectX11.h">
+      <Filter>Source Files\DirectX11\window</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\include\JumaRE\RenderEngineImpl_DirectX11.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="JumaRE\src\core\Material.cpp">
@@ -205,6 +319,87 @@
     </ClCompile>
     <ClCompile Include="JumaRE\src\OpenGL\window\WindowControllerImpl_OpenGL.cpp">
       <Filter>Source Files\OpenGL\window</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\Vulkan\RenderEngineImpl_Vulkan.cpp">
+      <Filter>Source Files\Vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\Vulkan\RenderEngine_Vulkan.cpp">
+      <Filter>Source Files\Vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\Vulkan\Material_Vulkan.cpp">
+      <Filter>Source Files\Vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\Vulkan\RenderPipeline_Vulkan.cpp">
+      <Filter>Source Files\Vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\Vulkan\RenderTarget_Vulkan.cpp">
+      <Filter>Source Files\Vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\Vulkan\Shader_Vulkan.cpp">
+      <Filter>Source Files\Vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\Vulkan\Texture_Vulkan.cpp">
+      <Filter>Source Files\Vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\Vulkan\VertexBuffer_Vulkan.cpp">
+      <Filter>Source Files\Vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\Vulkan\window\WindowController_Vulkan.cpp">
+      <Filter>Source Files\Vulkan\window</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\Vulkan\window\WindowController_Vulkan_GLFW.cpp">
+      <Filter>Source Files\Vulkan\window</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\Vulkan\window\WindowControllerImpl_Vulkan.cpp">
+      <Filter>Source Files\Vulkan\window</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\Vulkan\vulkanObjects\VulkanBuffer.cpp">
+      <Filter>Source Files\Vulkan\vulkanObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\Vulkan\vulkanObjects\VulkanCommandBuffer.cpp">
+      <Filter>Source Files\Vulkan\vulkanObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\Vulkan\vulkanObjects\VulkanCommandPool.cpp">
+      <Filter>Source Files\Vulkan\vulkanObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\Vulkan\vulkanObjects\VulkanImage.cpp">
+      <Filter>Source Files\Vulkan\vulkanObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\Vulkan\vulkanObjects\VulkanRenderPass.cpp">
+      <Filter>Source Files\Vulkan\vulkanObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\Vulkan\vulkanObjects\VulkanSwapchain.cpp">
+      <Filter>Source Files\Vulkan\vulkanObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\DirectX11\RenderEngine_DirectX11.cpp">
+      <Filter>Source Files\DirectX11</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\DirectX11\window\WindowController_DirectX11.cpp">
+      <Filter>Source Files\DirectX11\window</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\DirectX11\window\WindowController_DirectX11_GLFW.cpp">
+      <Filter>Source Files\DirectX11\window</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\DirectX11\Material_DirectX11.cpp">
+      <Filter>Source Files\DirectX11</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\DirectX11\RenderTarget_DirectX11.cpp">
+      <Filter>Source Files\DirectX11</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\DirectX11\Shader_DirectX11.cpp">
+      <Filter>Source Files\DirectX11</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\DirectX11\Texture_DirectX11.cpp">
+      <Filter>Source Files\DirectX11</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\DirectX11\VertexBuffer_DirectX11.cpp">
+      <Filter>Source Files\DirectX11</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\DirectX11\window\WindowControllerImpl_DirectX11.cpp">
+      <Filter>Source Files\DirectX11\window</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\DirectX11\RenderEngineImpl_DirectX11.cpp">
+      <Filter>Source Files\DirectX11</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

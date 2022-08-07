@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <ImportGroup Label="PropertySheets" />
+    <PropertyGroup Label="UserMacros">
+        <JUMARE_VULKAN_ENABLED>true</JUMARE_VULKAN_ENABLED>
+        <VMA_VERSION>3.0.1</VMA_VERSION>
+        <VMA_DIR>$(LIBS_DIR)VMA\</VMA_DIR>
+        <VULKAN_DIR>$(VULKAN_SDK)</VULKAN_DIR>
+    </PropertyGroup>
+    <ItemDefinitionGroup Condition="'$(JUMARE_VULKAN_ENABLED)'=='true'">
+        <ClCompile>
+            <AdditionalIncludeDirectories>$(VMA_DIR)include\;$(VULKAN_DIR)\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+            <PreprocessorDefinitions>JUMARE_ENABLE_VULKAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+        </ClCompile>
+        <Lib>
+            <AdditionalLibraryDirectories>$(VULKAN_DIR)\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+            <AdditionalDependencies>vulkan-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+        </Lib>
+        <ProjectReference>
+            <LinkLibraryDependencies>true</LinkLibraryDependencies>
+        </ProjectReference>
+    </ItemDefinitionGroup>
+    <ItemGroup>
+        <BuildMacro Include="JUMARE_VULKAN_ENABLED">
+            <Value>$(JUMARE_VULKAN_ENABLED)</Value>
+        </BuildMacro>
+        <BuildMacro Include="VMA_VERSION">
+            <Value>$(VMA_VERSION)</Value>
+        </BuildMacro>
+        <BuildMacro Include="VMA_DIR">
+            <Value>$(VMA_DIR)</Value>
+        </BuildMacro>
+        <BuildMacro Include="VULKAN_DIR">
+            <Value>$(VULKAN_DIR)</Value>
+        </BuildMacro>
+    </ItemGroup>
+</Project>

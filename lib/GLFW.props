@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <ImportGroup Label="PropertySheets" />
+    <PropertyGroup Label="UserMacros">
+        <JUMARE_ENABLE_LIB_GLFW>true</JUMARE_ENABLE_LIB_GLFW>
+        <GLFW_VERSION>3.3.8</GLFW_VERSION>
+        <GLFW_DIR>$(LIBS_DIR)GLFW\</GLFW_DIR>
+        <GLFW_AUTO_LIB_SUFFIX Condition="'$(Configuration)'=='Debug'">d</GLFW_AUTO_LIB_SUFFIX>
+        <GLFW_AUTO_LIB_SUFFIX Condition="'$(Configuration)'!='Debug'" />
+    </PropertyGroup>
+    <ItemDefinitionGroup Condition="'$(JUMARE_ENABLE_LIB_GLFW)'=='true'">
+        <ClCompile>
+            <AdditionalIncludeDirectories>$(GLFW_DIR)include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+            <PreprocessorDefinitions>JUMARE_ENABLE_LIB_GLFW;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+        </ClCompile>
+        <Lib>
+            <AdditionalLibraryDirectories>$(GLFW_DIR)lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+            <AdditionalDependencies>glfw3s$(GLFW_AUTO_LIB_SUFFIX).lib;%(AdditionalDependencies)</AdditionalDependencies>
+        </Lib>
+        <ProjectReference>
+            <LinkLibraryDependencies>true</LinkLibraryDependencies>
+        </ProjectReference>
+    </ItemDefinitionGroup>
+    <ItemGroup>
+        <BuildMacro Include="JUMARE_ENABLE_LIB_GLFW">
+            <Value>$(JUMARE_ENABLE_LIB_GLFW)</Value>
+        </BuildMacro>
+        <BuildMacro Include="GLFW_VERSION">
+            <Value>$(GLFW_VERSION)</Value>
+        </BuildMacro>
+        <BuildMacro Include="GLFW_DIR">
+            <Value>$(GLFW_DIR)</Value>
+        </BuildMacro>
+        <BuildMacro Include="GLFW_AUTO_LIB_SUFFIX">
+            <Value>$(GLFW_AUTO_LIB_SUFFIX)</Value>
+        </BuildMacro>
+    </ItemGroup>
+</Project>

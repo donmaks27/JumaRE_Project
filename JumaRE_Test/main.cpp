@@ -32,11 +32,14 @@ void testCase7(JumaRE::RenderEngine*, const jutils::jstring&);
 
 int main()
 {
+#ifdef JDEBUG
     _CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_FILE);
     _CrtSetReportFile(_CRT_WARN, _CRTDBG_FILE_STDOUT);
     
     _CrtMemState memoryState;
     _CrtMemCheckpoint(&memoryState);
+#endif
+
     //runTests(testCase0);
     //runTests(testCase1);
     //runTests(testCase2);
@@ -45,7 +48,10 @@ int main()
     runTests(testCase5);
     //runTests(testCase6);
     //runTests(testCase7);
+
+#ifdef JDEBUG
     _CrtMemDumpAllObjectsSince(&memoryState);
+#endif
     return 0;
 }
 
@@ -77,8 +83,8 @@ void runTestsTemplate(void (*testFunc)(JumaRE::RenderEngine*, const jutils::jstr
 void runTests(void (*testFunc)(JumaRE::RenderEngine*, const jutils::jstring&))
 {
     //runTestsTemplate<JumaRE::RenderAPI::Vulkan>(testFunc, JSTR("Vulkan"));
-    runTestsTemplate<JumaRE::RenderAPI::OpenGL>(testFunc, JSTR("OpenGL"));
-    //runTestsTemplate<JumaRE::RenderAPI::DirectX11>(testFunc, JSTR("DirectX11"));
+    //runTestsTemplate<JumaRE::RenderAPI::OpenGL>(testFunc, JSTR("OpenGL"));
+    runTestsTemplate<JumaRE::RenderAPI::DirectX11>(testFunc, JSTR("DirectX11"));
     //runTestsTemplate<JumaRE::RenderAPI::DirectX12>(testFunc, JSTR("DirectX12"));
 }
 
