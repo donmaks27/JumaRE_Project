@@ -49,6 +49,18 @@
     <Filter Include="Source Files\DirectX11\window">
       <UniqueIdentifier>{585757f6-3844-41b6-91a3-2383352bb772}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\DirectX12">
+      <UniqueIdentifier>{0d3348be-266c-4359-89b7-9e7f467ea2a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DirectX12\window">
+      <UniqueIdentifier>{ffcd74f2-795a-4aa8-8e6c-f32886c7eae1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DirectX12\DirectX12Objects">
+      <UniqueIdentifier>{094515d6-8aea-436c-b99f-2844eb4bd31a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GLFW">
+      <UniqueIdentifier>{e7b3e5f0-4901-47b6-a5b6-bc9c440dd24d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="JumaRE\include\JumaRE\core.h">
@@ -261,6 +273,78 @@
     <ClInclude Include="JumaRE\include\JumaRE\RenderEngineImpl_DirectX11.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="JumaRE\src\DirectX12\RenderEngine_DirectX12.h">
+      <Filter>Source Files\DirectX12</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\DirectX12\Material_DirectX12.h">
+      <Filter>Source Files\DirectX12</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\DirectX12\RenderOptions_DirectX12.h">
+      <Filter>Source Files\DirectX12</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\DirectX12\RenderPipeline_DirectX12.h">
+      <Filter>Source Files\DirectX12</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\DirectX12\RenderTarget_DirectX12.h">
+      <Filter>Source Files\DirectX12</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\DirectX12\Shader_DirectX12.h">
+      <Filter>Source Files\DirectX12</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\DirectX12\Texture_DirectX12.h">
+      <Filter>Source Files\DirectX12</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\DirectX12\TextureFormat_DirectX12.h">
+      <Filter>Source Files\DirectX12</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\DirectX12\VertexBuffer_DirectX12.h">
+      <Filter>Source Files\DirectX12</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\DirectX12\D3D12MemAlloc.h">
+      <Filter>Source Files\DirectX12</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\DirectX12\window\WindowController_DirectX12.h">
+      <Filter>Source Files\DirectX12\window</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\DirectX12\window\WindowController_DirectX12_GLFW.h">
+      <Filter>Source Files\DirectX12\window</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\DirectX12\DirectX12Objects\DirectX12Buffer.h">
+      <Filter>Source Files\DirectX12\DirectX12Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\DirectX12\DirectX12Objects\DirectX12CommandList.h">
+      <Filter>Source Files\DirectX12\DirectX12Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\DirectX12\DirectX12Objects\DirectX12CommandQueue.h">
+      <Filter>Source Files\DirectX12\DirectX12Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\DirectX12\DirectX12Objects\DirectX12MipGenerator.h">
+      <Filter>Source Files\DirectX12\DirectX12Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\DirectX12\DirectX12Objects\DirectX12MipGeneratorTarget.h">
+      <Filter>Source Files\DirectX12\DirectX12Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\DirectX12\DirectX12Objects\DirectX12PipelineStateStreamObjects.h">
+      <Filter>Source Files\DirectX12\DirectX12Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\DirectX12\DirectX12Objects\DirectX12Swapchain.h">
+      <Filter>Source Files\DirectX12\DirectX12Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\DirectX12\DirectX12Objects\DirectX12Texture.h">
+      <Filter>Source Files\DirectX12\DirectX12Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\DirectX12\window\WindowControllerImpl_DirectX12.h">
+      <Filter>Source Files\DirectX12\window</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\include\JumaRE\RenderEngineImpl_DirectX12.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\include\JumaRE\window\WindowMode.h">
+      <Filter>Header Files\window</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\GLFW\WindowController_GLFW.h">
+      <Filter>Source Files\GLFW</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="JumaRE\src\core\Material.cpp">
@@ -400,6 +484,66 @@
     </ClCompile>
     <ClCompile Include="JumaRE\src\DirectX11\RenderEngineImpl_DirectX11.cpp">
       <Filter>Source Files\DirectX11</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\DirectX12\RenderEngine_DirectX12.cpp">
+      <Filter>Source Files\DirectX12</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\DirectX12\Material_DirectX12.cpp">
+      <Filter>Source Files\DirectX12</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\DirectX12\RenderPipeline_DirectX12.cpp">
+      <Filter>Source Files\DirectX12</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\DirectX12\RenderTarget_DirectX12.cpp">
+      <Filter>Source Files\DirectX12</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\DirectX12\Shader_DirectX12.cpp">
+      <Filter>Source Files\DirectX12</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\DirectX12\Texture_DirectX12.cpp">
+      <Filter>Source Files\DirectX12</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\DirectX12\VertexBuffer_DirectX12.cpp">
+      <Filter>Source Files\DirectX12</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\DirectX12\D3D12MemAlloc.cpp">
+      <Filter>Source Files\DirectX12</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\DirectX12\window\WindowController_DirectX12.cpp">
+      <Filter>Source Files\DirectX12\window</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\DirectX12\window\WindowController_DirectX12_GLFW.cpp">
+      <Filter>Source Files\DirectX12\window</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\DirectX12\DirectX12Objects\DirectX12Buffer.cpp">
+      <Filter>Source Files\DirectX12\DirectX12Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\DirectX12\DirectX12Objects\DirectX12CommandList.cpp">
+      <Filter>Source Files\DirectX12\DirectX12Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\DirectX12\DirectX12Objects\DirectX12CommandQueue.cpp">
+      <Filter>Source Files\DirectX12\DirectX12Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\DirectX12\DirectX12Objects\DirectX12MipGenerator.cpp">
+      <Filter>Source Files\DirectX12\DirectX12Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\DirectX12\DirectX12Objects\DirectX12MipGeneratorTarget.cpp">
+      <Filter>Source Files\DirectX12\DirectX12Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\DirectX12\DirectX12Objects\DirectX12Swapchain.cpp">
+      <Filter>Source Files\DirectX12\DirectX12Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\DirectX12\DirectX12Objects\DirectX12Texture.cpp">
+      <Filter>Source Files\DirectX12\DirectX12Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\DirectX12\window\WindowControllerImpl_DirectX12.cpp">
+      <Filter>Source Files\DirectX12\window</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\DirectX12\RenderEngineImpl_DirectX12.cpp">
+      <Filter>Source Files\DirectX12</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\GLFW\WindowController_GLFW.cpp">
+      <Filter>Source Files\GLFW</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
