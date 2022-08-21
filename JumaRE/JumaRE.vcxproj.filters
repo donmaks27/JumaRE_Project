@@ -549,4 +549,9 @@
       <Filter>Source Files\DirectX</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="JumaRE\src\DirectX12\DirectX12Objects\MipGeneratorComputeShader.hlsl">
+      <Filter>Source Files\DirectX12\DirectX12Objects</Filter>
+    </FxCompile>
+  </ItemGroup>
 </Project>

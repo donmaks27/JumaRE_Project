@@ -180,6 +180,16 @@
     <ClCompile Include="JumaRE\src\Vulkan\window\WindowController_Vulkan.cpp" />
     <ClCompile Include="JumaRE\src\Vulkan\window\WindowController_Vulkan_GLFW.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="JumaRE\src\DirectX12\DirectX12Objects\MipGeneratorComputeShader.hlsl">
+      <ShaderType>Compute</ShaderType>
+      <ShaderModel>5.1</ShaderModel>
+      <VariableName>MipGeneratorComputeShader</VariableName>
+      <HeaderFileOutput>$(ProjectDir)JumaRE\src\DirectX12\DirectX12Objects\MipGeneratorComputeShader.h</HeaderFileOutput>
+      <ExcludedFromBuild Condition="'$(JUMARE_AUTO_DIRECTX12_ENABLED)'=='true'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(JUMARE_AUTO_DIRECTX12_ENABLED)'!='true'">true</ExcludedFromBuild>
+    </FxCompile>
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{2F7EC153-702A-4458-9B3F-FF7E9CD4D734}</ProjectGuid>

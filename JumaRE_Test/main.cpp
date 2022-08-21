@@ -45,15 +45,15 @@ int main()
     _CrtMemCheckpoint(&memoryState);
 #endif
 
-    runTests(testCase0);
-    runTests(testCase1);
-    runTests(testCase2);
-    runTests(testCase3);
-    runTests(testCase4);
-    runTests(testCase5);
-    runTests(testCase6);
+    //runTests(testCase0);
+    //runTests(testCase1);
+    //runTests(testCase2);
+    //runTests(testCase3);
+    //runTests(testCase4);
+    //runTests(testCase5);
+    //runTests(testCase6);
     runTests(testCase7);
-    runTests(testCase8);
+    //runTests(testCase8);
 
 #ifdef JDEBUG
     _CrtMemDumpAllObjectsSince(&memoryState);
