@@ -61,6 +61,9 @@
     <Filter Include="Source Files\GLFW">
       <UniqueIdentifier>{e7b3e5f0-4901-47b6-a5b6-bc9c440dd24d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\DirectX">
+      <UniqueIdentifier>{60648b54-7770-4716-8f1d-a53a935c424e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="JumaRE\include\JumaRE\core.h">
@@ -88,9 +91,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="JumaRE\include\JumaRE\window\window_id.h">
-      <Filter>Header Files\window</Filter>
-    </ClInclude>
-    <ClInclude Include="JumaRE\include\JumaRE\window\WindowController.h">
       <Filter>Header Files\window</Filter>
     </ClInclude>
     <ClInclude Include="JumaRE\include\JumaRE\vertex\Vertex2D.h">
@@ -165,12 +165,6 @@
     <ClInclude Include="JumaRE\src\OpenGL\VertexBuffer_OpenGL.h">
       <Filter>Source Files\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="JumaRE\src\OpenGL\window\WindowController_OpenGL.h">
-      <Filter>Source Files\OpenGL\window</Filter>
-    </ClInclude>
-    <ClInclude Include="JumaRE\src\OpenGL\window\WindowController_OpenGL_GLFW.h">
-      <Filter>Source Files\OpenGL\window</Filter>
-    </ClInclude>
     <ClInclude Include="JumaRE\src\OpenGL\window\WindowControllerImpl_OpenGL.h">
       <Filter>Source Files\OpenGL\window</Filter>
     </ClInclude>
@@ -200,12 +194,6 @@
     </ClInclude>
     <ClInclude Include="JumaRE\src\Vulkan\VertexBuffer_Vulkan.h">
       <Filter>Source Files\Vulkan</Filter>
-    </ClInclude>
-    <ClInclude Include="JumaRE\src\Vulkan\window\WindowController_Vulkan.h">
-      <Filter>Source Files\Vulkan\window</Filter>
-    </ClInclude>
-    <ClInclude Include="JumaRE\src\Vulkan\window\WindowController_Vulkan_GLFW.h">
-      <Filter>Source Files\Vulkan\window</Filter>
     </ClInclude>
     <ClInclude Include="JumaRE\src\Vulkan\window\WindowControllerImpl_Vulkan.h">
       <Filter>Source Files\Vulkan\window</Filter>
@@ -243,12 +231,6 @@
     <ClInclude Include="JumaRE\src\DirectX11\RenderEngine_DirectX11.h">
       <Filter>Source Files\DirectX11</Filter>
     </ClInclude>
-    <ClInclude Include="JumaRE\src\DirectX11\window\WindowController_DirectX11.h">
-      <Filter>Source Files\DirectX11\window</Filter>
-    </ClInclude>
-    <ClInclude Include="JumaRE\src\DirectX11\window\WindowController_DirectX11_GLFW.h">
-      <Filter>Source Files\DirectX11\window</Filter>
-    </ClInclude>
     <ClInclude Include="JumaRE\src\DirectX11\Material_DirectX11.h">
       <Filter>Source Files\DirectX11</Filter>
     </ClInclude>
@@ -259,9 +241,6 @@
       <Filter>Source Files\DirectX11</Filter>
     </ClInclude>
     <ClInclude Include="JumaRE\src\DirectX11\Texture_DirectX11.h">
-      <Filter>Source Files\DirectX11</Filter>
-    </ClInclude>
-    <ClInclude Include="JumaRE\src\DirectX11\TextureFormat_DirectX11.h">
       <Filter>Source Files\DirectX11</Filter>
     </ClInclude>
     <ClInclude Include="JumaRE\src\DirectX11\VertexBuffer_DirectX11.h">
@@ -294,20 +273,11 @@
     <ClInclude Include="JumaRE\src\DirectX12\Texture_DirectX12.h">
       <Filter>Source Files\DirectX12</Filter>
     </ClInclude>
-    <ClInclude Include="JumaRE\src\DirectX12\TextureFormat_DirectX12.h">
-      <Filter>Source Files\DirectX12</Filter>
-    </ClInclude>
     <ClInclude Include="JumaRE\src\DirectX12\VertexBuffer_DirectX12.h">
       <Filter>Source Files\DirectX12</Filter>
     </ClInclude>
     <ClInclude Include="JumaRE\src\DirectX12\D3D12MemAlloc.h">
       <Filter>Source Files\DirectX12</Filter>
-    </ClInclude>
-    <ClInclude Include="JumaRE\src\DirectX12\window\WindowController_DirectX12.h">
-      <Filter>Source Files\DirectX12\window</Filter>
-    </ClInclude>
-    <ClInclude Include="JumaRE\src\DirectX12\window\WindowController_DirectX12_GLFW.h">
-      <Filter>Source Files\DirectX12\window</Filter>
     </ClInclude>
     <ClInclude Include="JumaRE\src\DirectX12\DirectX12Objects\DirectX12Buffer.h">
       <Filter>Source Files\DirectX12\DirectX12Objects</Filter>
@@ -342,8 +312,41 @@
     <ClInclude Include="JumaRE\include\JumaRE\window\WindowMode.h">
       <Filter>Header Files\window</Filter>
     </ClInclude>
+    <ClInclude Include="JumaRE\include\JumaRE\window\WindowController.h">
+      <Filter>Header Files\window</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\OpenGL\window\WindowController_OpenGL.h">
+      <Filter>Source Files\OpenGL\window</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\OpenGL\window\WindowController_OpenGL_GLFW.h">
+      <Filter>Source Files\OpenGL\window</Filter>
+    </ClInclude>
     <ClInclude Include="JumaRE\src\GLFW\WindowController_GLFW.h">
       <Filter>Source Files\GLFW</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\Vulkan\window\WindowController_Vulkan.h">
+      <Filter>Source Files\Vulkan\window</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\Vulkan\window\WindowController_Vulkan_GLFW.h">
+      <Filter>Source Files\Vulkan\window</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\DirectX11\window\WindowController_DirectX11.h">
+      <Filter>Source Files\DirectX11\window</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\DirectX11\window\WindowController_DirectX11_GLFW.h">
+      <Filter>Source Files\DirectX11\window</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\DirectX12\window\WindowController_DirectX12.h">
+      <Filter>Source Files\DirectX12\window</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\DirectX12\window\WindowController_DirectX12_GLFW.h">
+      <Filter>Source Files\DirectX12\window</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\DirectX\TextureFormat_DirectX.h">
+      <Filter>Source Files\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\DirectX\DirectXFunctions.h">
+      <Filter>Source Files\DirectX</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -371,9 +374,6 @@
     <ClCompile Include="JumaRE\src\core\VertexBuffer.cpp">
       <Filter>Source Files\core</Filter>
     </ClCompile>
-    <ClCompile Include="JumaRE\src\core\WindowController.cpp">
-      <Filter>Source Files\core</Filter>
-    </ClCompile>
     <ClCompile Include="JumaRE\src\OpenGL\RenderEngineImpl_OpenGL.cpp">
       <Filter>Source Files\OpenGL</Filter>
     </ClCompile>
@@ -394,12 +394,6 @@
     </ClCompile>
     <ClCompile Include="JumaRE\src\OpenGL\VertexBuffer_OpenGL.cpp">
       <Filter>Source Files\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="JumaRE\src\OpenGL\window\WindowController_OpenGL.cpp">
-      <Filter>Source Files\OpenGL\window</Filter>
-    </ClCompile>
-    <ClCompile Include="JumaRE\src\OpenGL\window\WindowController_OpenGL_GLFW.cpp">
-      <Filter>Source Files\OpenGL\window</Filter>
     </ClCompile>
     <ClCompile Include="JumaRE\src\OpenGL\window\WindowControllerImpl_OpenGL.cpp">
       <Filter>Source Files\OpenGL\window</Filter>
@@ -428,12 +422,6 @@
     <ClCompile Include="JumaRE\src\Vulkan\VertexBuffer_Vulkan.cpp">
       <Filter>Source Files\Vulkan</Filter>
     </ClCompile>
-    <ClCompile Include="JumaRE\src\Vulkan\window\WindowController_Vulkan.cpp">
-      <Filter>Source Files\Vulkan\window</Filter>
-    </ClCompile>
-    <ClCompile Include="JumaRE\src\Vulkan\window\WindowController_Vulkan_GLFW.cpp">
-      <Filter>Source Files\Vulkan\window</Filter>
-    </ClCompile>
     <ClCompile Include="JumaRE\src\Vulkan\window\WindowControllerImpl_Vulkan.cpp">
       <Filter>Source Files\Vulkan\window</Filter>
     </ClCompile>
@@ -457,12 +445,6 @@
     </ClCompile>
     <ClCompile Include="JumaRE\src\DirectX11\RenderEngine_DirectX11.cpp">
       <Filter>Source Files\DirectX11</Filter>
-    </ClCompile>
-    <ClCompile Include="JumaRE\src\DirectX11\window\WindowController_DirectX11.cpp">
-      <Filter>Source Files\DirectX11\window</Filter>
-    </ClCompile>
-    <ClCompile Include="JumaRE\src\DirectX11\window\WindowController_DirectX11_GLFW.cpp">
-      <Filter>Source Files\DirectX11\window</Filter>
     </ClCompile>
     <ClCompile Include="JumaRE\src\DirectX11\Material_DirectX11.cpp">
       <Filter>Source Files\DirectX11</Filter>
@@ -509,12 +491,6 @@
     <ClCompile Include="JumaRE\src\DirectX12\D3D12MemAlloc.cpp">
       <Filter>Source Files\DirectX12</Filter>
     </ClCompile>
-    <ClCompile Include="JumaRE\src\DirectX12\window\WindowController_DirectX12.cpp">
-      <Filter>Source Files\DirectX12\window</Filter>
-    </ClCompile>
-    <ClCompile Include="JumaRE\src\DirectX12\window\WindowController_DirectX12_GLFW.cpp">
-      <Filter>Source Files\DirectX12\window</Filter>
-    </ClCompile>
     <ClCompile Include="JumaRE\src\DirectX12\DirectX12Objects\DirectX12Buffer.cpp">
       <Filter>Source Files\DirectX12\DirectX12Objects</Filter>
     </ClCompile>
@@ -542,8 +518,35 @@
     <ClCompile Include="JumaRE\src\DirectX12\RenderEngineImpl_DirectX12.cpp">
       <Filter>Source Files\DirectX12</Filter>
     </ClCompile>
-    <ClCompile Include="JumaRE\src\GLFW\WindowController_GLFW.cpp">
-      <Filter>Source Files\GLFW</Filter>
+    <ClCompile Include="JumaRE\src\core\WindowController.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\OpenGL\window\WindowController_OpenGL.cpp">
+      <Filter>Source Files\OpenGL\window</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\OpenGL\window\WindowController_OpenGL_GLFW.cpp">
+      <Filter>Source Files\OpenGL\window</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\Vulkan\window\WindowController_Vulkan.cpp">
+      <Filter>Source Files\Vulkan\window</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\Vulkan\window\WindowController_Vulkan_GLFW.cpp">
+      <Filter>Source Files\Vulkan\window</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\DirectX11\window\WindowController_DirectX11.cpp">
+      <Filter>Source Files\DirectX11\window</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\DirectX11\window\WindowController_DirectX11_GLFW.cpp">
+      <Filter>Source Files\DirectX11\window</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\DirectX12\window\WindowController_DirectX12.cpp">
+      <Filter>Source Files\DirectX12\window</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\DirectX12\window\WindowController_DirectX12_GLFW.cpp">
+      <Filter>Source Files\DirectX12\window</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaRE\src\DirectX\DirectXFunctions.cpp">
+      <Filter>Source Files\DirectX</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <JUMARE_DIRECTX12_ENABLED>true</JUMARE_DIRECTX12_ENABLED>
+    <JUMARE_AUTO_DIRECTX12_ENABLED Condition="'$(JUMARE_DIRECTX_ENABLED)'=='true'">$(JUMARE_DIRECTX12_ENABLED)</JUMARE_AUTO_DIRECTX12_ENABLED>
+    <JUMARE_AUTO_DIRECTX12_ENABLED Condition="'$(JUMARE_DIRECTX_ENABLED)'!='true'">false</JUMARE_AUTO_DIRECTX12_ENABLED>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(JUMARE_AUTO_DIRECTX12_ENABLED)'=='true'">
+    <ClCompile>
+      <PreprocessorDefinitions>JUMARE_ENABLE_DX12;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <BuildMacro Include="JUMARE_DIRECTX12_ENABLED">
+      <Value>$(JUMARE_DIRECTX12_ENABLED)</Value>
+    </BuildMacro>
+    <BuildMacro Include="JUMARE_AUTO_DIRECTX12_ENABLED">
+      <Value>$(JUMARE_AUTO_DIRECTX12_ENABLED)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>

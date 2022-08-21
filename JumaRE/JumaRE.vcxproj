@@ -46,13 +46,15 @@
     <ClInclude Include="JumaRE\src\DirectX11\RenderEngine_DirectX11.h" />
     <ClInclude Include="JumaRE\src\DirectX11\RenderTarget_DirectX11.h" />
     <ClInclude Include="JumaRE\src\DirectX11\Shader_DirectX11.h" />
-    <ClInclude Include="JumaRE\src\DirectX11\TextureFormat_DirectX11.h" />
     <ClInclude Include="JumaRE\src\DirectX11\Texture_DirectX11.h" />
     <ClInclude Include="JumaRE\src\DirectX11\VertexBuffer_DirectX11.h" />
     <ClInclude Include="JumaRE\src\DirectX11\window\WindowControllerImpl_DirectX11.h" />
     <ClInclude Include="JumaRE\src\DirectX11\window\WindowController_DirectX11.h" />
     <ClInclude Include="JumaRE\src\DirectX11\window\WindowController_DirectX11_GLFW.h" />
-    <ClInclude Include="JumaRE\src\DirectX12\D3D12MemAlloc.h" />
+    <ClInclude Include="JumaRE\src\DirectX12\D3D12MemAlloc.h">
+      <ExcludedFromBuild Condition="'$(JUMARE_AUTO_DIRECTX12_ENABLED)'=='true'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(JUMARE_AUTO_DIRECTX12_ENABLED)'!='true'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="JumaRE\src\DirectX12\DirectX12Objects\DirectX12Buffer.h" />
     <ClInclude Include="JumaRE\src\DirectX12\DirectX12Objects\DirectX12CommandList.h" />
     <ClInclude Include="JumaRE\src\DirectX12\DirectX12Objects\DirectX12CommandQueue.h" />
@@ -67,12 +69,13 @@
     <ClInclude Include="JumaRE\src\DirectX12\RenderPipeline_DirectX12.h" />
     <ClInclude Include="JumaRE\src\DirectX12\RenderTarget_DirectX12.h" />
     <ClInclude Include="JumaRE\src\DirectX12\Shader_DirectX12.h" />
-    <ClInclude Include="JumaRE\src\DirectX12\TextureFormat_DirectX12.h" />
     <ClInclude Include="JumaRE\src\DirectX12\Texture_DirectX12.h" />
     <ClInclude Include="JumaRE\src\DirectX12\VertexBuffer_DirectX12.h" />
     <ClInclude Include="JumaRE\src\DirectX12\window\WindowControllerImpl_DirectX12.h" />
     <ClInclude Include="JumaRE\src\DirectX12\window\WindowController_DirectX12.h" />
     <ClInclude Include="JumaRE\src\DirectX12\window\WindowController_DirectX12_GLFW.h" />
+    <ClInclude Include="JumaRE\src\DirectX\DirectXFunctions.h" />
+    <ClInclude Include="JumaRE\src\DirectX\TextureFormat_DirectX.h" />
     <ClInclude Include="JumaRE\src\GLFW\WindowController_GLFW.h" />
     <ClInclude Include="JumaRE\src\OpenGL\Material_OpenGL.h" />
     <ClInclude Include="JumaRE\src\OpenGL\RenderEngine_OpenGL.h" />
@@ -126,7 +129,10 @@
     <ClCompile Include="JumaRE\src\DirectX11\window\WindowControllerImpl_DirectX11.cpp" />
     <ClCompile Include="JumaRE\src\DirectX11\window\WindowController_DirectX11.cpp" />
     <ClCompile Include="JumaRE\src\DirectX11\window\WindowController_DirectX11_GLFW.cpp" />
-    <ClCompile Include="JumaRE\src\DirectX12\D3D12MemAlloc.cpp" />
+    <ClCompile Include="JumaRE\src\DirectX12\D3D12MemAlloc.cpp">
+      <ExcludedFromBuild Condition="'$(JUMARE_AUTO_DIRECTX12_ENABLED)'=='true'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(JUMARE_AUTO_DIRECTX12_ENABLED)'!='true'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="JumaRE\src\DirectX12\DirectX12Objects\DirectX12Buffer.cpp" />
     <ClCompile Include="JumaRE\src\DirectX12\DirectX12Objects\DirectX12CommandList.cpp" />
     <ClCompile Include="JumaRE\src\DirectX12\DirectX12Objects\DirectX12CommandQueue.cpp" />
@@ -145,7 +151,7 @@
     <ClCompile Include="JumaRE\src\DirectX12\window\WindowControllerImpl_DirectX12.cpp" />
     <ClCompile Include="JumaRE\src\DirectX12\window\WindowController_DirectX12.cpp" />
     <ClCompile Include="JumaRE\src\DirectX12\window\WindowController_DirectX12_GLFW.cpp" />
-    <ClCompile Include="JumaRE\src\GLFW\WindowController_GLFW.cpp" />
+    <ClCompile Include="JumaRE\src\DirectX\DirectXFunctions.cpp" />
     <ClCompile Include="JumaRE\src\OpenGL\Material_OpenGL.cpp" />
     <ClCompile Include="JumaRE\src\OpenGL\RenderEngineImpl_OpenGL.cpp" />
     <ClCompile Include="JumaRE\src\OpenGL\RenderEngine_OpenGL.cpp" />
@@ -207,6 +213,9 @@
     <Import Project="..\lib\GLFW.props" />
     <Import Project="..\lib\JumaRE_OpenGL.props" />
     <Import Project="..\lib\JumaRE_Vulkan.props" />
+    <Import Project="..\lib\JumaRE_DX.props" />
+    <Import Project="..\lib\JumaRE_DX11.props" />
+    <Import Project="..\lib\JumaRE_DX12.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -215,6 +224,9 @@
     <Import Project="..\lib\GLFW.props" />
     <Import Project="..\lib\JumaRE_OpenGL.props" />
     <Import Project="..\lib\JumaRE_Vulkan.props" />
+    <Import Project="..\lib\JumaRE_DX.props" />
+    <Import Project="..\lib\JumaRE_DX11.props" />
+    <Import Project="..\lib\JumaRE_DX12.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -229,7 +241,6 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <PreprocessorDefinitions>WIN32_LEAN_AND_MEAN;JUMARE_ENABLE_DX11;JUMARE_ENABLE_DX12;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -247,7 +258,6 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <PreprocessorDefinitions>WIN32_LEAN_AND_MEAN;JUMARE_ENABLE_DX11;JUMARE_ENABLE_DX12;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

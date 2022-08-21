@@ -45,14 +45,14 @@ int main()
     _CrtMemCheckpoint(&memoryState);
 #endif
 
-    //runTests(testCase0);
-    //runTests(testCase1);
-    //runTests(testCase2);
-    //runTests(testCase3);
-    //runTests(testCase4);
-    //runTests(testCase5);
-    //runTests(testCase6);
-    //runTests(testCase7);
+    runTests(testCase0);
+    runTests(testCase1);
+    runTests(testCase2);
+    runTests(testCase3);
+    runTests(testCase4);
+    runTests(testCase5);
+    runTests(testCase6);
+    runTests(testCase7);
     runTests(testCase8);
 
 #ifdef JDEBUG
@@ -88,18 +88,16 @@ void runTestsTemplate(void (*testFunc)(JumaRE::RenderEngine*, const jutils::jstr
 }
 void runTests(void (*testFunc)(JumaRE::RenderEngine*, const jutils::jstring&))
 {
-    runTestsTemplate<JumaRE::RenderAPI::Vulkan>(testFunc, JSTR("Vulkan"));
+    //runTestsTemplate<JumaRE::RenderAPI::Vulkan>(testFunc, JSTR("Vulkan"));
     //runTestsTemplate<JumaRE::RenderAPI::OpenGL>(testFunc, JSTR("OpenGL"));
     //runTestsTemplate<JumaRE::RenderAPI::DirectX11>(testFunc, JSTR("DirectX11"));
-    //runTestsTemplate<JumaRE::RenderAPI::DirectX12>(testFunc, JSTR("DirectX12"));
+    runTestsTemplate<JumaRE::RenderAPI::DirectX12>(testFunc, JSTR("DirectX12"));
 }
 
 // create window
 void testCase0(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
 {
-    if (!engine->init({ 
-            { 1, JumaRE::WindowInitProperties{ JSTR("Window: ") + apiName, { 800, 600 } } }
-        }))
+    if (!engine->init({ JSTR("Window: ") + apiName, { 800, 600 } }))
     {
         JUTILS_LOG(error, JSTR("Failed to init render engine"));
         return;
@@ -142,9 +140,7 @@ void testCase0(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
  */
 void testCase1(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
 {
-    if (!engine->init({ 
-            { 1, JumaRE::WindowInitProperties{ JSTR("Position2D to Color: ") + apiName, { 800, 600 } } }
-        }))
+    if (!engine->init({ JSTR("Position2D to Color: ") + apiName, { 800, 600 } }))
     {
         JUTILS_LOG(error, JSTR("Failed to init render engine"));
         return;
@@ -210,9 +206,7 @@ void testCase1(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
  */
 void testCase2(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
 {
-    if (!engine->init({ 
-            { 1, JumaRE::WindowInitProperties{ JSTR("TextureCoords to Color: ") + apiName, { 800, 600 } } }
-        }))
+    if (!engine->init({ JSTR("TextureCoords to Color: ") + apiName, { 800, 600 } }))
     {
         JUTILS_LOG(error, JSTR("Failed to init render engine"));
         return;
@@ -291,9 +285,7 @@ void testCase2(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
  */
 void testCase3(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
 {
-    if (!engine->init({ 
-            { 1, JumaRE::WindowInitProperties{ JSTR("Texture: ") + apiName, { 800, 600 } } }
-        }))
+    if (!engine->init({ JSTR("Texture: ") + apiName, { 800, 600 } }))
     {
         JUTILS_LOG(error, JSTR("Failed to init render engine"));
         return;
@@ -406,9 +398,7 @@ void testCase3(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
  */
 void testCase4(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
 {
-    if (!engine->init({ 
-            { 1, JumaRE::WindowInitProperties{ JSTR("Render Target: ") + apiName, { 800, 600 } } }
-        }))
+    if (!engine->init({ JSTR("Render Target: ") + apiName, { 800, 600 } }))
     {
         JUTILS_LOG(error, JSTR("Failed to init render engine"));
         return;
@@ -509,9 +499,7 @@ void testCase4(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
  */
 void testCase5(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
 {
-    if (!engine->init({ 
-            { 1, JumaRE::WindowInitProperties{ JSTR("Multisampling: ") + apiName, { 800, 600 } } }
-        }))
+    if (!engine->init({ JSTR("Multisampling: ") + apiName, { 800, 600 } }))
     {
         JUTILS_LOG(error, JSTR("Failed to init render engine"));
         return;
@@ -612,9 +600,7 @@ void testCase5(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
  */
 void testCase6(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
 {
-    if (!engine->init({ 
-            { 1, JumaRE::WindowInitProperties{ JSTR("Uniforms: ") + apiName, { 800, 600 }, JumaRE::TextureSamples::X2 } }
-        }))
+    if (!engine->init({ JSTR("Uniforms: ") + apiName, { 800, 600 }, JumaRE::TextureSamples::X2 }))
     {
         JUTILS_LOG(error, JSTR("Failed to init render engine"));
         return;
@@ -718,9 +704,7 @@ void testCase6(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
  */
 void testCase7(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
 {
-    if (!engine->init({ 
-            { 1, JumaRE::WindowInitProperties{ JSTR("Mip maps: ") + apiName, { 800, 600 }, JumaRE::TextureSamples::X2 } }
-        }))
+    if (!engine->init({ JSTR("Mip maps: ") + apiName, { 800, 600 }, JumaRE::TextureSamples::X2 }))
     {
         JUTILS_LOG(error, JSTR("Failed to init render engine"));
         return;
@@ -824,9 +808,7 @@ void testCase7(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
  */
 void testCase8(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
 {
-    if (!engine->init({ 
-            { 1, JumaRE::WindowInitProperties{ JSTR("Render Target: ") + apiName, { 800, 600 } } }
-        }))
+    if (!engine->init({ JSTR("Window mods: ") + apiName, { 800, 600 } }))
     {
         JUTILS_LOG(error, JSTR("Failed to init render engine"));
         return;
@@ -910,15 +892,15 @@ void testCase8(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
                 const bool eWasPressed = GetKeyState('E') < 0;
                 if (qWasPressed && !pressedKeyQ)
                 {
-                    windowController->setWindowMode(1, JumaRE::WindowMode::Normal);
+                    windowController->setMainWindowMode(JumaRE::WindowMode::Normal);
                 }
                 else if (wWasPressed && !pressedKeyW)
                 {
-                    windowController->setWindowMode(1, JumaRE::WindowMode::Fullscreen);
+                    windowController->setMainWindowMode(JumaRE::WindowMode::Fullscreen);
                 }
                 else if (eWasPressed && !pressedKeyE)
                 {
-                    windowController->setWindowMode(1, JumaRE::WindowMode::WindowedFullscreen);
+                    windowController->setMainWindowMode(JumaRE::WindowMode::WindowedFullscreen);
                 }
                 pressedKeyQ = qWasPressed;
                 pressedKeyW = wWasPressed;
