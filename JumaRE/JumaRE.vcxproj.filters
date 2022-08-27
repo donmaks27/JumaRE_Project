@@ -64,6 +64,9 @@
     <Filter Include="Source Files\DirectX">
       <UniqueIdentifier>{60648b54-7770-4716-8f1d-a53a935c424e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\utils">
+      <UniqueIdentifier>{ba401682-a5ab-4788-adf7-ba967b5b0934}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="JumaRE\include\JumaRE\core.h">
@@ -347,6 +350,15 @@
     </ClInclude>
     <ClInclude Include="JumaRE\src\DirectX\DirectXFunctions.h">
       <Filter>Source Files\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\include\JumaRE\material\MaterialProperties.h">
+      <Filter>Header Files\material</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\src\utils\RenderEngineObjectsPool.h">
+      <Filter>Source Files\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\include\JumaRE\RenderEngineAsset.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

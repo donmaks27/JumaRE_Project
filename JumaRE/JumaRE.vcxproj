@@ -14,11 +14,13 @@
     <ClInclude Include="JumaRE\include\JumaRE\core.h" />
     <ClInclude Include="JumaRE\include\JumaRE\material\Material.h" />
     <ClInclude Include="JumaRE\include\JumaRE\material\MaterialParamsStorage.h" />
+    <ClInclude Include="JumaRE\include\JumaRE\material\MaterialProperties.h" />
     <ClInclude Include="JumaRE\include\JumaRE\material\Shader.h" />
     <ClInclude Include="JumaRE\include\JumaRE\material\ShaderUniform.h" />
     <ClInclude Include="JumaRE\include\JumaRE\material\ShaderUniformInfo.h" />
     <ClInclude Include="JumaRE\include\JumaRE\RenderAPI.h" />
     <ClInclude Include="JumaRE\include\JumaRE\RenderEngine.h" />
+    <ClInclude Include="JumaRE\include\JumaRE\RenderEngineAsset.h" />
     <ClInclude Include="JumaRE\include\JumaRE\RenderEngineContextObject.h" />
     <ClInclude Include="JumaRE\include\JumaRE\RenderEngineImpl.h" />
     <ClInclude Include="JumaRE\include\JumaRE\RenderEngineImpl_DirectX11.h" />
@@ -87,6 +89,7 @@
     <ClInclude Include="JumaRE\src\OpenGL\window\WindowControllerImpl_OpenGL.h" />
     <ClInclude Include="JumaRE\src\OpenGL\window\WindowController_OpenGL.h" />
     <ClInclude Include="JumaRE\src\OpenGL\window\WindowController_OpenGL_GLFW.h" />
+    <ClInclude Include="JumaRE\src\utils\RenderEngineObjectsPool.h" />
     <ClInclude Include="JumaRE\src\Vulkan\Material_Vulkan.h" />
     <ClInclude Include="JumaRE\src\Vulkan\RenderEngine_Vulkan.h" />
     <ClInclude Include="JumaRE\src\Vulkan\RenderOptions_Vulkan.h" />
@@ -188,6 +191,8 @@
       <HeaderFileOutput>$(ProjectDir)JumaRE\src\DirectX12\DirectX12Objects\MipGeneratorComputeShader.h</HeaderFileOutput>
       <ExcludedFromBuild Condition="'$(JUMARE_AUTO_DIRECTX12_ENABLED)'=='true'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(JUMARE_AUTO_DIRECTX12_ENABLED)'!='true'">true</ExcludedFromBuild>
+      <ObjectFileOutput>
+      </ObjectFileOutput>
     </FxCompile>
   </ItemGroup>
   <PropertyGroup Label="Globals">

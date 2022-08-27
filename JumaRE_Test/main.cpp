@@ -45,15 +45,15 @@ int main()
     _CrtMemCheckpoint(&memoryState);
 #endif
 
-    //runTests(testCase0);
-    //runTests(testCase1);
-    //runTests(testCase2);
-    //runTests(testCase3);
-    //runTests(testCase4);
-    //runTests(testCase5);
-    //runTests(testCase6);
+    runTests(testCase0);
+    runTests(testCase1);
+    runTests(testCase2);
+    runTests(testCase3);
+    runTests(testCase4);
+    runTests(testCase5);
+    runTests(testCase6);
     runTests(testCase7);
-    //runTests(testCase8);
+    runTests(testCase8);
 
 #ifdef JDEBUG
     _CrtMemDumpAllObjectsSince(&memoryState);
@@ -88,10 +88,10 @@ void runTestsTemplate(void (*testFunc)(JumaRE::RenderEngine*, const jutils::jstr
 }
 void runTests(void (*testFunc)(JumaRE::RenderEngine*, const jutils::jstring&))
 {
+    runTestsTemplate<JumaRE::RenderAPI::OpenGL>(testFunc, JSTR("OpenGL"));
     //runTestsTemplate<JumaRE::RenderAPI::Vulkan>(testFunc, JSTR("Vulkan"));
-    //runTestsTemplate<JumaRE::RenderAPI::OpenGL>(testFunc, JSTR("OpenGL"));
     //runTestsTemplate<JumaRE::RenderAPI::DirectX11>(testFunc, JSTR("DirectX11"));
-    runTestsTemplate<JumaRE::RenderAPI::DirectX12>(testFunc, JSTR("DirectX12"));
+    //runTestsTemplate<JumaRE::RenderAPI::DirectX12>(testFunc, JSTR("DirectX12"));
 }
 
 // create window
@@ -194,10 +194,6 @@ void testCase1(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
     {
         JUTILS_LOG(error, JSTR("Failed to create assets"));
     }
-
-    delete material;
-    delete shader;
-    delete vertexBuffer;
 }
 
 /**
@@ -274,10 +270,6 @@ void testCase2(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
     {
         JUTILS_LOG(error, JSTR("Failed to create assets"));
     }
-
-    delete material;
-    delete shader;
-    delete vertexBuffer;
 }
 
 /**
@@ -359,7 +351,7 @@ void testCase3(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
     {
         JumaRE::RenderPipeline* renderPipeline = engine->getRenderPipeline();
         bool dataValid = renderPipeline != nullptr;
-        dataValid &= material->setParamValue<JumaRE::ShaderUniformType::Texture>(JSTR("uTexture"), texture);
+        //dataValid &= material->setParamValue<JumaRE::ShaderUniformType::Texture>(JSTR("uTexture"), texture);
         dataValid &= renderPipeline->addPipelineStage(JSTR("window1"), renderTarget);
         dataValid &= renderPipeline->buildPipelineQueue();
         dataValid &= renderPipeline->addRenderPrimitive(JSTR("window1"), { vertexBuffer1, material });
@@ -385,12 +377,6 @@ void testCase3(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
     {
         JUTILS_LOG(error, JSTR("Failed to create assets"));
     }
-
-    delete material;
-    delete shader;
-    delete texture;
-    delete vertexBuffer1;
-    delete vertexBuffer2;
 }
 
 /**
@@ -485,13 +471,6 @@ void testCase4(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
     {
         JUTILS_LOG(error, JSTR("Failed to create assets"));
     }
-
-    delete material;
-    delete materialWindow;
-    delete shader;
-    delete texture;
-    delete vertexBuffer;
-    delete renderTarget;
 }
 
 /**
@@ -586,13 +565,6 @@ void testCase5(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
     {
         JUTILS_LOG(error, JSTR("Failed to create assets"));
     }
-
-    delete material;
-    delete materialWindow;
-    delete shader;
-    delete texture;
-    delete vertexBuffer;
-    delete renderTarget;
 }
 
 /**
@@ -690,13 +662,6 @@ void testCase6(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
     {
         JUTILS_LOG(error, JSTR("Failed to create assets"));
     }
-
-    delete material;
-    delete materialWindow;
-    delete shader;
-    delete texture;
-    delete vertexBuffer;
-    delete renderTarget;
 }
 
 /**
@@ -794,13 +759,6 @@ void testCase7(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
     {
         JUTILS_LOG(error, JSTR("Failed to create assets"));
     }
-
-    delete material;
-    delete materialWindow;
-    delete shader;
-    delete texture;
-    delete vertexBuffer;
-    delete renderTarget;
 }
 
 /**
@@ -919,11 +877,4 @@ void testCase8(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
     {
         JUTILS_LOG(error, JSTR("Failed to create assets"));
     }
-
-    delete material;
-    delete materialWindow;
-    delete shader;
-    delete texture;
-    delete vertexBuffer;
-    delete renderTarget;
 }
