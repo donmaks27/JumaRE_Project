@@ -34,6 +34,8 @@ void testCase6(JumaRE::RenderEngine*, const jutils::jstring&);
 void testCase7(JumaRE::RenderEngine*, const jutils::jstring&);
 // window mods
 void testCase8(JumaRE::RenderEngine*, const jutils::jstring&);
+// handling input
+void testCase9(JumaRE::RenderEngine*, const jutils::jstring&);
 
 int main()
 {
@@ -45,15 +47,16 @@ int main()
     _CrtMemCheckpoint(&memoryState);
 #endif
 
-    runTests(testCase0);
-    runTests(testCase1);
-    runTests(testCase2);
-    runTests(testCase3);
-    runTests(testCase4);
-    runTests(testCase5);
-    runTests(testCase6);
-    runTests(testCase7);
-    runTests(testCase8);
+    //runTests(testCase0);
+    //runTests(testCase1);
+    //runTests(testCase2);
+    //runTests(testCase3);
+    //runTests(testCase4);
+    //runTests(testCase5);
+    //runTests(testCase6);
+    //runTests(testCase7);
+    //runTests(testCase8);
+    runTests(testCase9);
 
 #ifdef JDEBUG
     _CrtMemDumpAllObjectsSince(&memoryState);
@@ -88,8 +91,8 @@ void runTestsTemplate(void (*testFunc)(JumaRE::RenderEngine*, const jutils::jstr
 }
 void runTests(void (*testFunc)(JumaRE::RenderEngine*, const jutils::jstring&))
 {
-    runTestsTemplate<JumaRE::RenderAPI::OpenGL>(testFunc, JSTR("OpenGL"));
-    //runTestsTemplate<JumaRE::RenderAPI::Vulkan>(testFunc, JSTR("Vulkan"));
+    //runTestsTemplate<JumaRE::RenderAPI::OpenGL>(testFunc, JSTR("OpenGL"));
+    runTestsTemplate<JumaRE::RenderAPI::Vulkan>(testFunc, JSTR("Vulkan"));
     //runTestsTemplate<JumaRE::RenderAPI::DirectX11>(testFunc, JSTR("DirectX11"));
     //runTestsTemplate<JumaRE::RenderAPI::DirectX12>(testFunc, JSTR("DirectX12"));
 }
@@ -854,11 +857,11 @@ void testCase8(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
                 }
                 else if (wWasPressed && !pressedKeyW)
                 {
-                    windowController->setMainWindowMode(JumaRE::WindowMode::Fullscreen);
+                    windowController->setMainWindowMode(JumaRE::WindowMode::WindowedFullscreen);
                 }
                 else if (eWasPressed && !pressedKeyE)
                 {
-                    windowController->setMainWindowMode(JumaRE::WindowMode::WindowedFullscreen);
+                    windowController->setMainWindowMode(JumaRE::WindowMode::Fullscreen);
                 }
                 pressedKeyQ = qWasPressed;
                 pressedKeyW = wWasPressed;
@@ -877,4 +880,155 @@ void testCase8(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
     {
         JUTILS_LOG(error, JSTR("Failed to create assets"));
     }
+}
+
+// handling input
+void testCase9(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
+{
+    if (!engine->init({ JSTR("Input: ") + apiName, { 800, 600 } }))
+    {
+        JUTILS_LOG(error, JSTR("Failed to init render engine"));
+        return;
+    }
+
+    struct TestApplication
+    {
+        JumaRE::RenderEngine* engine = nullptr;
+
+        bool init()
+        {
+            const jutils::math::vector2 screenCoordsModifier = engine->getScreenCoordinateModifier();
+            JumaRE::VertexBufferDataImpl<JumaRE::Vertex2D_TexCoord> vertexBufferData;
+            jutils::jarray<jutils::uint8> textureData;
+            if (!engine->shouldFlipLoadedTextures())
+            {
+                vertexBufferData.setVertices({
+                    { screenCoordsModifier * jutils::math::vector2{ -1.0f, -1.0f }, { 0.0f, 0.0f } },
+                    { screenCoordsModifier * jutils::math::vector2{  1.0f, -1.0f }, { 1.0f, 0.0f } },
+                    { screenCoordsModifier * jutils::math::vector2{ -1.0f,  1.0f }, { 0.0f, 1.0f } },
+                    { screenCoordsModifier * jutils::math::vector2{ -1.0f,  1.0f }, { 0.0f, 1.0f } },
+                    { screenCoordsModifier * jutils::math::vector2{  1.0f, -1.0f }, { 1.0f, 0.0f } },
+                    { screenCoordsModifier * jutils::math::vector2{  1.0f,  1.0f }, { 1.0f, 1.0f } }
+                });
+                textureData = {
+                    255, 0, 0, 255,   0, 255, 0, 255,
+                    0, 0, 255, 255,   0, 0, 0, 255
+                };
+            }
+            else
+            {
+                vertexBufferData.setVertices({
+                    { screenCoordsModifier * jutils::math::vector2{ -1.0f, -1.0f }, { 0.0f, 1.0f } },
+                    { screenCoordsModifier * jutils::math::vector2{  1.0f, -1.0f }, { 1.0f, 1.0f } },
+                    { screenCoordsModifier * jutils::math::vector2{ -1.0f,  1.0f }, { 0.0f, 0.0f } },
+                    { screenCoordsModifier * jutils::math::vector2{ -1.0f,  1.0f }, { 0.0f, 0.0f } },
+                    { screenCoordsModifier * jutils::math::vector2{  1.0f, -1.0f }, { 1.0f, 1.0f } },
+                    { screenCoordsModifier * jutils::math::vector2{  1.0f,  1.0f }, { 1.0f, 0.0f } }
+                });
+                textureData = {
+                    0, 0, 255, 255,   0, 0, 0, 255,
+                    255, 0, 0, 255,   0, 255, 0, 255
+                };
+            }
+
+            JumaRE::WindowController* windowController = engine->getWindowController();
+            JumaRE::RenderTarget* renderTargetWindow = windowController->findWindowData(windowController->getMainWindowID())->windowRenderTarget;
+            JumaRE::VertexBuffer* vertexBuffer = engine->createVertexBuffer(&vertexBufferData);
+            JumaRE::Texture* texture = engine->createTexture({ 2, 2 }, JumaRE::TextureFormat::RGBA8, textureData.getData());
+            JumaRE::Shader* shader = engine->createShader({
+                { JumaRE::SHADER_STAGE_VERTEX, JSTR("textureUnmodified") }, { JumaRE::SHADER_STAGE_FRAGMENT, JSTR("textureUnmodified") }
+            }, {
+                JSTR("position"), JSTR("textureCoords")
+            }, {
+                { JSTR("uTexture"), JumaRE::ShaderUniform{ JumaRE::ShaderUniformType::Texture, JumaRE::SHADER_STAGE_FRAGMENT, 0, 0 } }
+            });
+            JumaRE::Material* material = engine->createMaterial(shader);
+            if ((renderTargetWindow == nullptr) && (vertexBuffer == nullptr) && (shader == nullptr) && (material == nullptr))
+            {
+                JUTILS_LOG(error, JSTR("Failed to create assets"));
+                return false;
+            }
+
+            JumaRE::RenderPipeline* renderPipeline = engine->getRenderPipeline();
+            bool dataValid = renderPipeline != nullptr;
+            dataValid &= material->setParamValue<JumaRE::ShaderUniformType::Texture>(JSTR("uTexture"), texture);
+            dataValid &= renderPipeline->addPipelineStage(JSTR("window1"), renderTargetWindow);
+            dataValid &= renderPipeline->buildPipelineQueue();
+            dataValid &= renderPipeline->addRenderPrimitive(JSTR("window1"), { vertexBuffer, material });
+            if (!dataValid)
+            {
+                JUTILS_LOG(error, JSTR("Failed to build pipeline"));
+                return false;
+            }
+
+            windowController->OnInputButton.bind(this, &TestApplication::onInputButton);
+            windowController->OnInputAxis.bind(this, &TestApplication::onInputAxis);
+            windowController->OnInputAxis2D.bind(this, &TestApplication::onInputAxis2D);
+            return true;
+        }
+        void start()
+        {
+            JumaRE::WindowController* windowController = engine->getWindowController();
+            JumaRE::RenderPipeline* renderPipeline = engine->getRenderPipeline();
+            while (!windowController->shouldCloseWindow(1))
+            {
+                if (!renderPipeline->render())
+                {
+                    break;
+                }
+                windowController->updateWindows();
+            }
+            renderPipeline->waitForRenderFinished();
+        }
+        void destroy()
+        {
+            JumaRE::WindowController* windowController = engine->getWindowController();
+            windowController->OnInputButton.unbind(this, &TestApplication::onInputButton);
+            windowController->OnInputAxis.unbind(this, &TestApplication::onInputAxis);
+            windowController->OnInputAxis2D.unbind(this, &TestApplication::onInputAxis2D);
+        }
+
+        void onInputButton(JumaRE::WindowController* windowController, const JumaRE::WindowData* windowData, const JumaRE::InputDeviceType device, 
+            const JumaRE::InputButton button, const JumaRE::InputButtonAction action)
+        {
+            if (action == JumaRE::InputButtonAction::Press)
+            {
+                switch (button)
+                {
+                case JumaRE::InputButton::L: 
+                    windowController->setCursorLockedToMainWindow(!windowController->isCursorLockedToMainWindow());
+                    break;
+                case JumaRE::InputButton::Q:
+                    windowController->setMainWindowMode(JumaRE::WindowMode::Normal);
+                    break;
+                case JumaRE::InputButton::W:
+                    windowController->setMainWindowMode(JumaRE::WindowMode::WindowedFullscreen);
+                    break;
+                case JumaRE::InputButton::E:
+                    windowController->setMainWindowMode(JumaRE::WindowMode::Fullscreen);
+                    break;
+                default: ;
+                }
+            }
+        }
+        void onInputAxis(JumaRE::WindowController* windowController, const JumaRE::WindowData* windowData, const JumaRE::InputDeviceType device, 
+            const JumaRE::InputAxis axis, const float value)
+        {
+        }
+        void onInputAxis2D(JumaRE::WindowController* windowController, const JumaRE::WindowData* windowData, const JumaRE::InputDeviceType device, 
+            const JumaRE::InputAxis axis, const jutils::math::vector2& value)
+        {
+            if (axis == JumaRE::InputAxis::Mouse2D)
+            {
+                JUTILS_LOG(info, JSTR("Cursor position {}"), windowData->cursorPosition.toString());
+            }
+        }
+    } app = { engine };
+    if (!app.init())
+    {
+        JUTILS_LOG(error, JSTR("Failed to init application"));
+        return;
+    }
+    app.start();
+    app.destroy();
 }
