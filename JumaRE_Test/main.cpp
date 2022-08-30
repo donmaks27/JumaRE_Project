@@ -116,7 +116,7 @@ void testCase0(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
         pipelineValid &= renderPipeline->buildPipelineQueue();
         if (pipelineValid)
         {
-            while (!windowController->shouldCloseWindow(1))
+            while (!windowController->isMainWindowClosed())
             {
                 if (!renderPipeline->render())
                 {
@@ -178,7 +178,7 @@ void testCase1(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
         pipelineValid &= renderPipeline->addRenderPrimitive(JSTR("window1"), { vertexBuffer, material });
         if (pipelineValid)
         {
-            while (!windowController->shouldCloseWindow(1))
+            while (!windowController->isMainWindowClosed())
             {
                 if (!renderPipeline->render())
                 {
@@ -254,7 +254,7 @@ void testCase2(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
         pipelineValid &= renderPipeline->addRenderPrimitive(JSTR("window1"), { vertexBuffer, material });
         if (pipelineValid)
         {
-            while (!windowController->shouldCloseWindow(1))
+            while (!windowController->isMainWindowClosed())
             {
                 if (!renderPipeline->render())
                 {
@@ -361,7 +361,7 @@ void testCase3(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
         dataValid &= renderPipeline->addRenderPrimitive(JSTR("window1"), { vertexBuffer2, material });
         if (dataValid)
         {
-            while (!windowController->shouldCloseWindow(1))
+            while (!windowController->isMainWindowClosed())
             {
                 if (!renderPipeline->render())
                 {
@@ -455,7 +455,7 @@ void testCase4(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
         dataValid &= renderPipeline->addRenderPrimitive(JSTR("window1"), { vertexBuffer, materialWindow });
         if (dataValid)
         {
-            while (!windowController->shouldCloseWindow(1))
+            while (!windowController->isMainWindowClosed())
             {
                 if (!renderPipeline->render())
                 {
@@ -549,7 +549,7 @@ void testCase5(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
         dataValid &= renderPipeline->addRenderPrimitive(JSTR("window1"), { vertexBuffer, materialWindow });
         if (dataValid)
         {
-            while (!windowController->shouldCloseWindow(1))
+            while (!windowController->isMainWindowClosed())
             {
                 if (!renderPipeline->render())
                 {
@@ -646,7 +646,7 @@ void testCase6(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
         dataValid &= renderPipeline->addRenderPrimitive(JSTR("window1"), { vertexBuffer, materialWindow });
         if (dataValid)
         {
-            while (!windowController->shouldCloseWindow(1))
+            while (!windowController->isMainWindowClosed())
             {
                 if (!renderPipeline->render())
                 {
@@ -743,7 +743,7 @@ void testCase7(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
         dataValid &= renderPipeline->addRenderPrimitive(JSTR("window1"), { vertexBuffer, materialWindow });
         if (dataValid)
         {
-            while (!windowController->shouldCloseWindow(1))
+            while (!windowController->isMainWindowClosed())
             {
                 if (!renderPipeline->render())
                 {
@@ -841,7 +841,7 @@ void testCase8(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
             bool pressedKeyW = false;
             bool pressedKeyE = false;
 
-            while (!windowController->shouldCloseWindow(1))
+            while (!windowController->isMainWindowClosed())
             {
                 if (!renderPipeline->render())
                 {
@@ -882,21 +882,76 @@ void testCase8(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
     }
 }
 
+class TestApplication
+{
+public:
+    TestApplication(JumaRE::RenderEngine* engine, const jutils::jstring& name, const jutils::jstring& apiName)
+        : m_Engine(engine)
+        , m_Title(name + apiName)
+    {}
+    virtual ~TestApplication() = default;
+
+    virtual bool init()
+    {
+        if (!m_Engine->init({ m_Title, { 800, 600 } }))
+        {
+            JUTILS_LOG(error, JSTR("Failed to init render engine"));
+            return false;
+        }
+        return true;
+    }
+    void start()
+    {
+        JumaRE::WindowController* windowController = m_Engine->getWindowController();
+        JumaRE::RenderPipeline* renderPipeline = m_Engine->getRenderPipeline();
+        while (!windowController->isMainWindowClosed())
+        {
+            if (!renderPipeline->render())
+            {
+                break;
+            }
+            windowController->updateWindows();
+            update();
+        }
+        renderPipeline->waitForRenderFinished();
+    }
+    virtual void destroy() {}
+
+protected:
+
+    JumaRE::RenderEngine* m_Engine = nullptr;
+    jutils::jstring m_Title = "";
+
+
+    virtual void update() {}
+};
+void runApplication(TestApplication* application)
+{
+    if ((application != nullptr) && application->init())
+    {
+        application->start();
+        application->destroy();
+    }
+}
+
 // handling input
 void testCase9(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
 {
-    if (!engine->init({ JSTR("Input: ") + apiName, { 800, 600 } }))
+    class application : public TestApplication
     {
-        JUTILS_LOG(error, JSTR("Failed to init render engine"));
-        return;
-    }
+    public:
+        application(JumaRE::RenderEngine* engine, const jutils::jstring& name, const jutils::jstring& apiName)
+            : TestApplication(engine, name, apiName)
+        {}
 
-    struct TestApplication
-    {
-        JumaRE::RenderEngine* engine = nullptr;
-
-        bool init()
+        virtual bool init() override
         {
+            if (!TestApplication::init())
+            {
+                return false;
+            }
+
+            JumaRE::RenderEngine* engine = m_Engine;
             const jutils::math::vector2 screenCoordsModifier = engine->getScreenCoordinateModifier();
             JumaRE::VertexBufferDataImpl<JumaRE::Vertex2D_TexCoord> vertexBufferData;
             jutils::jarray<jutils::uint8> textureData;
@@ -961,32 +1016,20 @@ void testCase9(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
                 return false;
             }
 
-            windowController->OnInputButton.bind(this, &TestApplication::onInputButton);
-            windowController->OnInputAxis.bind(this, &TestApplication::onInputAxis);
-            windowController->OnInputAxis2D.bind(this, &TestApplication::onInputAxis2D);
+            windowController->OnInputButton.bind(this, &application::onInputButton);
+            windowController->OnInputAxis.bind(this, &application::onInputAxis);
+            windowController->OnInputAxis2D.bind(this, &application::onInputAxis2D);
             return true;
         }
-        void start()
+        virtual void destroy() override
         {
-            JumaRE::WindowController* windowController = engine->getWindowController();
-            JumaRE::RenderPipeline* renderPipeline = engine->getRenderPipeline();
-            while (!windowController->shouldCloseWindow(1))
-            {
-                if (!renderPipeline->render())
-                {
-                    break;
-                }
-                windowController->updateWindows();
-            }
-            renderPipeline->waitForRenderFinished();
+            JumaRE::WindowController* windowController = m_Engine->getWindowController();
+            windowController->OnInputButton.unbind(this, &application::onInputButton);
+            windowController->OnInputAxis.unbind(this, &application::onInputAxis);
+            windowController->OnInputAxis2D.unbind(this, &application::onInputAxis2D);
         }
-        void destroy()
-        {
-            JumaRE::WindowController* windowController = engine->getWindowController();
-            windowController->OnInputButton.unbind(this, &TestApplication::onInputButton);
-            windowController->OnInputAxis.unbind(this, &TestApplication::onInputAxis);
-            windowController->OnInputAxis2D.unbind(this, &TestApplication::onInputAxis2D);
-        }
+
+    private:
 
         void onInputButton(JumaRE::WindowController* windowController, const JumaRE::WindowData* windowData, const JumaRE::InputDeviceType device, 
             const JumaRE::InputButton button, const JumaRE::InputButtonAction action)
@@ -1007,6 +1050,12 @@ void testCase9(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
                 case JumaRE::InputButton::E:
                     windowController->setMainWindowMode(JumaRE::WindowMode::Fullscreen);
                     break;
+                /*case JumaRE::InputButton::Escape:
+                    windowController->closeWindow(windowController->getMainWindowID());
+                    break;*/
+                case JumaRE::InputButton::O:
+                    windowController->createWindow({ JSTR("Second window"), { 200, 400 }, JumaRE::TextureSamples::X1 });
+                    break;
                 default: ;
                 }
             }
@@ -1023,12 +1072,7 @@ void testCase9(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
                 JUTILS_LOG(info, JSTR("Cursor position {}"), windowData->cursorPosition.toString());
             }
         }
-    } app = { engine };
-    if (!app.init())
-    {
-        JUTILS_LOG(error, JSTR("Failed to init application"));
-        return;
-    }
-    app.start();
-    app.destroy();
+    };
+    application app(engine, JSTR("Input: "), apiName);
+    runApplication(&app);
 }

@@ -575,6 +575,9 @@
     <ClCompile Include="JumaRE\src\DirectX\DirectXFunctions.cpp">
       <Filter>Source Files\DirectX</Filter>
     </ClCompile>
+    <ClCompile Include="JumaRE\src\core\InputData.cpp">
+      <Filter>Source Files\core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="JumaRE\src\DirectX12\DirectX12Objects\MipGeneratorComputeShader.hlsl">

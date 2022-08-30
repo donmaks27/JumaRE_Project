@@ -119,6 +119,7 @@
     <ClInclude Include="JumaRE\src\Vulkan\window\WindowController_Vulkan_GLFW.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="JumaRE\src\core\InputData.cpp" />
     <ClCompile Include="JumaRE\src\core\Material.cpp" />
     <ClCompile Include="JumaRE\src\core\MaterialParamsStorage.cpp" />
     <ClCompile Include="JumaRE\src\core\RenderEngine.cpp" />
