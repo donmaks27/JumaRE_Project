@@ -987,7 +987,10 @@ void testCase9(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
             }
 
             JumaRE::WindowController* windowController = engine->getWindowController();
+            const JumaRE::window_id windowID = windowController->createWindow({ JSTR("Second window"), { 300, 200 }, JumaRE::TextureSamples::X1 });
+
             JumaRE::RenderTarget* renderTargetWindow = windowController->findWindowData(windowController->getMainWindowID())->windowRenderTarget;
+            JumaRE::RenderTarget* renderTargetWindow2 = windowController->findWindowData(windowID)->windowRenderTarget;
             JumaRE::VertexBuffer* vertexBuffer = engine->createVertexBuffer(&vertexBufferData);
             JumaRE::Texture* texture = engine->createTexture({ 2, 2 }, JumaRE::TextureFormat::RGBA8, textureData.getData());
             JumaRE::Shader* shader = engine->createShader({
@@ -1008,6 +1011,7 @@ void testCase9(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
             bool dataValid = renderPipeline != nullptr;
             dataValid &= material->setParamValue<JumaRE::ShaderUniformType::Texture>(JSTR("uTexture"), texture);
             dataValid &= renderPipeline->addPipelineStage(JSTR("window1"), renderTargetWindow);
+            dataValid &= renderPipeline->addPipelineStage(JSTR("window") + TO_JSTR(windowID), renderTargetWindow2);
             dataValid &= renderPipeline->buildPipelineQueue();
             dataValid &= renderPipeline->addRenderPrimitive(JSTR("window1"), { vertexBuffer, material });
             if (!dataValid)
@@ -1053,9 +1057,9 @@ void testCase9(JumaRE::RenderEngine* engine, const jutils::jstring& apiName)
                 /*case JumaRE::InputButton::Escape:
                     windowController->closeWindow(windowController->getMainWindowID());
                     break;*/
-                case JumaRE::InputButton::O:
+                /*case JumaRE::InputButton::O:
                     windowController->createWindow({ JSTR("Second window"), { 200, 400 }, JumaRE::TextureSamples::X1 });
-                    break;
+                    break;*/
                 default: ;
                 }
             }

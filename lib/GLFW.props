@@ -2,34 +2,48 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <ImportGroup Label="PropertySheets" />
     <PropertyGroup Label="UserMacros">
-        <JUMARE_ENABLE_LIB_GLFW>true</JUMARE_ENABLE_LIB_GLFW>
+        <GLFW_ENABLED>true</GLFW_ENABLED>
         <GLFW_VERSION>3.3.8</GLFW_VERSION>
         <GLFW_DIR>$(LIBS_DIR)GLFW\</GLFW_DIR>
-        <GLFW_AUTO_LIB_SUFFIX Condition="'$(Configuration)'=='Debug'">d</GLFW_AUTO_LIB_SUFFIX>
-        <GLFW_AUTO_LIB_SUFFIX Condition="'$(Configuration)'!='Debug'" />
+        <GLFW_LINK_DYNAMIC>$(LIBS_SHARED)</GLFW_LINK_DYNAMIC>
+        <GLFW_AUTO_LIB_SUFFIX Condition="'$(GLFW_LINK_DYNAMIC)'=='true'"></GLFW_AUTO_LIB_SUFFIX>
+        <GLFW_AUTO_LIB_SUFFIX Condition="'$(GLFW_LINK_DYNAMIC)'!='true' And '$(Configuration)'=='Debug'">sd</GLFW_AUTO_LIB_SUFFIX>
+        <GLFW_AUTO_LIB_SUFFIX Condition="'$(GLFW_LINK_DYNAMIC)'!='true' And '$(Configuration)'!='Debug'">s</GLFW_AUTO_LIB_SUFFIX>
     </PropertyGroup>
-    <ItemDefinitionGroup Condition="'$(JUMARE_ENABLE_LIB_GLFW)'=='true'">
+    <ItemDefinitionGroup Condition="'$(GLFW_ENABLED)'=='true'">
         <ClCompile>
             <AdditionalIncludeDirectories>$(GLFW_DIR)include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-            <PreprocessorDefinitions>JUMARE_ENABLE_LIB_GLFW;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+            <PreprocessorDefinitions>GLFW_ENABLED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
         </ClCompile>
         <Lib>
             <AdditionalLibraryDirectories>$(GLFW_DIR)lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-            <AdditionalDependencies>glfw3s$(GLFW_AUTO_LIB_SUFFIX).lib;%(AdditionalDependencies)</AdditionalDependencies>
+            <AdditionalDependencies>glfw3$(GLFW_AUTO_LIB_SUFFIX).lib;%(AdditionalDependencies)</AdditionalDependencies>
         </Lib>
+        <Link>
+            <AdditionalLibraryDirectories>$(GLFW_DIR)lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+            <AdditionalDependencies>glfw3$(GLFW_AUTO_LIB_SUFFIX).lib;%(AdditionalDependencies)</AdditionalDependencies>
+        </Link>
         <ProjectReference>
             <LinkLibraryDependencies>true</LinkLibraryDependencies>
         </ProjectReference>
+        <PreBuildEvent Condition="'$(GLFW_LINK_DYNAMIC)'=='true'">
+            <Command>%(Command)
+copy /y "$(GLFW_DIR)bin\glfw3.dll" "$(OutDir)"
+            </Command>
+        </PreBuildEvent>
     </ItemDefinitionGroup>
     <ItemGroup>
-        <BuildMacro Include="JUMARE_ENABLE_LIB_GLFW">
-            <Value>$(JUMARE_ENABLE_LIB_GLFW)</Value>
+        <BuildMacro Include="GLFW_ENABLED">
+            <Value>$(GLFW_ENABLED)</Value>
         </BuildMacro>
         <BuildMacro Include="GLFW_VERSION">
             <Value>$(GLFW_VERSION)</Value>
         </BuildMacro>
         <BuildMacro Include="GLFW_DIR">
             <Value>$(GLFW_DIR)</Value>
+        </BuildMacro>
+        <BuildMacro Include="GLFW_LINK_DYNAMIC">
+            <Value>$(GLFW_LINK_DYNAMIC)</Value>
         </BuildMacro>
         <BuildMacro Include="GLFW_AUTO_LIB_SUFFIX">
             <Value>$(GLFW_AUTO_LIB_SUFFIX)</Value>
