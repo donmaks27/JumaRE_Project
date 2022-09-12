@@ -4,3 +4,6 @@
 [submodule "JumaRE/JumaRE"]
 	path = JumaRE/JumaRE
 	url = https://github.com/donmaks27/JumaRE.git
+[submodule "JumaEngine/JumaEngine"]
+	path = JumaEngine/JumaEngine
+	url = https://github.com/donmaks27/JumaEngine.git

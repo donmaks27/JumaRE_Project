@@ -10,6 +10,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JumaRE_Test", "JumaRE_Test\
 		{2F7EC153-702A-4458-9B3F-FF7E9CD4D734} = {2F7EC153-702A-4458-9B3F-FF7E9CD4D734}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JumaEngine", "JumaEngine\JumaEngine.vcxproj", "{AC485F05-C295-4D7D-8CC9-14B578B4E970}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2F7EC153-702A-4458-9B3F-FF7E9CD4D734} = {2F7EC153-702A-4458-9B3F-FF7E9CD4D734}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -24,6 +29,10 @@ Global
 		{1A405D6E-FE0A-4702-AA1A-DEE019219D27}.Debug|x64.Build.0 = Debug|x64
 		{1A405D6E-FE0A-4702-AA1A-DEE019219D27}.Release|x64.ActiveCfg = Release|x64
 		{1A405D6E-FE0A-4702-AA1A-DEE019219D27}.Release|x64.Build.0 = Release|x64
+		{AC485F05-C295-4D7D-8CC9-14B578B4E970}.Debug|x64.ActiveCfg = Debug|x64
+		{AC485F05-C295-4D7D-8CC9-14B578B4E970}.Debug|x64.Build.0 = Debug|x64
+		{AC485F05-C295-4D7D-8CC9-14B578B4E970}.Release|x64.ActiveCfg = Release|x64
+		{AC485F05-C295-4D7D-8CC9-14B578B4E970}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
