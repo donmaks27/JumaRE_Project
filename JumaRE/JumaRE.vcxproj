@@ -11,10 +11,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\lib\jutils\include\jutils\jlog.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClInclude>
     <ClInclude Include="JumaRE\include\JumaRE\core.h" />
     <ClInclude Include="JumaRE\include\JumaRE\input\InputButtons.h" />
     <ClInclude Include="JumaRE\include\JumaRE\input\InputData.h" />

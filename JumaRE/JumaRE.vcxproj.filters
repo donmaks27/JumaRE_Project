@@ -5,25 +5,9 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Header Files\material">
-      <UniqueIdentifier>{02612a02-0be4-45d8-8981-5255294e2c1e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\texture">
-      <UniqueIdentifier>{f75e5253-b300-456b-b2a9-15ac15a02319}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\window">
-      <UniqueIdentifier>{1448d7b9-cd02-4747-b7b8-c24c3fada389}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\vertex">
-      <UniqueIdentifier>{4dae2c00-af81-49a7-9350-e754e595cf78}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\core">
       <UniqueIdentifier>{7609c762-a26a-4ba4-8655-4f3c52cafc00}</UniqueIdentifier>
@@ -67,11 +51,24 @@
     <Filter Include="Source Files\utils">
       <UniqueIdentifier>{ba401682-a5ab-4788-adf7-ba967b5b0934}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files\material">
+      <UniqueIdentifier>{02612a02-0be4-45d8-8981-5255294e2c1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\texture">
+      <UniqueIdentifier>{f75e5253-b300-456b-b2a9-15ac15a02319}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\window">
+      <UniqueIdentifier>{1448d7b9-cd02-4747-b7b8-c24c3fada389}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\vertex">
+      <UniqueIdentifier>{4dae2c00-af81-49a7-9350-e754e595cf78}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Header Files\input">
       <UniqueIdentifier>{d53b4a89-61f1-4aec-a3a7-c23dfd81f89a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="jutils">
-      <UniqueIdentifier>{851f51cb-ce56-403a-803a-b5bb59eb8a0b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -371,9 +368,6 @@
     </ClInclude>
     <ClInclude Include="JumaRE\include\JumaRE\input\InputData.h">
       <Filter>Header Files\input</Filter>
-    </ClInclude>
-    <ClInclude Include="..\lib\jutils\include\jutils\jlog.h">
-      <Filter>jutils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

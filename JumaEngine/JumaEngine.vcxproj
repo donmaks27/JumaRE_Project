@@ -10,6 +10,17 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="JumaEngine\src\EngineBase.cpp" />
+    <ClCompile Include="JumaEngine\src\GameEngine.cpp" />
+    <ClCompile Include="JumaEngine\src\GameEngineBase.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="JumaEngine\include\JumaEngine\core.h" />
+    <ClInclude Include="JumaEngine\include\JumaEngine\EngineBase.h" />
+    <ClInclude Include="JumaEngine\include\JumaEngine\GameEngine.h" />
+    <ClInclude Include="JumaEngine\include\JumaEngine\GameEngineBase.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{AC485F05-C295-4D7D-8CC9-14B578B4E970}</ProjectGuid>
