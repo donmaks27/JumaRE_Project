@@ -7,3 +7,6 @@
 [submodule "JumaEngine/JumaEngine"]
 	path = JumaEngine/JumaEngine
 	url = https://github.com/donmaks27/JumaEngine.git
+[submodule "JumaEngineEditor/JumaEngineEditor"]
+	path = JumaEngineEditor/JumaEngineEditor
+	url = https://github.com/donmaks27/JumaEngineEditor.git

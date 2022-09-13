@@ -11,23 +11,20 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="JumaEngine\src\EngineBase.cpp" />
-    <ClCompile Include="JumaEngine\src\EngineContextObject.cpp" />
-    <ClCompile Include="JumaEngine\src\GameEngine.cpp" />
-    <ClCompile Include="JumaEngine\src\GameEngineBase.cpp" />
+    <ClInclude Include="JumaEngineEditor\include\JumaEngineEditor\core.h" />
+    <ClInclude Include="JumaEngineEditor\include\JumaEngineEditor\EditorGameEngine.h" />
+    <ClInclude Include="JumaEngineEditor\include\JumaEngineEditor\EditorEngine.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="JumaEngine\include\JumaEngine\core.h" />
-    <ClInclude Include="JumaEngine\include\JumaEngine\EngineBase.h" />
-    <ClInclude Include="JumaEngine\include\JumaEngine\EngineContextObject.h" />
-    <ClInclude Include="JumaEngine\include\JumaEngine\GameEngine.h" />
-    <ClInclude Include="JumaEngine\include\JumaEngine\GameEngineBase.h" />
+    <ClCompile Include="JumaEngineEditor\src\EditorGameEngine.cpp" />
+    <ClCompile Include="JumaEngineEditor\src\EditorEngine.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{AC485F05-C295-4D7D-8CC9-14B578B4E970}</ProjectGuid>
-    <RootNamespace>JumaEngine</RootNamespace>
+    <ProjectGuid>{ECD37504-187B-4B02-AB68-2AA6EEF35BEA}</ProjectGuid>
+    <RootNamespace>JumaEE</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <ProjectName>JumaEngineEditor</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
@@ -66,13 +63,10 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)JumaRE\JumaRE\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>$(SolutionDir)JumaRE\JumaRE\include\;$(SolutionDir)JumaEngine\JumaEngine\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalLibraryDirectories>$(OutputPath);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>JumaRE.lib;opengl32.lib;dxguid.lib;d3dcompiler.lib;d3d11.lib;dxgi.lib;d3d12.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -83,15 +77,12 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)JumaRE\JumaRE\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>$(SolutionDir)JumaRE\JumaRE\include\;$(SolutionDir)JumaEngine\JumaEngine\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(OutputPath);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>JumaRE.lib;opengl32.lib;dxguid.lib;d3dcompiler.lib;d3d11.lib;dxgi.lib;d3d12.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
