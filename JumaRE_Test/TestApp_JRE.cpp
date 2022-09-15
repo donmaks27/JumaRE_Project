@@ -4,6 +4,7 @@
 
 #include <JumaRE/RenderEngineImpl.h>
 #include <JumaRE/RenderPipeline.h>
+#include <JumaRE/RenderTarget.h>
 #include <JumaRE/material/Material.h>
 #include <JumaRE/texture/Texture.h>
 #include <JumaRE/vertex/Vertex2D_TexCoord.h>
@@ -90,10 +91,8 @@ bool TestApp_JRE::initData()
         return false;
     }
 
-    JumaRE::RenderPipeline* renderPipeline = m_Engine->getRenderPipeline();
-    bool dataValid = renderPipeline != nullptr;
-    dataValid &= material->setParamValue<JumaRE::ShaderUniformType::Texture>(JSTR("uTexture"), texture);
-    dataValid &= renderPipeline->addRenderPrimitive(mainWindowData->pipelineStageName, { vertexBuffer, material });
+    bool dataValid = material->setParamValue<JumaRE::ShaderUniformType::Texture>(JSTR("uTexture"), texture);
+    dataValid &= renderTargetWindow->addRenderPrimitive({ vertexBuffer, material });
     if (!dataValid)
     {
         JUTILS_LOG(error, JSTR("Failed to build pipeline"));

@@ -3,7 +3,6 @@
 #include "TestAppGameInstance.h"
 
 #include <JumaEngine/Engine.h>
-#include <JumaRE/RenderPipeline.h>
 #include <JumaRE/material/Material.h>
 #include <JumaRE/texture/Texture.h>
 #include <JumaRE/vertex/VertexBuffer.h>
@@ -53,8 +52,6 @@ bool TestAppGameInstance::initInternal()
         };
     }
 
-    JumaRE::WindowController* windowController = renderEngine->getWindowController();
-    const JumaRE::WindowData* mainWindowData = windowController->findWindowData(windowController->getMainWindowID());
     JumaRE::VertexBuffer* vertexBuffer = renderEngine->createVertexBuffer(&vertexBufferData);
     JumaRE::Texture* texture = renderEngine->createTexture({ 2, 2 }, JumaRE::TextureFormat::RGBA8, textureData.getData());
     JumaRE::Shader* shader = renderEngine->createShader({
@@ -70,17 +67,11 @@ bool TestAppGameInstance::initInternal()
         JUTILS_LOG(error, JSTR("Failed to create assets"));
         return false;
     }
+    material->setParamValue<JumaRE::ShaderUniformType::Texture>(JSTR("uTexture"), texture);
 
-    JumaRE::RenderPipeline* renderPipeline = renderEngine->getRenderPipeline();
-    bool dataValid = renderPipeline != nullptr;
-    dataValid &= material->setParamValue<JumaRE::ShaderUniformType::Texture>(JSTR("uTexture"), texture);
-    dataValid &= renderPipeline->addRenderPrimitive(mainWindowData->pipelineStageName, { vertexBuffer, material });
-    if (!dataValid)
-    {
-        JUTILS_LOG(error, JSTR("Failed to build pipeline"));
-        return false;
-    }
-
+    getGameRenderTarget()->addRenderPrimitive({ vertexBuffer, material });
+    
+    JumaRE::WindowController* windowController = renderEngine->getWindowController();
     windowController->OnInputButton.bind(this, &TestAppGameInstance::onInputButton);
     windowController->OnInputAxis.bind(this, &TestAppGameInstance::onInputAxis);
     windowController->OnInputAxis2D.bind(this, &TestAppGameInstance::onInputAxis2D);
