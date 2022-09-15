@@ -1,6 +1,7 @@
 // Copyright 2022 Leonov Maksim. All Rights Reserved.
 
 #include "TestApp_JRE.h"
+#include "TestApp_JE.h"
 
 int main()
 {
@@ -13,7 +14,7 @@ int main()
 #endif
 
     {
-        TestApp* app = new TestApp_JRE();
+        TestApp* app = new TestApp_JE();
         app->run();
         delete app;
     }

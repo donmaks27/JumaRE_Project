@@ -53,13 +53,13 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)JumaRE\JumaRE\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)JumaRE\JumaRE\include\;$(SolutionDir)JumaEngine\JumaEngine\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <AdditionalLibraryDirectories>$(OutputPath);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>JumaRE.lib;opengl32.lib;dxguid.lib;d3dcompiler.lib;d3d11.lib;dxgi.lib;d3d12.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>JumaEngine.lib;JumaRE.lib;opengl32.lib;dxguid.lib;d3dcompiler.lib;d3d11.lib;dxgi.lib;d3d12.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -70,13 +70,13 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)JumaRE\JumaRE\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)JumaRE\JumaRE\include\;$(SolutionDir)JumaEngine\JumaEngine\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>JumaRE.lib;opengl32.lib;dxguid.lib;d3dcompiler.lib;d3d11.lib;dxgi.lib;d3d12.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>JumaEngine.lib;JumaRE.lib;opengl32.lib;dxguid.lib;d3dcompiler.lib;d3d11.lib;dxgi.lib;d3d12.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(OutputPath);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
@@ -85,10 +85,14 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TestApp.cpp" />
+    <ClCompile Include="TestAppGameInstance.cpp" />
+    <ClCompile Include="TestApp_JE.cpp" />
     <ClCompile Include="TestApp_JRE.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TestApp.h" />
+    <ClInclude Include="TestAppGameInstance.h" />
+    <ClInclude Include="TestApp_JE.h" />
     <ClInclude Include="TestApp_JRE.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

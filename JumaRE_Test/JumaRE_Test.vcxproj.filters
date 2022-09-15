@@ -24,12 +24,24 @@
     <ClCompile Include="TestApp_JRE.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TestApp_JE.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TestAppGameInstance.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TestApp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TestApp_JRE.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestApp_JE.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestAppGameInstance.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

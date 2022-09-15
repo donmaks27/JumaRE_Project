@@ -1,0 +1,29 @@
+﻿// Copyright 2022 Leonov Maksim. All Rights Reserved.
+
+#pragma once
+
+#include <JumaEngine/GameInstance.h>
+#include <JumaRE/input/InputButtons.h>
+
+class TestAppGameInstance : public JE::GameInstance
+{
+    using Super = JE::GameInstance;
+
+public:
+    TestAppGameInstance() = default;
+    virtual ~TestAppGameInstance() override = default;
+
+protected:
+
+    virtual bool initInternal() override;
+    virtual void clearInternal() override;
+
+private:
+
+    void onInputButton(JumaRE::WindowController* windowController, const JumaRE::WindowData* windowData, 
+        JumaRE::InputDeviceType device, JumaRE::InputButton button, JumaRE::InputButtonAction action);
+    void onInputAxis(JumaRE::WindowController* windowController, const JumaRE::WindowData* windowData, 
+        JumaRE::InputDeviceType device, JumaRE::InputAxis axis, float value);
+    void onInputAxis2D(JumaRE::WindowController* windowController, const JumaRE::WindowData* windowData, 
+        JumaRE::InputDeviceType device, JumaRE::InputAxis axis, const jutils::math::vector2& value);
+};
