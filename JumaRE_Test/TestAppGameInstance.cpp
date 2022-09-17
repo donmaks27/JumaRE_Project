@@ -89,7 +89,7 @@ void TestAppGameInstance::clearInternal()
 }
 
 void TestAppGameInstance::onInputButton(JumaRE::WindowController* windowController, 
-    const JumaRE::WindowData* windowData, const JumaRE::InputDeviceType device, 
+    const JumaRE::WindowData* windowData, const JumaRE::InputDevice device, 
     const JumaRE::InputButton button, const JumaRE::InputButtonAction action)
 {
     static JumaRE::window_id secondWindow = JumaRE::window_id_INVALID;
@@ -98,7 +98,7 @@ void TestAppGameInstance::onInputButton(JumaRE::WindowController* windowControll
         switch (button)
         {
         case JumaRE::InputButton::L: 
-            windowController->setCursorLockedToMainWindow(!windowController->isCursorLockedToMainWindow());
+            windowController->setCursorLocked(!windowController->isCursorLocked());
             break;
         case JumaRE::InputButton::Q:
             windowController->setMainWindowMode(JumaRE::WindowMode::Normal);
@@ -131,17 +131,13 @@ void TestAppGameInstance::onInputButton(JumaRE::WindowController* windowControll
 }
 
 void TestAppGameInstance::onInputAxis(JumaRE::WindowController* windowController, 
-    const JumaRE::WindowData* windowData, const JumaRE::InputDeviceType device, 
+    const JumaRE::WindowData* windowData, const JumaRE::InputDevice device, 
     const JumaRE::InputAxis axis, const float value)
 {
 }
 
 void TestAppGameInstance::onInputAxis2D(JumaRE::WindowController* windowController, 
-    const JumaRE::WindowData* windowData, const JumaRE::InputDeviceType device, 
+    const JumaRE::WindowData* windowData, const JumaRE::InputDevice device, 
     const JumaRE::InputAxis axis, const jutils::math::vector2& value)
 {
-    if (axis == JumaRE::InputAxis::Mouse2D)
-    {
-        JUTILS_LOG(info, JSTR("Cursor position {}"), windowData->cursorPosition.toString());
-    }
 }

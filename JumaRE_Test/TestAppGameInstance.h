@@ -21,9 +21,9 @@ protected:
 private:
 
     void onInputButton(JumaRE::WindowController* windowController, const JumaRE::WindowData* windowData, 
-        JumaRE::InputDeviceType device, JumaRE::InputButton button, JumaRE::InputButtonAction action);
+        JumaRE::InputDevice device, JumaRE::InputButton button, JumaRE::InputButtonAction action);
     void onInputAxis(JumaRE::WindowController* windowController, const JumaRE::WindowData* windowData, 
-        JumaRE::InputDeviceType device, JumaRE::InputAxis axis, float value);
+        JumaRE::InputDevice device, JumaRE::InputAxis axis, float value);
     void onInputAxis2D(JumaRE::WindowController* windowController, const JumaRE::WindowData* windowData, 
-        JumaRE::InputDeviceType device, JumaRE::InputAxis axis, const jutils::math::vector2& value);
+        JumaRE::InputDevice device, JumaRE::InputAxis axis, const jutils::math::vector2& value);
 };

@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="JumaEngine\src\GameEngineBase.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="JumaEngine\src\GameEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -33,9 +30,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="JumaEngine\include\JumaEngine\GameEngine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="JumaEngine\include\JumaEngine\GameEngineBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="JumaEngine\include\JumaEngine\EngineContextObject.h">
