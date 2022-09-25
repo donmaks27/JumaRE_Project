@@ -90,6 +90,7 @@ bool TestAppGameInstance::initInternal()
     material->setParamValue<JumaRE::ShaderUniformType::Texture>(JSTR("uTexture"), texture);
     m_CursorMaterial->setParamValue<JumaRE::ShaderUniformType::Vec2>(JSTR("uLocation"), { 0.0f, 0.0f });
 
+    getGameRenderTarget()->setDepthEnabled(false);
     getGameRenderTarget()->addRenderPrimitive({ vertexBuffer, material });
     getGameRenderTarget()->addRenderPrimitive({ cursorVertexBuffer, m_CursorMaterial });
     
