@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.28307.1927
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JumaRE", "JumaRE\JumaRE.vcxproj", "{2F7EC153-702A-4458-9B3F-FF7E9CD4D734}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1F9672C5-84B0-46E8-851C-38C7F16D24F1} = {1F9672C5-84B0-46E8-851C-38C7F16D24F1}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JumaRE_Test", "JumaRE_Test\JumaRE_Test.vcxproj", "{1A405D6E-FE0A-4702-AA1A-DEE019219D27}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -17,6 +20,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JumaEngine", "JumaEngine\Ju
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JumaEngineEditor", "JumaEngineEditor\JumaEngineEditor.vcxproj", "{ECD37504-187B-4B02-AB68-2AA6EEF35BEA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "jutils", "jutils\jutils.vcxproj", "{1F9672C5-84B0-46E8-851C-38C7F16D24F1}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "jutils_test", "jutils_test\jutils_test.vcxproj", "{D194EB36-E308-48F8-B13F-A6018A9CC96F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1F9672C5-84B0-46E8-851C-38C7F16D24F1} = {1F9672C5-84B0-46E8-851C-38C7F16D24F1}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,6 +50,14 @@ Global
 		{ECD37504-187B-4B02-AB68-2AA6EEF35BEA}.Debug|x64.Build.0 = Debug|x64
 		{ECD37504-187B-4B02-AB68-2AA6EEF35BEA}.Release|x64.ActiveCfg = Release|x64
 		{ECD37504-187B-4B02-AB68-2AA6EEF35BEA}.Release|x64.Build.0 = Release|x64
+		{1F9672C5-84B0-46E8-851C-38C7F16D24F1}.Debug|x64.ActiveCfg = Debug|x64
+		{1F9672C5-84B0-46E8-851C-38C7F16D24F1}.Debug|x64.Build.0 = Debug|x64
+		{1F9672C5-84B0-46E8-851C-38C7F16D24F1}.Release|x64.ActiveCfg = Release|x64
+		{1F9672C5-84B0-46E8-851C-38C7F16D24F1}.Release|x64.Build.0 = Release|x64
+		{D194EB36-E308-48F8-B13F-A6018A9CC96F}.Debug|x64.ActiveCfg = Debug|x64
+		{D194EB36-E308-48F8-B13F-A6018A9CC96F}.Debug|x64.Build.0 = Debug|x64
+		{D194EB36-E308-48F8-B13F-A6018A9CC96F}.Release|x64.ActiveCfg = Release|x64
+		{D194EB36-E308-48F8-B13F-A6018A9CC96F}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

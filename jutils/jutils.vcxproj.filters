@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{d1961897-d51d-4158-87bd-689ac23644f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\jutils">
+      <UniqueIdentifier>{81f80d93-3208-4d0d-842e-d6b17ffa5b69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\jutils\json">
+      <UniqueIdentifier>{a414878a-4b98-4c17-984a-00faf3adab6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\jutils">
+      <UniqueIdentifier>{5ec96e1f-4428-4a46-88e1-3e5c91f8aa1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\jutils\json">
+      <UniqueIdentifier>{5914c0ac-4a33-4a7c-8c78-731602fba60a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\jutils\math">
+      <UniqueIdentifier>{81b9a8e7-691e-46b7-a055-0f822bf06c55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\jutils\math\base_type">
+      <UniqueIdentifier>{25926d4f-e18a-4763-802b-614ab9d86a1c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="jutils\src\json\json_parser.cpp">
+      <Filter>Source Files\jutils\json</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="jutils\include\jutils\math\base_types\box_base.h">
+      <Filter>Header Files\jutils\math\base_type</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\math\base_types\box2_base.h">
+      <Filter>Header Files\jutils\math\base_type</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\math\base_types\box3_base.h">
+      <Filter>Header Files\jutils\math\base_type</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\math\base_types\matrix_base.h">
+      <Filter>Header Files\jutils\math\base_type</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\math\base_types\matrix_operations.h">
+      <Filter>Header Files\jutils\math\base_type</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\math\base_types\matrix2x2_base.h">
+      <Filter>Header Files\jutils\math\base_type</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\math\base_types\matrix2x3_base.h">
+      <Filter>Header Files\jutils\math\base_type</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\math\base_types\matrix2x4_base.h">
+      <Filter>Header Files\jutils\math\base_type</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\math\base_types\matrix3x2_base.h">
+      <Filter>Header Files\jutils\math\base_type</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\math\base_types\matrix3x3_base.h">
+      <Filter>Header Files\jutils\math\base_type</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\math\base_types\matrix3x4_base.h">
+      <Filter>Header Files\jutils\math\base_type</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\math\base_types\matrix4x2_base.h">
+      <Filter>Header Files\jutils\math\base_type</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\math\base_types\matrix4x3_base.h">
+      <Filter>Header Files\jutils\math\base_type</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\math\base_types\matrix4x4_base.h">
+      <Filter>Header Files\jutils\math\base_type</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\math\base_types\vector_base.h">
+      <Filter>Header Files\jutils\math\base_type</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\math\base_types\vector2_base.h">
+      <Filter>Header Files\jutils\math\base_type</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\math\base_types\vector3_base.h">
+      <Filter>Header Files\jutils\math\base_type</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\math\base_types\vector4_base.h">
+      <Filter>Header Files\jutils\math\base_type</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\math\box2.h">
+      <Filter>Header Files\jutils\math</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\math\box3.h">
+      <Filter>Header Files\jutils\math</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\math\hash.h">
+      <Filter>Header Files\jutils\math</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\math\math.h">
+      <Filter>Header Files\jutils\math</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\math\math_matrix.h">
+      <Filter>Header Files\jutils\math</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\math\math_vector.h">
+      <Filter>Header Files\jutils\math</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\math\matrix2.h">
+      <Filter>Header Files\jutils\math</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\math\matrix2x3.h">
+      <Filter>Header Files\jutils\math</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\math\matrix2x4.h">
+      <Filter>Header Files\jutils\math</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\math\matrix3.h">
+      <Filter>Header Files\jutils\math</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\math\matrix3x2.h">
+      <Filter>Header Files\jutils\math</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\math\matrix3x4.h">
+      <Filter>Header Files\jutils\math</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\math\matrix4.h">
+      <Filter>Header Files\jutils\math</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\math\matrix4x2.h">
+      <Filter>Header Files\jutils\math</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\math\matrix4x3.h">
+      <Filter>Header Files\jutils\math</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\math\vector2.h">
+      <Filter>Header Files\jutils\math</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\math\vector3.h">
+      <Filter>Header Files\jutils\math</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\math\vector4.h">
+      <Filter>Header Files\jutils\math</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\json\json.h">
+      <Filter>Header Files\jutils\json</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\json\json_parser.h">
+      <Filter>Header Files\jutils\json</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\jarray.h">
+      <Filter>Header Files\jutils</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\jdelegate.h">
+      <Filter>Header Files\jutils</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\jdelegate_multicast.h">
+      <Filter>Header Files\jutils</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\jhash_table_chain.h">
+      <Filter>Header Files\jutils</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\jhash_table_open.h">
+      <Filter>Header Files\jutils</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\jheap_allocator.h">
+      <Filter>Header Files\jutils</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\jlist.h">
+      <Filter>Header Files\jutils</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\jlist_allocator.h">
+      <Filter>Header Files\jutils</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\jlog.h">
+      <Filter>Header Files\jutils</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\jmap.h">
+      <Filter>Header Files\jutils</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\jmap_hash.h">
+      <Filter>Header Files\jutils</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\jmap_pair.h">
+      <Filter>Header Files\jutils</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\jmemory.h">
+      <Filter>Header Files\jutils</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\jpool.h">
+      <Filter>Header Files\jutils</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\jset.h">
+      <Filter>Header Files\jutils</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\jset_hash.h">
+      <Filter>Header Files\jutils</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\jshared_ptr.h">
+      <Filter>Header Files\jutils</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\jstack_allocator.h">
+      <Filter>Header Files\jutils</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\jstring.h">
+      <Filter>Header Files\jutils</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\jstringID.h">
+      <Filter>Header Files\jutils</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\jtree_red_black.h">
+      <Filter>Header Files\jutils</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\juid.h">
+      <Filter>Header Files\jutils</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\type_checks.h">
+      <Filter>Header Files\jutils</Filter>
+    </ClInclude>
+    <ClInclude Include="jutils\include\jutils\type_defines.h">
+      <Filter>Header Files\jutils</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

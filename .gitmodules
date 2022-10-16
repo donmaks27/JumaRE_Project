@@ -1,5 +1,5 @@
-[submodule "lib/jutils"]
-	path = lib/jutils
+[submodule "jutils/jutils"]
+	path = jutils/jutils
 	url = https://github.com/donmaks27/jutils.git
 [submodule "JumaRE/JumaRE"]
 	path = JumaRE/JumaRE

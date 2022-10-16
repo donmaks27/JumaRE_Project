@@ -2,23 +2,16 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <ImportGroup Label="PropertySheets" />
     <PropertyGroup Label="UserMacros">
-        <JUTILS_DIR>$(LIBS_DIR)jutils\</JUTILS_DIR>
+        <JUTILS_DIR>$(SolutionDir)jutils\jutils\</JUTILS_DIR>
         <FMT_VERSION>9.0.0</FMT_VERSION>
         <FMT_DIR>$(LIBS_DIR)fmt\</FMT_DIR>
-        <FMT_AUTO_LIB_SUFFIX Condition="'$(Configuration)'=='Debug'">d</FMT_AUTO_LIB_SUFFIX>
-        <FMT_AUTO_LIB_SUFFIX Condition="'$(Configuration)'!='Debug'" />
     </PropertyGroup>
     <ItemDefinitionGroup>
         <ClCompile>
             <AdditionalIncludeDirectories>$(JUTILS_DIR)include\;$(FMT_DIR)include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
             <PreprocessorDefinitions Condition="'$(Configuration)'!='Debug'">JUTILS_LOG_DISABLED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
             <PreprocessorDefinitions Condition="'$(Configuration)'=='Debug'">JDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-            <LanguageStandard>stdcpp17</LanguageStandard>
         </ClCompile>
-        <Link>
-            <AdditionalLibraryDirectories>$(FMT_DIR)lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-            <AdditionalDependencies>fmt$(FMT_AUTO_LIB_SUFFIX).lib;%(AdditionalDependencies)</AdditionalDependencies>
-        </Link>
     </ItemDefinitionGroup>
     <ItemGroup>
         <BuildMacro Include="JUTILS_DIR">
@@ -29,9 +22,6 @@
         </BuildMacro>
         <BuildMacro Include="FMT_DIR">
             <Value>$(FMT_DIR)</Value>
-        </BuildMacro>
-        <BuildMacro Include="FMT_AUTO_LIB_SUFFIX">
-            <Value>$(FMT_AUTO_LIB_SUFFIX)</Value>
         </BuildMacro>
     </ItemGroup>
 </Project>
