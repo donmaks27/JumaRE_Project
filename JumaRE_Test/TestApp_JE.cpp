@@ -9,13 +9,14 @@
 void TestApp_JE::run()
 {
     JE::GameEngine* engine = new JE::GameEngine();
-    if (!engine->init() || !engine->createGameInstance<TestAppGameInstance>())
+    if (engine->init() && (engine->createGameInstance<TestAppGameInstance>() != nullptr))
+    {
+        while (engine->update()) {}
+    }
+    else
     {
         JUTILS_LOG(error, JSTR("Failed to init game engine"));
-        return;
     }
-
-    while (engine->update()) {}
 
     engine->clear();
     delete engine;

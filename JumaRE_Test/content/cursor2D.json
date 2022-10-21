@@ -1,0 +1,31 @@
+{
+    "shaderFiles": {
+        "vertex": {
+            "OpenGL": "content/cursor2D.vert.spv",
+            "Vulkan": "content/cursor2D.vert.spv",
+            "DirectX11": "content/cursor2D.vert.hlsl.obj",
+            "DirectX12": "content/cursor2D.vert.hlsl.obj"
+        },
+        "fragment": {
+            "OpenGL": "content/cursor2D.frag.spv",
+            "Vulkan": "content/cursor2D.frag.spv",
+            "DirectX11": "content/cursor2D.frag.hlsl.obj",
+            "DirectX12": "content/cursor2D.frag.hlsl.obj"
+        }
+    },
+    "vertexComponents": [ "position" ],
+    "uniforms": {
+        "uLocation": {
+            "type": "vec2",
+            "stages": [ "vertex" ],
+            "shaderLocation": 0,
+            "shaderBlockOffset": 0
+        },
+        "uSize": {
+            "type": "vec2",
+            "stages": [ "vertex" ],
+            "shaderLocation": 0,
+            "shaderBlockOffset": 8
+        }
+    }
+}

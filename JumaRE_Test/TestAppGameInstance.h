@@ -7,7 +7,7 @@
 
 class TestAppGameInstance : public JE::GameInstance
 {
-    using Super = JE::GameInstance;
+    JUMAENGINE_CLASS(TestAppGameInstance, JE::GameInstance)
 
 public:
     TestAppGameInstance() = default;

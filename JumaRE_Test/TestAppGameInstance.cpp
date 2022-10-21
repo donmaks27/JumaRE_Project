@@ -3,12 +3,14 @@
 #include "TestAppGameInstance.h"
 
 #include <JumaEngine/Engine.h>
+#include <JumaEngine/ShadersSubsystem.h>
 #include <JumaRE/material/Material.h>
 #include <JumaRE/texture/Texture.h>
 #include <JumaRE/vertex/VertexBuffer.h>
 #include <JumaRE/vertex/VertexBufferData.h>
 #include <JumaRE/vertex/Vertex2D.h>
 #include <JumaRE/vertex/Vertex2D_TexCoord.h>
+#include <jutils/json/json_parser.h>
 
 bool TestAppGameInstance::initInternal()
 {
@@ -17,7 +19,8 @@ bool TestAppGameInstance::initInternal()
         return false;
     }
 
-    JumaRE::RenderEngine* renderEngine = getEngine()->getRenderEngine();
+    JE::Engine* engine = getEngine();
+    JumaRE::RenderEngine* renderEngine = engine->getRenderEngine();
 
     const jutils::math::vector2 screenCoordsModifier = renderEngine->getScreenCoordinateModifier();
     JumaRE::VertexBufferDataImpl<JumaRE::Vertex2D_TexCoord> vertexBufferData;
@@ -63,24 +66,12 @@ bool TestAppGameInstance::initInternal()
         { screenCoordsModifier * jutils::math::vector2{ 2.0f, 2.0f } }
     });
 
+    JE::ShadersSubsystem* shadersSubsystem = engine->getSubsystem<JE::ShadersSubsystem>();
     JumaRE::VertexBuffer* vertexBuffer = renderEngine->createVertexBuffer(&vertexBufferData);
     JumaRE::VertexBuffer* cursorVertexBuffer = renderEngine->createVertexBuffer(&cursorVertexBufferData);
     JumaRE::Texture* texture = renderEngine->createTexture({ 2, 2 }, JumaRE::TextureFormat::RGBA8, textureData.getData());
-    JumaRE::Shader* shader = renderEngine->createShader({
-        { JumaRE::SHADER_STAGE_VERTEX, JSTR("textureUnmodified") }, { JumaRE::SHADER_STAGE_FRAGMENT, JSTR("textureUnmodified") }
-    }, {
-        JSTR("position"), JSTR("textureCoords")
-    }, {
-        { JSTR("uTexture"), JumaRE::ShaderUniform{ JumaRE::ShaderUniformType::Texture, JumaRE::SHADER_STAGE_FRAGMENT, 0, 0 } }
-    });
-    JumaRE::Shader* cursorShader = renderEngine->createShader({
-        { JumaRE::SHADER_STAGE_VERTEX, JSTR("cursor2D") }, { JumaRE::SHADER_STAGE_FRAGMENT, JSTR("cursor2D") }
-    }, {
-        JSTR("position")
-    }, {
-        { JSTR("uLocation"), JumaRE::ShaderUniform{ JumaRE::ShaderUniformType::Vec2, JumaRE::SHADER_STAGE_VERTEX, 0, 0 } },
-        { JSTR("uSize"), JumaRE::ShaderUniform{ JumaRE::ShaderUniformType::Vec2, JumaRE::SHADER_STAGE_VERTEX, 0, 8 } }
-    });
+    JumaRE::Shader* shader = shadersSubsystem->getShader(JSTR("textureUnmodified"));
+    JumaRE::Shader* cursorShader = shadersSubsystem->getShader(JSTR("cursor2D"));
     JumaRE::Material* material = renderEngine->createMaterial(shader);
     m_CursorMaterial = renderEngine->createMaterial(cursorShader);
     if ((vertexBuffer == nullptr) || (cursorVertexBuffer == nullptr) || (shader == nullptr) || (material == nullptr) || (m_CursorMaterial == nullptr))
@@ -185,6 +176,7 @@ void TestAppGameInstance::update()
     JumaRE::RenderEngine* renderEngine = getEngine()->getRenderEngine();
     const jutils::math::vector2 screenCoordsModifier = renderEngine->getScreenCoordinateModifier();
 
+    // TODO: Problem with DirectX11
     const jutils::math::uvector2 renderTargetSize = getGameRenderTarget()->getSize();
     const jutils::math::vector2 cursorPosition = getCursorPosition();
     const jutils::math::vector2 cursorLocation = 2.0f * (cursorPosition / renderTargetSize) - 1.0f;
