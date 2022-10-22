@@ -176,7 +176,6 @@ void TestAppGameInstance::update()
     JumaRE::RenderEngine* renderEngine = getEngine()->getRenderEngine();
     const jutils::math::vector2 screenCoordsModifier = renderEngine->getScreenCoordinateModifier();
 
-    // TODO: Problem with DirectX11
     const jutils::math::uvector2 renderTargetSize = getGameRenderTarget()->getSize();
     const jutils::math::vector2 cursorPosition = getCursorPosition();
     const jutils::math::vector2 cursorLocation = 2.0f * (cursorPosition / renderTargetSize) - 1.0f;
