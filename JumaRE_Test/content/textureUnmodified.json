@@ -15,10 +15,17 @@
     },
     "vertexComponents": [ "position", "textureCoords" ],
     "uniforms": {
+        "uScreenCoordsModifier": {
+            "engineInternalParam": "ScreenCoordsModifier",
+            "type": "vec2",
+            "stages": [ "vertex" ],
+            "shaderLocation": 0,
+            "shaderBlockOffset": 0
+        },
         "uTexture": {
             "type": "texture",
             "stages": [ "fragment" ],
-            "shaderLocation": 0,
+            "shaderLocation": 1,
             "shaderBlockOffset": 0
         }
     }

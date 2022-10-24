@@ -15,16 +15,23 @@
     },
     "vertexComponents": [ "position" ],
     "uniforms": {
-        "uLocation": {
+        "uScreenCoordsModifier": {
+            "engineInternalParam": "ScreenCoordsModifier",
             "type": "vec2",
             "stages": [ "vertex" ],
             "shaderLocation": 0,
             "shaderBlockOffset": 0
         },
+        "uLocation": {
+            "type": "vec2",
+            "stages": [ "vertex" ],
+            "shaderLocation": 1,
+            "shaderBlockOffset": 0
+        },
         "uSize": {
             "type": "vec2",
             "stages": [ "vertex" ],
-            "shaderLocation": 0,
+            "shaderLocation": 1,
             "shaderBlockOffset": 8
         }
     }

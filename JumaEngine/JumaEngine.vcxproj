@@ -12,20 +12,23 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="JumaEngine\src\Engine.cpp" />
-    <ClCompile Include="JumaEngine\src\EngineSubsystem.cpp" />
     <ClCompile Include="JumaEngine\src\GameEngine.cpp" />
     <ClCompile Include="JumaEngine\src\GameInstance.cpp" />
-    <ClCompile Include="JumaEngine\src\ShadersSubsystem.cpp" />
+    <ClCompile Include="JumaEngine\src\subsystems\shaders\Material.cpp" />
+    <ClCompile Include="JumaEngine\src\subsystems\shaders\Shader.cpp" />
+    <ClCompile Include="JumaEngine\src\subsystems\shaders\ShadersSubsystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="JumaEngine\include\JumaEngine\core.h" />
     <ClInclude Include="JumaEngine\include\JumaEngine\Engine.h" />
     <ClInclude Include="JumaEngine\include\JumaEngine\EngineContextObject.h" />
     <ClInclude Include="JumaEngine\include\JumaEngine\EngineClass.h" />
-    <ClInclude Include="JumaEngine\include\JumaEngine\EngineSubsystem.h" />
     <ClInclude Include="JumaEngine\include\JumaEngine\GameEngine.h" />
     <ClInclude Include="JumaEngine\include\JumaEngine\GameInstance.h" />
-    <ClInclude Include="JumaEngine\include\JumaEngine\ShadersSubsystem.h" />
+    <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\EngineSubsystem.h" />
+    <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\shaders\Material.h" />
+    <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\shaders\Shader.h" />
+    <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\shaders\ShadersSubsystem.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

@@ -1,5 +1,5 @@
-Texture2D<float4> uTexture : register(t0);
-SamplerState _uTexture_sampler : register(s0);
+Texture2D<float4> uTexture : register(t1);
+SamplerState _uTexture_sampler : register(s1);
 
 static float4 outColor;
 static float2 fTextureCoords;

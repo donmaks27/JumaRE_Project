@@ -3,6 +3,8 @@
 #pragma once
 
 #include <JumaEngine/GameInstance.h>
+
+#include <JumaEngine/subsystems/shaders/Material.h>
 #include <JumaRE/input/InputButtons.h>
 
 class TestAppGameInstance : public JE::GameInstance
@@ -22,7 +24,7 @@ protected:
 
 private:
 
-    JumaRE::Material* m_CursorMaterial = nullptr;
+    JE::Material* m_CursorMaterial = nullptr;
 
 
     void onInputButton(JumaRE::WindowController* windowController, const JumaRE::WindowData* windowData, 

@@ -1,3 +1,9 @@
+cbuffer InternalModifierBlock : register(b0)
+{
+    float2 _26_uScreenCoordsModifier : packoffset(c0);
+};
+
+
 static float4 gl_Position;
 static float2 fTextureCoords;
 static float2 vTextureCoords;
@@ -18,7 +24,7 @@ struct SPIRV_Cross_Output
 void vert_main()
 {
     fTextureCoords = vTextureCoords;
-    gl_Position = float4(vPosition, 0.9900000095367431640625f, 1.0f);
+    gl_Position = float4(vPosition * _26_uScreenCoordsModifier, 0.9900000095367431640625f, 1.0f);
 }
 
 SPIRV_Cross_Output main(SPIRV_Cross_Input stage_input)
