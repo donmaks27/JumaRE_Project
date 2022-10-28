@@ -227,7 +227,7 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\lib\libs.props" />
-    <Import Project="..\jutils.props" />
+    <Import Project="..\lib\jutils.props" />
     <Import Project="..\lib\GLFW.props" />
     <Import Project="..\lib\JumaRE_OpenGL.props" />
     <Import Project="..\lib\JumaRE_Vulkan.props" />
@@ -238,7 +238,7 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\lib\libs.props" />
-    <Import Project="..\jutils.props" />
+    <Import Project="..\lib\jutils.props" />
     <Import Project="..\lib\GLFW.props" />
     <Import Project="..\lib\JumaRE_OpenGL.props" />
     <Import Project="..\lib\JumaRE_Vulkan.props" />

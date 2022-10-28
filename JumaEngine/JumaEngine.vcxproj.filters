@@ -19,11 +19,17 @@
     <Filter Include="Source Files\subsystems">
       <UniqueIdentifier>{5179d188-8070-4804-b78a-d4d54a400464}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\subsystems\shaders">
-      <UniqueIdentifier>{fb8fcfa9-827e-44dc-ada8-e9dfb4c4d46f}</UniqueIdentifier>
+    <Filter Include="Header Files\subsystems\textures">
+      <UniqueIdentifier>{9a050bfb-0c3f-465f-866e-e2b81c2c6e1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\subsystems\textures">
+      <UniqueIdentifier>{b7f6ba43-a207-4f6c-ad4c-241aeb78608e}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\subsystems\shaders">
       <UniqueIdentifier>{c9439b61-fb0f-497a-a3b6-58676beba688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\subsystems\shaders">
+      <UniqueIdentifier>{fb8fcfa9-827e-44dc-ada8-e9dfb4c4d46f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -44,6 +50,12 @@
     </ClCompile>
     <ClCompile Include="JumaEngine\src\subsystems\shaders\Shader.cpp">
       <Filter>Source Files\subsystems\shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaEngine\src\subsystems\textures\TexturesSubsystem.cpp">
+      <Filter>Source Files\subsystems\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaEngine\src\subsystems\textures\Texture.cpp">
+      <Filter>Source Files\subsystems\textures</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +88,12 @@
     </ClInclude>
     <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\shaders\Material.h">
       <Filter>Header Files\subsystems\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\textures\TexturesSubsystem.h">
+      <Filter>Header Files\subsystems\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\textures\Texture.h">
+      <Filter>Header Files\subsystems\textures</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

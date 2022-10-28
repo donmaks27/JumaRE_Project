@@ -4,6 +4,7 @@
 
 #include <JumaEngine/Engine.h>
 #include <JumaEngine/subsystems/shaders/ShadersSubsystem.h>
+#include <JumaEngine/subsystems/textures/TexturesSubsystem.h>
 #include <JumaRE/material/Material.h>
 #include <JumaRE/texture/Texture.h>
 #include <JumaRE/vertex/VertexBuffer.h>
@@ -66,19 +67,20 @@ bool TestAppGameInstance::initInternal()
     });
 
     JE::ShadersSubsystem* shadersSubsystem = engine->getSubsystem<JE::ShadersSubsystem>();
+    JE::TexturesSubsystem* texturesSubsystem = engine->getSubsystem<JE::TexturesSubsystem>();
     JumaRE::VertexBuffer* vertexBuffer = renderEngine->createVertexBuffer(&vertexBufferData);
     JumaRE::VertexBuffer* cursorVertexBuffer = renderEngine->createVertexBuffer(&cursorVertexBufferData);
-    JumaRE::Texture* texture = renderEngine->createTexture({ 2, 2 }, JumaRE::TextureFormat::RGBA8, textureData.getData());
+    JE::Texture* texture = texturesSubsystem->getTexture(JSTR("testTexture"));
     JE::Shader* shader = shadersSubsystem->getShader(JSTR("textureUnmodified"));
     JE::Shader* cursorShader = shadersSubsystem->getShader(JSTR("cursor2D"));
     JE::Material* material = shadersSubsystem->createMaterial(shader);
     m_CursorMaterial = shadersSubsystem->createMaterial(cursorShader);
-    if ((vertexBuffer == nullptr) || (cursorVertexBuffer == nullptr) || (shader == nullptr) || (material == nullptr) || (m_CursorMaterial == nullptr))
+    if ((vertexBuffer == nullptr) || (cursorVertexBuffer == nullptr) || (texture == nullptr) || (shader == nullptr) || (material == nullptr) || (m_CursorMaterial == nullptr))
     {
         JUTILS_LOG(error, JSTR("Failed to create assets"));
         return false;
     }
-    material->setParamValue<JumaRE::ShaderUniformType::Texture>(JSTR("uTexture"), texture);
+    material->setParamValue<JumaRE::ShaderUniformType::Texture>(JSTR("uTexture"), texture->getTexture());
     m_CursorMaterial->setParamValue<JumaRE::ShaderUniformType::Vec2>(JSTR("uLocation"), { 0.0f, 0.0f });
     m_CursorMaterial->setParamValue<JumaRE::ShaderUniformType::Vec2>(JSTR("uSize"), { 1.0f, 1.0f });
 
