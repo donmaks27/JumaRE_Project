@@ -24,7 +24,6 @@ bool TestAppGameInstance::initInternal()
     JumaRE::RenderEngine* renderEngine = engine->getRenderEngine();
 
     JumaRE::VertexBufferDataImpl<JumaRE::Vertex2D_TexCoord> vertexBufferData;
-    jutils::jarray<jutils::uint8> textureData;
     if (!renderEngine->shouldFlipLoadedTextures())
     {
         vertexBufferData.setVertices({
@@ -35,10 +34,6 @@ bool TestAppGameInstance::initInternal()
             { jutils::math::vector2{  1.0f, -1.0f }, { 1.0f, 0.0f } },
             { jutils::math::vector2{  1.0f,  1.0f }, { 1.0f, 1.0f } }
         });
-        textureData = {
-            255, 0, 0, 255,   0, 255, 0, 255,
-            0, 0, 255, 255,   0, 0, 0, 255
-        };
     }
     else
     {
@@ -50,10 +45,6 @@ bool TestAppGameInstance::initInternal()
             { jutils::math::vector2{  1.0f, -1.0f }, { 1.0f, 1.0f } },
             { jutils::math::vector2{  1.0f,  1.0f }, { 1.0f, 0.0f } }
         });
-        textureData = {
-            0, 0, 255, 255,   0, 0, 0, 255,
-            255, 0, 0, 255,   0, 255, 0, 255
-        };
     }
 
     JumaRE::VertexBufferDataImpl<JumaRE::Vertex2D> cursorVertexBufferData;
