@@ -9,16 +9,15 @@
 void TestApp_JE::run()
 {
     JE::GameEngine* engine = new JE::GameEngine();
-    if (engine->init() && (engine->createGameInstance<TestAppGameInstance>() != nullptr))
+    if (engine->init<TestAppGameInstance>())
     {
-        while (engine->update()) {}
+        engine->start();
+        engine->clear();
     }
     else
     {
         JUTILS_LOG(error, JSTR("Failed to init game engine"));
     }
-
-    engine->clear();
     delete engine;
 
     jutils::jstring_hash_table::ClearInstance();

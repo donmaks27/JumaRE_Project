@@ -15,22 +15,15 @@ public:
     TestAppGameInstance() = default;
     virtual ~TestAppGameInstance() override = default;
 
-    virtual void update() override;
-
 protected:
 
-    virtual bool initInternal() override;
-    virtual void clearInternal() override;
+    virtual bool initLogic() override;
+    virtual bool update(float deltaTime) override;
+    virtual void stopLogic() override;
+
+    virtual void onInputButton(JumaRE::InputDevice device, JumaRE::InputButton button, JumaRE::InputButtonAction action) override;
 
 private:
 
     JE::Material* m_CursorMaterial = nullptr;
-
-
-    void onInputButton(JumaRE::WindowController* windowController, const JumaRE::WindowData* windowData, 
-        JumaRE::InputDevice device, JumaRE::InputButton button, JumaRE::InputButtonAction action);
-    void onInputAxis(JumaRE::WindowController* windowController, const JumaRE::WindowData* windowData, 
-        JumaRE::InputDevice device, JumaRE::InputAxis axis, float value);
-    void onInputAxis2D(JumaRE::WindowController* windowController, const JumaRE::WindowData* windowData, 
-        JumaRE::InputDevice device, JumaRE::InputAxis axis, const jutils::math::vector2& value);
 };

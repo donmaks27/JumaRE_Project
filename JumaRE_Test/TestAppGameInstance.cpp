@@ -13,9 +13,9 @@
 #include <JumaRE/vertex/Vertex2D_TexCoord.h>
 #include <jutils/json/json_parser.h>
 
-bool TestAppGameInstance::initInternal()
+bool TestAppGameInstance::initLogic()
 {
-    if (!Super::initInternal())
+    if (!Super::initLogic())
     {
         return false;
     }
@@ -78,40 +78,47 @@ bool TestAppGameInstance::initInternal()
     getGameRenderTarget()->setDepthEnabled(false);
     getGameRenderTarget()->addRenderPrimitive({ vertexBuffer, material->getMaterial() });
     getGameRenderTarget()->addRenderPrimitive({ cursorVertexBuffer, m_CursorMaterial->getMaterial() });
-    
-    JumaRE::WindowController* windowController = renderEngine->getWindowController();
-    windowController->OnInputButton.bind(this, &TestAppGameInstance::onInputButton);
-    windowController->OnInputAxis.bind(this, &TestAppGameInstance::onInputAxis);
-    windowController->OnInputAxis2D.bind(this, &TestAppGameInstance::onInputAxis2D);
     return true;
 }
 
-void TestAppGameInstance::clearInternal()
+bool TestAppGameInstance::update(float deltaTime)
+{
+    if (!Super::update(deltaTime))
+    {
+        return false;
+    }
+
+    const jutils::math::uvector2 renderTargetSize = getGameRenderTarget()->getSize();
+    const jutils::math::vector2 cursorPosition = getCursorPosition();
+    const jutils::math::vector2 cursorLocation = 2.0f * (cursorPosition / renderTargetSize) - 1.0f;
+    m_CursorMaterial->setParamValue<JumaRE::ShaderUniformType::Vec2>(JSTR("uLocation"), cursorLocation);
+
+    const jutils::math::vector2 cursorSize = { 24.0f, 24.0f };
+    m_CursorMaterial->setParamValue<JumaRE::ShaderUniformType::Vec2>(JSTR("uSize"), cursorSize / renderTargetSize);
+
+    return true;
+}
+
+void TestAppGameInstance::stopLogic()
 {
     JumaRE::RenderTarget* renderTarget = getGameRenderTarget();
     if (renderTarget != nullptr)
     {
-        JumaRE::RenderEngine* renderEngine = renderTarget->getRenderEngine();
-    
-        JumaRE::WindowController* windowController = renderEngine->getWindowController();
-        windowController->OnInputButton.unbind(this, &TestAppGameInstance::onInputButton);
-        windowController->OnInputAxis.unbind(this, &TestAppGameInstance::onInputAxis);
-        windowController->OnInputAxis2D.unbind(this, &TestAppGameInstance::onInputAxis2D);
-
         renderTarget->clearRenderPrimitives();
 
         getEngine()->getSubsystem<JE::ShadersSubsystem>()->destroyMaterial(m_CursorMaterial);
         m_CursorMaterial = nullptr;
-    }    
+    }
 
-    Super::clearInternal();
+    Super::stopLogic();
 }
 
-void TestAppGameInstance::onInputButton(JumaRE::WindowController* windowController, 
-    const JumaRE::WindowData* windowData, const JumaRE::InputDevice device, 
-    const JumaRE::InputButton button, const JumaRE::InputButtonAction action)
+void TestAppGameInstance::onInputButton(const JumaRE::InputDevice device, const JumaRE::InputButton button, const JumaRE::InputButtonAction action)
 {
+    Super::onInputButton(device, button, action);
+
     static JumaRE::window_id secondWindow = JumaRE::window_id_INVALID;
+    JumaRE::WindowController* windowController = getEngine()->getRenderEngine()->getWindowController();
     if (action == JumaRE::InputButtonAction::Press)
     {
         switch (button)
@@ -147,31 +154,4 @@ void TestAppGameInstance::onInputButton(JumaRE::WindowController* windowControll
         default: ;
         }
     }
-}
-
-void TestAppGameInstance::onInputAxis(JumaRE::WindowController* windowController, 
-    const JumaRE::WindowData* windowData, const JumaRE::InputDevice device, 
-    const JumaRE::InputAxis axis, const float value)
-{
-}
-
-void TestAppGameInstance::onInputAxis2D(JumaRE::WindowController* windowController, 
-    const JumaRE::WindowData* windowData, const JumaRE::InputDevice device, 
-    const JumaRE::InputAxis axis, const jutils::math::vector2& value)
-{
-}
-
-void TestAppGameInstance::update()
-{
-    Super::update();
-
-    JumaRE::RenderEngine* renderEngine = getEngine()->getRenderEngine();
-
-    const jutils::math::uvector2 renderTargetSize = getGameRenderTarget()->getSize();
-    const jutils::math::vector2 cursorPosition = getCursorPosition();
-    const jutils::math::vector2 cursorLocation = 2.0f * (cursorPosition / renderTargetSize) - 1.0f;
-    m_CursorMaterial->setParamValue<JumaRE::ShaderUniformType::Vec2>(JSTR("uLocation"), cursorLocation);
-
-    const jutils::math::vector2 cursorSize = { 24.0f, 24.0f };
-    m_CursorMaterial->setParamValue<JumaRE::ShaderUniformType::Vec2>(JSTR("uSize"), cursorSize / renderTargetSize);
 }
