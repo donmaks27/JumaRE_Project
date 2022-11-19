@@ -7,7 +7,6 @@
 #include <JumaRE/RenderTarget.h>
 #include <JumaRE/material/Material.h>
 #include <JumaRE/texture/Texture.h>
-#include <JumaRE/vertex/Vertex2D_TexCoord.h>
 #include <JumaRE/vertex/VertexBufferData.h>
 
 void TestApp_JRE::run()
@@ -35,19 +34,27 @@ bool TestApp_JRE::initData()
     }
     JUTILS_LOG(correct, JSTR("Render engine ({}) initialized"), renderAPI);
 
+    m_Engine->registerVertexComponent(JSTR("position2D"), { JumaRE::VertexComponentType::Vec2, 0 });
+    m_Engine->registerVertexComponent(JSTR("textureCoords"), { JumaRE::VertexComponentType::Vec2, 1 });
+
+    struct Vertex2D_TexCoord
+    {
+        jutils::math::vector2 position2D;
+        jutils::math::vector2 texCoords;
+    };
     const jutils::math::vector2 screenCoordsModifier = m_Engine->getScreenCoordinateModifier();
-    JumaRE::VertexBufferDataImpl<JumaRE::Vertex2D_TexCoord> vertexBufferData;
+    jutils::jarray<Vertex2D_TexCoord> vertices;
     jutils::jarray<jutils::uint8> textureData;
     if (!m_Engine->shouldFlipLoadedTextures())
     {
-        vertexBufferData.setVertices({
+        vertices = {
             { screenCoordsModifier * jutils::math::vector2{ -1.0f, -1.0f }, { 0.0f, 0.0f } },
             { screenCoordsModifier * jutils::math::vector2{  1.0f, -1.0f }, { 1.0f, 0.0f } },
             { screenCoordsModifier * jutils::math::vector2{ -1.0f,  1.0f }, { 0.0f, 1.0f } },
             { screenCoordsModifier * jutils::math::vector2{ -1.0f,  1.0f }, { 0.0f, 1.0f } },
             { screenCoordsModifier * jutils::math::vector2{  1.0f, -1.0f }, { 1.0f, 0.0f } },
             { screenCoordsModifier * jutils::math::vector2{  1.0f,  1.0f }, { 1.0f, 1.0f } }
-        });
+        };
         textureData = {
             255, 0, 0, 255,   0, 255, 0, 255,
             0, 0, 255, 255,   0, 0, 0, 255
@@ -55,14 +62,14 @@ bool TestApp_JRE::initData()
     }
     else
     {
-        vertexBufferData.setVertices({
+        vertices = {
             { screenCoordsModifier * jutils::math::vector2{ -1.0f, -1.0f }, { 0.0f, 1.0f } },
             { screenCoordsModifier * jutils::math::vector2{  1.0f, -1.0f }, { 1.0f, 1.0f } },
             { screenCoordsModifier * jutils::math::vector2{ -1.0f,  1.0f }, { 0.0f, 0.0f } },
             { screenCoordsModifier * jutils::math::vector2{ -1.0f,  1.0f }, { 0.0f, 0.0f } },
             { screenCoordsModifier * jutils::math::vector2{  1.0f, -1.0f }, { 1.0f, 1.0f } },
             { screenCoordsModifier * jutils::math::vector2{  1.0f,  1.0f }, { 1.0f, 0.0f } }
-        });
+        };
         textureData = {
             0, 0, 255, 255,   0, 0, 0, 255,
             255, 0, 0, 255,   0, 255, 0, 255
@@ -75,7 +82,9 @@ bool TestApp_JRE::initData()
     const JumaRE::WindowData* mainWindowData = windowController->findWindowData(windowController->getMainWindowID());
     JumaRE::RenderTarget* renderTargetWindow = mainWindowData->windowRenderTarget;
     //JumaRE::RenderTarget* renderTargetWindow2 = windowController->findWindowData(windowID)->windowRenderTarget;
-    JumaRE::VertexBuffer* vertexBuffer = m_Engine->createVertexBuffer(&vertexBufferData);
+    JumaRE::VertexBuffer* vertexBuffer = m_Engine->createVertexBuffer(
+        JumaRE::MakeVertexBufferData({{ JSTR("position2D"), JSTR("textureCoords") }}, vertices)
+    );
     JumaRE::Texture* texture = m_Engine->createTexture({ 2, 2 }, JumaRE::TextureFormat::RGBA8, textureData.getData());
     JumaRE::Shader* shader = m_Engine->createShader({
         { JumaRE::SHADER_STAGE_VERTEX, JSTR("textureUnmodified") }, { JumaRE::SHADER_STAGE_FRAGMENT, JSTR("textureUnmodified") }

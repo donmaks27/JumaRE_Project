@@ -13,7 +13,7 @@
             "DirectX12": "content/shaders/cursor2D.frag.hlsl.obj"
         }
     },
-    "vertexComponents": [ "position" ],
+    "vertexComponents": [ "position2D" ],
     "uniforms": {
         "uScreenCoordsModifier": {
             "engineInternalParam": "ScreenCoordsModifier",

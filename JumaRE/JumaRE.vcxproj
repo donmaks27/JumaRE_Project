@@ -37,12 +37,9 @@
     <ClInclude Include="JumaRE\include\JumaRE\texture\TextureFormat.h" />
     <ClInclude Include="JumaRE\include\JumaRE\texture\TextureSamplerType.h" />
     <ClInclude Include="JumaRE\include\JumaRE\texture\TextureSamples.h" />
-    <ClInclude Include="JumaRE\include\JumaRE\vertex\Vertex2D.h" />
-    <ClInclude Include="JumaRE\include\JumaRE\vertex\Vertex2D_TexCoord.h" />
     <ClInclude Include="JumaRE\include\JumaRE\vertex\VertexBuffer.h" />
     <ClInclude Include="JumaRE\include\JumaRE\vertex\VertexBufferData.h" />
     <ClInclude Include="JumaRE\include\JumaRE\vertex\VertexDescription.h" />
-    <ClInclude Include="JumaRE\include\JumaRE\vertex\VertexInfo.h" />
     <ClInclude Include="JumaRE\include\JumaRE\window\WindowController.h" />
     <ClInclude Include="JumaRE\include\JumaRE\window\WindowMode.h" />
     <ClInclude Include="JumaRE\include\JumaRE\window\window_id.h" />

@@ -13,7 +13,7 @@
             "DirectX12": "content/shaders/textureUnmodified.frag.hlsl.obj"
         }
     },
-    "vertexComponents": [ "position", "textureCoords" ],
+    "vertexComponents": [ "position2D", "textureCoords" ],
     "uniforms": {
         "uScreenCoordsModifier": {
             "engineInternalParam": "ScreenCoordsModifier",

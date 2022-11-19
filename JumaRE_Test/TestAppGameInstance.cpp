@@ -9,8 +9,6 @@
 #include <JumaRE/texture/Texture.h>
 #include <JumaRE/vertex/VertexBuffer.h>
 #include <JumaRE/vertex/VertexBufferData.h>
-#include <JumaRE/vertex/Vertex2D.h>
-#include <JumaRE/vertex/Vertex2D_TexCoord.h>
 #include <jutils/json/json_parser.h>
 
 bool TestAppGameInstance::initLogic()
@@ -23,44 +21,56 @@ bool TestAppGameInstance::initLogic()
     JE::Engine* engine = getEngine();
     JumaRE::RenderEngine* renderEngine = engine->getRenderEngine();
 
-    JumaRE::VertexBufferDataImpl<JumaRE::Vertex2D_TexCoord> vertexBufferData;
+    struct Vertex2D_TexCoord
+    {
+        jutils::math::vector2 position2D;
+        jutils::math::vector2 texCoords;
+    };
+    jutils::jarray<Vertex2D_TexCoord> vertices;
     if (!renderEngine->shouldFlipLoadedTextures())
     {
-        vertexBufferData.setVertices({
+        vertices = {
             { jutils::math::vector2{ -1.0f, -1.0f }, { 0.0f, 0.0f } },
             { jutils::math::vector2{  1.0f, -1.0f }, { 1.0f, 0.0f } },
             { jutils::math::vector2{ -1.0f,  1.0f }, { 0.0f, 1.0f } },
             { jutils::math::vector2{ -1.0f,  1.0f }, { 0.0f, 1.0f } },
             { jutils::math::vector2{  1.0f, -1.0f }, { 1.0f, 0.0f } },
             { jutils::math::vector2{  1.0f,  1.0f }, { 1.0f, 1.0f } }
-        });
+        };
     }
     else
     {
-        vertexBufferData.setVertices({
+        vertices = {
             { jutils::math::vector2{ -1.0f, -1.0f }, { 0.0f, 1.0f } },
             { jutils::math::vector2{  1.0f, -1.0f }, { 1.0f, 1.0f } },
             { jutils::math::vector2{ -1.0f,  1.0f }, { 0.0f, 0.0f } },
             { jutils::math::vector2{ -1.0f,  1.0f }, { 0.0f, 0.0f } },
             { jutils::math::vector2{  1.0f, -1.0f }, { 1.0f, 1.0f } },
             { jutils::math::vector2{  1.0f,  1.0f }, { 1.0f, 0.0f } }
-        });
+        };
     }
 
-    JumaRE::VertexBufferDataImpl<JumaRE::Vertex2D> cursorVertexBufferData;
-    cursorVertexBufferData.setVertices({
+    struct Vertex2D
+    {
+        jutils::math::vector2 position2D;
+    };
+    const jutils::jarray<Vertex2D> cursorVertices = {
         { jutils::math::vector2{ 0.0f, 0.0f } },
         { jutils::math::vector2{ 2.0f, 0.0f } },
         { jutils::math::vector2{ 0.0f, 2.0f } },
         { jutils::math::vector2{ 0.0f, 2.0f } },
         { jutils::math::vector2{ 2.0f, 0.0f } },
         { jutils::math::vector2{ 2.0f, 2.0f } }
-    });
+    };
 
     JE::ShadersSubsystem* shadersSubsystem = engine->getSubsystem<JE::ShadersSubsystem>();
     JE::TexturesSubsystem* texturesSubsystem = engine->getSubsystem<JE::TexturesSubsystem>();
-    JumaRE::VertexBuffer* vertexBuffer = renderEngine->createVertexBuffer(&vertexBufferData);
-    JumaRE::VertexBuffer* cursorVertexBuffer = renderEngine->createVertexBuffer(&cursorVertexBufferData);
+    JumaRE::VertexBuffer* vertexBuffer = renderEngine->createVertexBuffer(
+        JumaRE::MakeVertexBufferData({{ JSTR("position2D"), JSTR("textureCoords") }}, vertices)
+    );
+    JumaRE::VertexBuffer* cursorVertexBuffer = renderEngine->createVertexBuffer(
+        JumaRE::MakeVertexBufferData({{ JSTR("position2D") }}, cursorVertices)
+    );
     JE::Texture* texture = texturesSubsystem->getTexture(JSTR("testTexture"));
     JE::Shader* shader = shadersSubsystem->getShader(JSTR("textureUnmodified"));
     JE::Shader* cursorShader = shadersSubsystem->getShader(JSTR("cursor2D"));

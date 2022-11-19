@@ -99,22 +99,10 @@
     <ClInclude Include="JumaRE\include\JumaRE\window\window_id.h">
       <Filter>Header Files\window</Filter>
     </ClInclude>
-    <ClInclude Include="JumaRE\include\JumaRE\vertex\Vertex2D.h">
-      <Filter>Header Files\vertex</Filter>
-    </ClInclude>
-    <ClInclude Include="JumaRE\include\JumaRE\vertex\Vertex2D_TexCoord.h">
-      <Filter>Header Files\vertex</Filter>
-    </ClInclude>
     <ClInclude Include="JumaRE\include\JumaRE\vertex\VertexBuffer.h">
       <Filter>Header Files\vertex</Filter>
     </ClInclude>
-    <ClInclude Include="JumaRE\include\JumaRE\vertex\VertexBufferData.h">
-      <Filter>Header Files\vertex</Filter>
-    </ClInclude>
     <ClInclude Include="JumaRE\include\JumaRE\vertex\VertexDescription.h">
-      <Filter>Header Files\vertex</Filter>
-    </ClInclude>
-    <ClInclude Include="JumaRE\include\JumaRE\vertex\VertexInfo.h">
       <Filter>Header Files\vertex</Filter>
     </ClInclude>
     <ClInclude Include="JumaRE\include\JumaRE\texture\Texture.h">
@@ -368,6 +356,9 @@
     </ClInclude>
     <ClInclude Include="JumaRE\include\JumaRE\input\InputData.h">
       <Filter>Header Files\input</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\include\JumaRE\vertex\VertexBufferData.h">
+      <Filter>Header Files\vertex</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
