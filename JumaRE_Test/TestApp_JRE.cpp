@@ -42,10 +42,11 @@ bool TestApp_JRE::initData()
         jutils::math::vector2 position2D;
         jutils::math::vector2 texCoords;
     };
-    const jutils::math::vector2 screenCoordsModifier = m_Engine->getScreenCoordinateModifier();
+    const jutils::math::vector2 screenCoordsModifier = m_Engine->getRenderAPI() == JumaRE::RenderAPI::Vulkan ? 
+        jutils::math::vector2(1.0f) : jutils::math::vector2(1.0f, -1.0f);
     jutils::jarray<Vertex2D_TexCoord> vertices;
     jutils::jarray<jutils::uint8> textureData;
-    if (!m_Engine->shouldFlipLoadedTextures())
+    if (m_Engine->getRenderAPI() != JumaRE::RenderAPI::OpenGL)
     {
         vertices = {
             { screenCoordsModifier * jutils::math::vector2{ -1.0f, -1.0f }, { 0.0f, 0.0f } },

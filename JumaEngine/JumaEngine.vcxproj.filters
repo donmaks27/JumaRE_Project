@@ -31,6 +31,12 @@
     <Filter Include="Header Files\subsystems\shaders">
       <UniqueIdentifier>{fb8fcfa9-827e-44dc-ada8-e9dfb4c4d46f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\subsystems\meshes">
+      <UniqueIdentifier>{b7b90024-2404-4e27-b959-cfafa7fdea62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\subsystems\meshes">
+      <UniqueIdentifier>{38f82787-5bd5-43cf-850e-193441e24fd7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="JumaEngine\src\GameEngine.cpp">
@@ -56,6 +62,12 @@
     </ClCompile>
     <ClCompile Include="JumaEngine\src\subsystems\textures\Texture.cpp">
       <Filter>Source Files\subsystems\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaEngine\src\subsystems\meshes\MeshesSubsystem.cpp">
+      <Filter>Source Files\subsystems\meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaEngine\src\subsystems\meshes\Mesh.cpp">
+      <Filter>Source Files\subsystems\meshes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +106,12 @@
     </ClInclude>
     <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\textures\Texture.h">
       <Filter>Header Files\subsystems\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\meshes\MeshesSubsystem.h">
+      <Filter>Header Files\subsystems\meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\meshes\Mesh.h">
+      <Filter>Header Files\subsystems\meshes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

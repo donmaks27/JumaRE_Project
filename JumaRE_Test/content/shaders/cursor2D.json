@@ -15,24 +15,29 @@
     },
     "vertexComponents": [ "position2D" ],
     "uniforms": {
-        "uScreenCoordsModifier": {
-            "engineInternalParam": "ScreenCoordsModifier",
+        "uLocation": {
             "type": "vec2",
             "stages": [ "vertex" ],
             "shaderLocation": 0,
             "shaderBlockOffset": 0
         },
-        "uLocation": {
-            "type": "vec2",
-            "stages": [ "vertex" ],
-            "shaderLocation": 1,
-            "shaderBlockOffset": 0
-        },
         "uSize": {
             "type": "vec2",
             "stages": [ "vertex" ],
-            "shaderLocation": 1,
+            "shaderLocation": 0,
             "shaderBlockOffset": 8
+        },
+        "uOffset": {
+            "type": "vec2",
+            "stages": [ "vertex" ],
+            "shaderLocation": 0,
+            "shaderBlockOffset": 16
+        },
+        "uDepth": {
+            "type": "float",
+            "stages": [ "vertex" ],
+            "shaderLocation": 0,
+            "shaderBlockOffset": 24
         }
     }
 }

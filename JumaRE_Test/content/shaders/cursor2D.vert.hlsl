@@ -1,12 +1,9 @@
-cbuffer ModifierBlock : register(b1)
+cbuffer ModifierBlock : register(b0)
 {
     float2 _19_uLocation : packoffset(c0);
     float2 _19_uSize : packoffset(c0.z);
-};
-
-cbuffer InternalModifierBlock : register(b0)
-{
-    float2 _33_uScreenCoordsModifier : packoffset(c0);
+    float2 _19_uOffset : packoffset(c1);
+    float _19_uDepth : packoffset(c1.z);
 };
 
 
@@ -25,7 +22,7 @@ struct SPIRV_Cross_Output
 
 void vert_main()
 {
-    gl_Position = float4((_19_uLocation + (vPosition * _19_uSize)) * _33_uScreenCoordsModifier, 0.0f, 1.0f);
+    gl_Position = float4(_19_uLocation + (_19_uSize * (_19_uOffset + vPosition)), _19_uDepth, 1.0f);
 }
 
 SPIRV_Cross_Output main(SPIRV_Cross_Input stage_input)

@@ -14,6 +14,8 @@
     <ClCompile Include="JumaEngine\src\Engine.cpp" />
     <ClCompile Include="JumaEngine\src\GameEngine.cpp" />
     <ClCompile Include="JumaEngine\src\GameInstance.cpp" />
+    <ClCompile Include="JumaEngine\src\subsystems\meshes\Mesh.cpp" />
+    <ClCompile Include="JumaEngine\src\subsystems\meshes\MeshesSubsystem.cpp" />
     <ClCompile Include="JumaEngine\src\subsystems\shaders\Material.cpp" />
     <ClCompile Include="JumaEngine\src\subsystems\shaders\Shader.cpp" />
     <ClCompile Include="JumaEngine\src\subsystems\shaders\ShadersSubsystem.cpp" />
@@ -28,6 +30,8 @@
     <ClInclude Include="JumaEngine\include\JumaEngine\GameEngine.h" />
     <ClInclude Include="JumaEngine\include\JumaEngine\GameInstance.h" />
     <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\EngineSubsystem.h" />
+    <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\meshes\Mesh.h" />
+    <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\meshes\MeshesSubsystem.h" />
     <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\shaders\Material.h" />
     <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\shaders\Shader.h" />
     <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\shaders\ShadersSubsystem.h" />

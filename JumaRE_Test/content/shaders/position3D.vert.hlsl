@@ -1,17 +1,19 @@
-cbuffer InternalModifierBlock : register(b0)
+cbuffer ModifierBlock : register(b0)
 {
-    float2 _33_uScreenCoordsModifier : packoffset(c0);
+    row_major float4x4 _19_uModelMatrix : packoffset(c0);
+    row_major float4x4 _19_uViewMatrix : packoffset(c4);
+    row_major float4x4 _19_uProjectionMatrix : packoffset(c8);
 };
 
 
 static float4 gl_Position;
 static float2 fTextureCoords;
 static float2 vTextureCoords;
-static float2 vPosition;
+static float3 vPosition;
 
 struct SPIRV_Cross_Input
 {
-    float2 vPosition : TEXCOORD0;
+    float3 vPosition : TEXCOORD0;
     float2 vTextureCoords : TEXCOORD1;
 };
 
@@ -24,7 +26,8 @@ struct SPIRV_Cross_Output
 void vert_main()
 {
     fTextureCoords = vTextureCoords;
-    gl_Position = float4(vPosition, 0.9900000095367431640625f, 1.0f);
+    float4 position = mul(float4(vPosition, 1.0f), mul(_19_uModelMatrix, mul(_19_uViewMatrix, _19_uProjectionMatrix)));
+    gl_Position = float4(position.xy, position.z, position.w);
 }
 
 SPIRV_Cross_Output main(SPIRV_Cross_Input stage_input)

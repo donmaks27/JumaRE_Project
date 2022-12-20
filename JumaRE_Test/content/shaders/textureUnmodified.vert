@@ -13,5 +13,5 @@ layout(location = 0) out vec2 fTextureCoords;
 void main()
 {
     fTextureCoords = vTextureCoords;
-    gl_Position = vec4(vPosition * uScreenCoordsModifier, 0.99f, 1.0f);
+    gl_Position = vec4(vPosition, 0.99f, 1.0f);
 }
