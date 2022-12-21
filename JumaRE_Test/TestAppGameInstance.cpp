@@ -13,50 +13,6 @@
 
 using namespace jutils;
 
-math::matrix4 lookAt(const math::vector3& viewPosition, const math::vector3& targetPosition, const math::vector3& upDirection)
-{
-    const math::vector3 forward = math::normalize(targetPosition - viewPosition);
-    const math::vector3 right = math::normalize(math::cross(upDirection, forward));
-    const math::vector3 up = math::cross(forward, right);
-    math::matrix4 matrix(1.0f);
-    matrix[0][0] = right.x; matrix[0][1] = up.x; matrix[0][2] = forward.x;
-    matrix[1][0] = right.y; matrix[1][1] = up.y; matrix[1][2] = forward.y;
-    matrix[2][0] = right.z; matrix[2][1] = up.z; matrix[2][2] = forward.z;
-    matrix[3][0] = -math::dot(right, viewPosition);
-    matrix[3][1] = -math::dot(up, viewPosition);
-    matrix[3][2] = -math::dot(forward, viewPosition);
-    return matrix;
-}
-math::matrix4 perspective(const float angleFOV, const math::vector2& viewSize, const float near, const float far)
-{
-    if (math::isEqual(viewSize.x, 0.0f) || math::isEqual(viewSize.y, 0.0f) || math::isEqual(far, near))
-    {
-        return math::matrix4(1.0f);
-    }
-    const float angleTan = std::tan(angleFOV / 2);
-    const float aspect = viewSize.x / viewSize.y;
-    math::matrix4 matrix(0.0f);
-    matrix[0][0] = 1.0f / (aspect * angleTan);
-    matrix[1][1] = -1.0f / angleTan;
-    matrix[2][2] = far / (far - near);
-    matrix[2][3] = 1.0f;
-    matrix[3][2] = -far * near / (far - near);
-    return matrix;
-}
-math::matrix4 orthogonal(const math::vector2& viewSize, const float near, const float far)
-{
-    if (math::isEqual(viewSize.x, 0.0f) || math::isEqual(viewSize.y, 0.0f) || math::isEqual(far, near))
-    {
-        return math::matrix4(1.0f);
-    }
-    math::matrix4 matrix(1.0f);
-    matrix[0][0] = 2.0f / viewSize.x;
-    matrix[1][1] = -2.0f / viewSize.y;
-    matrix[2][2] = 1.0f / (far - near);
-    matrix[3][0] = 0.0f; matrix[3][1] = 0.0f; matrix[3][2] = -near / (far - near);
-    return matrix;
-}
-
 bool TestAppGameInstance::initLogic()
 {
     if (!Super::initLogic())
@@ -65,6 +21,7 @@ bool TestAppGameInstance::initLogic()
     }
 
     const JE::Engine* engine = getEngine();
+    const JumaRE::RenderAPI renderAPI = engine->getRenderEngine()->getRenderAPI();
 
     JE::ShadersSubsystem* shadersSubsystem = engine->getSubsystem<JE::ShadersSubsystem>();
     JE::TexturesSubsystem* texturesSubsystem = engine->getSubsystem<JE::TexturesSubsystem>();
@@ -77,12 +34,14 @@ bool TestAppGameInstance::initLogic()
     cubeMaterial->setParamValue<JumaRE::ShaderUniformType::Texture>(JSTR("uTexture"), texture->getTexture());
     cubeMaterial->setParamValue<JumaRE::ShaderUniformType::Mat4>(JSTR("uModelMatrix"), jutils::math::matrix4(1.0f));
     cubeMaterial->setParamValue<JumaRE::ShaderUniformType::Mat4>(
-        JSTR("uViewMatrix"), lookAt({ 3, 3, -2 }, { 0, 0, 0 }, { 0, 0, 1 })
+        JSTR("uViewMatrix"), 
+        math::viewMatrix_lookAt({ 3, 3, -2 }, { 0, 0, 0 }, { 0, 0, 1 })
     );
+    const bool shouldInvertProjMatrix = (renderAPI == JumaRE::RenderAPI::DirectX11) || (renderAPI == JumaRE::RenderAPI::DirectX12);
     cubeMaterial->setParamValue<JumaRE::ShaderUniformType::Mat4>(
         JSTR("uProjectionMatrix"), 
-        perspective(1.5708f, { 800, 600 }, 0.1f, 1000.f)
-        //orthogonal({ 8, 6 }, 0.1f, 1000.0f)
+        math::projectionMatrix_perspective(math::degreesToRads(90.0f), 4.0f / 3.0f, 0.1f, 1000.f, shouldInvertProjMatrix)
+        //math::projectionMatrix_orthogonal({ 8, 6 }, 0.1f, 1000.0f, shouldInvertProjMatrix)
     );
     
     JE::Mesh* cube = meshesSubsystem->generateCudeMesh(cubeMaterial);
@@ -106,7 +65,7 @@ bool TestAppGameInstance::initLogic()
     plane2DMaterial->setParamValue<JumaRE::ShaderUniformType::Float>(JSTR("uDepth"), 1.0f);
     m_CursorMaterial->setParamValue<JumaRE::ShaderUniformType::Vec2>(JSTR("uLocation"), { 0.0f, 0.0f });
     m_CursorMaterial->setParamValue<JumaRE::ShaderUniformType::Vec2>(JSTR("uSize"), { 1.0f, 1.0f });
-    if (engine->getRenderEngine()->getRenderAPI() == JumaRE::RenderAPI::Vulkan)
+    if (renderAPI == JumaRE::RenderAPI::Vulkan)
     {
         m_CursorMaterial->setParamValue<JumaRE::ShaderUniformType::Vec2>(JSTR("uOffset"), { 1.0f, 1.0f });
     }
