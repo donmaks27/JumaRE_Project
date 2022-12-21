@@ -13,7 +13,7 @@
             "DirectX12": "content/shaders/cursor2D.frag.hlsl.obj"
         }
     },
-    "vertexComponents": [ "position2D" ],
+    "vertexComponents": [ "position2D", "textureCoords" ],
     "uniforms": {
         "uLocation": {
             "type": "vec2",

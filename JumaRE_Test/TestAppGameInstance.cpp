@@ -77,14 +77,14 @@ bool TestAppGameInstance::initLogic()
     cubeMaterial->setParamValue<JumaRE::ShaderUniformType::Texture>(JSTR("uTexture"), texture->getTexture());
     cubeMaterial->setParamValue<JumaRE::ShaderUniformType::Mat4>(JSTR("uModelMatrix"), jutils::math::matrix4(1.0f));
     cubeMaterial->setParamValue<JumaRE::ShaderUniformType::Mat4>(
-        JSTR("uViewMatrix"), lookAt({ 0, 3, 0 }, { 0, 0, 0 }, { 0, 0, 1 })
+        JSTR("uViewMatrix"), lookAt({ 3, 3, -2 }, { 0, 0, 0 }, { 0, 0, 1 })
     );
     cubeMaterial->setParamValue<JumaRE::ShaderUniformType::Mat4>(
         JSTR("uProjectionMatrix"), 
         perspective(1.5708f, { 800, 600 }, 0.1f, 1000.f)
         //orthogonal({ 8, 6 }, 0.1f, 1000.0f)
     );
-
+    
     JE::Mesh* cube = meshesSubsystem->generateCudeMesh(cubeMaterial);
 
     JumaRE::RenderTarget* renderTarget = engine->getRenderEngine()->createRenderTarget(JumaRE::TextureFormat::RGBA8, { 800, 600 }, JumaRE::TextureSamples::X1);

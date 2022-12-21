@@ -9,10 +9,12 @@ cbuffer ModifierBlock : register(b0)
 
 static float4 gl_Position;
 static float2 vPosition;
+static float2 vTexCoords;
 
 struct SPIRV_Cross_Input
 {
     float2 vPosition : TEXCOORD0;
+    float2 vTexCoords : TEXCOORD1;
 };
 
 struct SPIRV_Cross_Output
@@ -28,6 +30,7 @@ void vert_main()
 SPIRV_Cross_Output main(SPIRV_Cross_Input stage_input)
 {
     vPosition = stage_input.vPosition;
+    vTexCoords = stage_input.vTexCoords;
     vert_main();
     SPIRV_Cross_Output stage_output;
     stage_output.gl_Position = gl_Position;

@@ -2,6 +2,8 @@
 
 #include "TestApp_JRE.h"
 
+#include <jutils/jlog.h>
+
 #include <JumaRE/RenderEngineImpl.h>
 #include <JumaRE/RenderPipeline.h>
 #include <JumaRE/RenderTarget.h>
@@ -27,7 +29,7 @@ bool TestApp_JRE::initData()
         JUTILS_LOG(error, JSTR("Failed to create {} render engine"), renderAPI);
         return false;
     }
-    if (!m_Engine->init({ fmt::format(JSTR("RenderEngine ({})"), renderAPI).c_str(), { 800, 600 }, JumaRE::TextureSamples::X1 }))
+    if (!m_Engine->init({ jutils::jstring::format(JSTR("RenderEngine ({})"), renderAPI), { 800, 600 }, JumaRE::TextureSamples::X1 }))
     {
         JUTILS_LOG(error, JSTR("Failed to initialize {} render engine"), renderAPI);
         return false;
@@ -203,6 +205,6 @@ void TestApp_JRE::onInputAxis2D(JumaRE::WindowController* windowController, cons
 {
     if (axis == JumaRE::InputAxis::Mouse2D)
     {
-        JUTILS_LOG(info, JSTR("Cursor position {}"), windowData->cursorPosition.toString());
+        JUTILS_LOG(info, JSTR("Cursor position {}"), windowData->cursorPosition);
     }
 }
