@@ -107,7 +107,6 @@
     <ClInclude Include="jutils\include\jutils\jpool.h" />
     <ClInclude Include="jutils\include\jutils\jset.h" />
     <ClInclude Include="jutils\include\jutils\jset_hash.h" />
-    <ClInclude Include="jutils\include\jutils\jshared_ptr.h" />
     <ClInclude Include="jutils\include\jutils\json\json.h" />
     <ClInclude Include="jutils\include\jutils\json\json_parser.h" />
     <ClInclude Include="jutils\include\jutils\jstack_allocator.h" />

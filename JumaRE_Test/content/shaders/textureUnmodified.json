@@ -1,13 +1,13 @@
 {
     "shaderFiles": {
         "vertex": {
-            "OpenGL": "content/shaders/textureUnmodified.vert.spv",
+            "OpenGL": "content/shaders/textureUnmodified.vert",
             "Vulkan": "content/shaders/textureUnmodified.vert.spv",
             "DirectX11": "content/shaders/textureUnmodified.vert.hlsl.obj",
             "DirectX12": "content/shaders/textureUnmodified.vert.hlsl.obj"
         },
         "fragment": {
-            "OpenGL": "content/shaders/textureUnmodified.frag.spv",
+            "OpenGL": "content/shaders/textureUnmodified.frag",
             "Vulkan": "content/shaders/textureUnmodified.frag.spv",
             "DirectX11": "content/shaders/textureUnmodified.frag.hlsl.obj",
             "DirectX12": "content/shaders/textureUnmodified.frag.hlsl.obj"

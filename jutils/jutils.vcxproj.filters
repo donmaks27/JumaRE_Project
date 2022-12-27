@@ -195,9 +195,6 @@
     <ClInclude Include="jutils\include\jutils\jset_hash.h">
       <Filter>Header Files\jutils</Filter>
     </ClInclude>
-    <ClInclude Include="jutils\include\jutils\jshared_ptr.h">
-      <Filter>Header Files\jutils</Filter>
-    </ClInclude>
     <ClInclude Include="jutils\include\jutils\jstack_allocator.h">
       <Filter>Header Files\jutils</Filter>
     </ClInclude>

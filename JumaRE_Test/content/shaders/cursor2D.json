@@ -1,13 +1,13 @@
 {
     "shaderFiles": {
         "vertex": {
-            "OpenGL": "content/shaders/cursor2D.vert.spv",
+            "OpenGL": "content/shaders/cursor2D.vert",
             "Vulkan": "content/shaders/cursor2D.vert.spv",
             "DirectX11": "content/shaders/cursor2D.vert.hlsl.obj",
             "DirectX12": "content/shaders/cursor2D.vert.hlsl.obj"
         },
         "fragment": {
-            "OpenGL": "content/shaders/cursor2D.frag.spv",
+            "OpenGL": "content/shaders/cursor2D.frag",
             "Vulkan": "content/shaders/cursor2D.frag.spv",
             "DirectX11": "content/shaders/cursor2D.frag.hlsl.obj",
             "DirectX12": "content/shaders/cursor2D.frag.hlsl.obj"

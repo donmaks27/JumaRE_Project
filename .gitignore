@@ -4,3 +4,7 @@ temp/
 jutils_test/
 JumaRE.sln.DotSettings
 JumaRE.sln.DotSettings.user
+.devcontainer/
+.vscode/
+build/
+install/

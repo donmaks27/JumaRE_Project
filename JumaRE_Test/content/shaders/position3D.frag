@@ -1,4 +1,4 @@
-#version 460
+#version 450
 
 layout(binding = 1) uniform sampler2D uTexture;
 
