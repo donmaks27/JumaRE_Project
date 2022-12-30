@@ -360,6 +360,9 @@
     <ClInclude Include="JumaRE\include\JumaRE\vertex\VertexBufferData.h">
       <Filter>Header Files\vertex</Filter>
     </ClInclude>
+    <ClInclude Include="JumaRE\include\JumaRE\render_target_id.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="JumaRE\src\core\Material.cpp">

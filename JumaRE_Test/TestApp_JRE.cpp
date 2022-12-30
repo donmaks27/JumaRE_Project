@@ -83,7 +83,7 @@ bool TestApp_JRE::initData()
     //const JumaRE::window_id windowID = windowController->createWindow({ JSTR("Second window"), { 300, 200 }, JumaRE::TextureSamples::X1 });
 
     const JumaRE::WindowData* mainWindowData = windowController->findWindowData(windowController->getMainWindowID());
-    JumaRE::RenderTarget* renderTargetWindow = mainWindowData->windowRenderTarget;
+    JumaRE::RenderTarget* renderTargetWindow = m_Engine->getRenderTarget(mainWindowData->windowRenderTargetID);
     //JumaRE::RenderTarget* renderTargetWindow2 = windowController->findWindowData(windowID)->windowRenderTarget;
     JumaRE::VertexBuffer* vertexBuffer = m_Engine->createVertexBuffer(
         JumaRE::MakeVertexBufferData({{ JSTR("position2D"), JSTR("textureCoords") }}, vertices)

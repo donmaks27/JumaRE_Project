@@ -21,7 +21,10 @@ bool TestAppGameInstance::initLogic()
     }
 
     const JE::Engine* engine = getEngine();
-    const JumaRE::RenderAPI renderAPI = engine->getRenderEngine()->getRenderAPI();
+    const JumaRE::RenderEngine* renderEngine = engine->getRenderEngine();
+    const JumaRE::WindowController* windowController = renderEngine->getWindowController();
+    const JumaRE::RenderAPI renderAPI = renderEngine->getRenderAPI();
+    const JumaRE::render_target_id mainWindowRenderTargetID = windowController->findWindowData(windowController->getMainWindowID())->windowRenderTargetID;
 
     JE::ShadersSubsystem* shadersSubsystem = engine->getSubsystem<JE::ShadersSubsystem>();
     JE::TexturesSubsystem* texturesSubsystem = engine->getSubsystem<JE::TexturesSubsystem>();
@@ -47,9 +50,8 @@ bool TestAppGameInstance::initLogic()
     JE::Mesh* cube = meshesSubsystem->generateCudeMesh(cubeMaterial);
 
     JumaRE::RenderTarget* renderTarget = engine->getRenderEngine()->createRenderTarget(JumaRE::TextureFormat::RGBA8, { 800, 600 }, JumaRE::TextureSamples::X1);
-    engine->getRenderEngine()->getRenderPipeline()->addPipelineStage(JSTR("cubeRT"), renderTarget);
-    engine->getRenderEngine()->getRenderPipeline()->addPipelineStageDependency(JSTR("window1"), JSTR("cubeRT"));
-    engine->getRenderEngine()->getRenderPipeline()->buildPipelineQueue();
+    renderEngine->getRenderPipeline()->addRenderTargetDependecy(mainWindowRenderTargetID, renderTarget->getID());
+    renderEngine->getRenderPipeline()->buildRenderTargetsQueue();
 
     JE::Shader* shader = shadersSubsystem->getShader(JSTR("textureUnmodified"));
     JE::Shader* cursorShader = shadersSubsystem->getShader(JSTR("cursor2D"));

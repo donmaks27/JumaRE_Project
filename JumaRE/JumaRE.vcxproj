@@ -32,6 +32,7 @@
     <ClInclude Include="JumaRE\include\JumaRE\RenderOptions.h" />
     <ClInclude Include="JumaRE\include\JumaRE\RenderPipeline.h" />
     <ClInclude Include="JumaRE\include\JumaRE\RenderTarget.h" />
+    <ClInclude Include="JumaRE\include\JumaRE\render_target_id.h" />
     <ClInclude Include="JumaRE\include\JumaRE\texture\Texture.h" />
     <ClInclude Include="JumaRE\include\JumaRE\texture\TextureBase.h" />
     <ClInclude Include="JumaRE\include\JumaRE\texture\TextureFormat.h" />
