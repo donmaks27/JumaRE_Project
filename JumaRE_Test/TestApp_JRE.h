@@ -18,6 +18,10 @@ private:
 
     JumaRE::RenderEngine* m_Engine = nullptr;
 
+    JumaRE::RenderTarget* m_RenderTarget = nullptr;
+    JumaRE::VertexBuffer* m_VertexBuffer = nullptr;
+    JumaRE::Material* m_Material = nullptr;
+
 
     bool initData();
 

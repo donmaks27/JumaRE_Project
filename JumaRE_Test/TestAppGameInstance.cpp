@@ -21,7 +21,7 @@ bool TestAppGameInstance::initLogic()
     }
 
     const JE::Engine* engine = getEngine();
-    const JumaRE::RenderEngine* renderEngine = engine->getRenderEngine();
+    JumaRE::RenderEngine* renderEngine = engine->getRenderEngine();
     const JumaRE::WindowController* windowController = renderEngine->getWindowController();
     const JumaRE::RenderAPI renderAPI = renderEngine->getRenderAPI();
     const JumaRE::render_target_id mainWindowRenderTargetID = windowController->findWindowData(windowController->getMainWindowID())->windowRenderTargetID;
@@ -81,10 +81,10 @@ bool TestAppGameInstance::initLogic()
     JE::Mesh* cursor = meshesSubsystem->generatePlane2DMesh(m_CursorMaterial);
 
     getGameRenderTarget()->setDepthEnabled(true);
-    renderTarget->addRenderPrimitive({ cube->getVertexBuffer(0), cubeMaterial->getMaterial() });
-    getGameRenderTarget()->addRenderPrimitive({ plane->getVertexBuffer(0), plane2DMaterial->getMaterial() });
-    getGameRenderTarget()->addRenderPrimitive({ cursor->getVertexBuffer(0), m_CursorMaterial->getMaterial() });
-    //getGameRenderTarget()->addRenderPrimitive({ cube->getVertexBuffer(0), cubeMaterial->getMaterial() });
+    m_Primitives.add({ renderTarget, cube, cubeMaterial });
+    m_Primitives.add({ getGameRenderTarget(), plane, plane2DMaterial });
+    m_Primitives.add({ getGameRenderTarget(), cursor, m_CursorMaterial });
+    //m_Primitives.add({ getGameRenderTarget(), cube, cubeMaterial });
     return true;
 }
 
@@ -95,7 +95,13 @@ bool TestAppGameInstance::update(float deltaTime)
         return false;
     }
 
-    const math::vector2 screenCoordsModifier = getEngine()->getRenderEngine()->getRenderAPI() == JumaRE::RenderAPI::Vulkan ? 
+    JumaRE::RenderEngine* renderEngine = getEngine()->getRenderEngine();
+    for (const auto& primitive : m_Primitives)
+    {
+        renderEngine->addPrimitiveToRenderList(primitive.renderTarget, primitive.mesh->getVertexBuffer(0), primitive.material->getMaterial());
+    }
+
+    const math::vector2 screenCoordsModifier = renderEngine->getRenderAPI() == JumaRE::RenderAPI::Vulkan ? 
         math::vector2(1.0f) : math::vector2(1.0f, -1.0f);
 
     const jutils::math::uvector2 renderTargetSize = getGameRenderTarget()->getSize();
@@ -114,8 +120,6 @@ void TestAppGameInstance::stopLogic()
     JumaRE::RenderTarget* renderTarget = getGameRenderTarget();
     if (renderTarget != nullptr)
     {
-        renderTarget->clearRenderPrimitives();
-
         getEngine()->getSubsystem<JE::ShadersSubsystem>()->destroyMaterial(m_CursorMaterial);
         m_CursorMaterial = nullptr;
     }

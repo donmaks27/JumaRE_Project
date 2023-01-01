@@ -4,6 +4,7 @@
 
 #include <JumaEngine/GameInstance.h>
 
+#include <JumaEngine/subsystems/meshes/Mesh.h>
 #include <JumaEngine/subsystems/shaders/Material.h>
 #include <JumaRE/input/InputButtons.h>
 
@@ -25,5 +26,13 @@ protected:
 
 private:
 
+    struct primitive
+    {
+        JumaRE::RenderTarget* renderTarget = nullptr;
+        JE::Mesh* mesh = nullptr;
+        JE::Material* material = nullptr;
+    };
+
+    jutils::jarray<primitive> m_Primitives;
     JE::Material* m_CursorMaterial = nullptr;
 };

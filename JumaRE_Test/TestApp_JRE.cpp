@@ -103,13 +103,16 @@ bool TestApp_JRE::initData()
         return false;
     }
 
-    bool dataValid = material->setParamValue<JumaRE::ShaderUniformType::Texture>(JSTR("uTexture"), texture);
-    dataValid &= renderTargetWindow->addRenderPrimitive({ vertexBuffer, material });
+    const bool dataValid = material->setParamValue<JumaRE::ShaderUniformType::Texture>(JSTR("uTexture"), texture);
     if (!dataValid)
     {
         JUTILS_LOG(error, JSTR("Failed to build pipeline"));
         return false;
     }
+
+    m_RenderTarget = renderTargetWindow;
+    m_VertexBuffer = vertexBuffer;
+    m_Material = material;
 
     windowController->OnInputButton.bind(this, &TestApp_JRE::onInputButton);
     windowController->OnInputAxis.bind(this, &TestApp_JRE::onInputAxis);
@@ -121,16 +124,15 @@ void TestApp_JRE::startLoop()
 {
     JUTILS_LOG(info, JSTR("Render engine loop started..."));
 
-    JumaRE::WindowController* windowController = m_Engine->getWindowController();
+    const JumaRE::WindowController* windowController = m_Engine->getWindowController();
     JumaRE::RenderPipeline* renderPipeline = m_Engine->getRenderPipeline();
     while (!windowController->isMainWindowClosed())
     {
-        if (!renderPipeline->render())
+        update();
+        if (!m_Engine->render())
         {
             break;
         }
-        windowController->updateWindows();
-        update();
     }
     renderPipeline->waitForRenderFinished();
 
@@ -138,10 +140,15 @@ void TestApp_JRE::startLoop()
 }
 void TestApp_JRE::update()
 {
+    m_Engine->addPrimitiveToRenderList(m_RenderTarget, m_VertexBuffer, m_Material);
 }
 
 void TestApp_JRE::destroy()
 {
+    m_RenderTarget = nullptr;
+    m_VertexBuffer = nullptr;
+    m_Material = nullptr;
+
     JumaRE::WindowController* windowController = m_Engine->getWindowController();
     windowController->OnInputButton.unbind(this, &TestApp_JRE::onInputButton);
     windowController->OnInputAxis.unbind(this, &TestApp_JRE::onInputAxis);
