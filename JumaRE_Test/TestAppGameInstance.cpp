@@ -1,4 +1,4 @@
-﻿// Copyright 2022 Leonov Maksim. All Rights Reserved.
+﻿// Copyright © 2022-2023 Leonov Maksim. All Rights Reserved.
 
 #include "TestAppGameInstance.h"
 
@@ -6,10 +6,11 @@
 #include <JumaEngine/subsystems/shaders/ShadersSubsystem.h>
 #include <JumaEngine/subsystems/textures/TexturesSubsystem.h>
 #include <JumaEngine/subsystems/meshes/MeshesSubsystem.h>
+#include <JumaEngine/subsystems/ui/UIElement.h>
+#include <JumaEngine/subsystems/ui/UISubsystem.h>
+#include <JumaRE/RenderPipeline.h>
 #include <JumaRE/material/Material.h>
 #include <JumaRE/texture/Texture.h>
-
-#include "JumaRE/RenderPipeline.h"
 
 using namespace jutils;
 
@@ -20,11 +21,10 @@ bool TestAppGameInstance::initLogic()
         return false;
     }
 
-    const JE::Engine* engine = getEngine();
-    JumaRE::RenderEngine* renderEngine = engine->getRenderEngine();
-    const JumaRE::WindowController* windowController = renderEngine->getWindowController();
+    JE::Engine* engine = getEngine();
+    const JumaRE::RenderEngine* renderEngine = engine->getRenderEngine();
     const JumaRE::RenderAPI renderAPI = renderEngine->getRenderAPI();
-    const JumaRE::render_target_id mainWindowRenderTargetID = windowController->findWindowData(windowController->getMainWindowID())->windowRenderTargetID;
+    const JumaRE::render_target_id mainWindowRenderTargetID = getGameRenderTarget()->getID();
 
     JE::ShadersSubsystem* shadersSubsystem = engine->getSubsystem<JE::ShadersSubsystem>();
     JE::TexturesSubsystem* texturesSubsystem = engine->getSubsystem<JE::TexturesSubsystem>();
@@ -51,39 +51,35 @@ bool TestAppGameInstance::initLogic()
 
     JumaRE::RenderTarget* renderTarget = engine->getRenderEngine()->createRenderTarget(JumaRE::TextureFormat::RGBA8, { 800, 600 }, JumaRE::TextureSamples::X1);
     renderEngine->getRenderPipeline()->addRenderTargetDependecy(mainWindowRenderTargetID, renderTarget->getID());
-    renderEngine->getRenderPipeline()->buildRenderTargetsQueue();
 
     JE::Shader* shader = shadersSubsystem->getShader(JSTR("textureUnmodified"));
     JE::Shader* cursorShader = shadersSubsystem->getShader(JSTR("cursor2D"));
     JE::Material* plane2DMaterial = shadersSubsystem->createMaterial(shader);
-    m_CursorMaterial = shadersSubsystem->createMaterial(cursorShader);
-    if ((texture == nullptr) || (shader == nullptr) || (plane2DMaterial == nullptr) || (m_CursorMaterial == nullptr))
-    {
-        JUTILS_LOG(error, JSTR("Failed to create assets"));
-        return false;
-    }
-    plane2DMaterial->setParamValue<JumaRE::ShaderUniformType::Texture>(JSTR("uTexture"), renderTarget);
-    //plane2DMaterial->setParamValue<JumaRE::ShaderUniformType::Texture>(JSTR("uTexture"), texture->getTexture());
-    plane2DMaterial->setParamValue<JumaRE::ShaderUniformType::Float>(JSTR("uDepth"), 1.0f);
-    m_CursorMaterial->setParamValue<JumaRE::ShaderUniformType::Vec2>(JSTR("uLocation"), { 0.0f, 0.0f });
-    m_CursorMaterial->setParamValue<JumaRE::ShaderUniformType::Vec2>(JSTR("uSize"), { 1.0f, 1.0f });
+    JE::Material* cursorMaterial = shadersSubsystem->createMaterial(cursorShader);
+
+    m_UIObject = engine->getSubsystem<JE::UISubsystem>()->createUIObject();
+    m_UIObject->setRenderTarget(getGameRenderTarget());
+
+    m_UICursorElement = m_UIObject->addElement();
+    m_UICursorElement->setMaterial(cursorMaterial);
+    m_UICursorElement->setSize(math::vector2(24.0f, 24.0f) / getGameRenderTarget()->getSize());
     if (renderAPI == JumaRE::RenderAPI::Vulkan)
     {
-        m_CursorMaterial->setParamValue<JumaRE::ShaderUniformType::Vec2>(JSTR("uOffset"), { 1.0f, 1.0f });
+        m_UICursorElement->setOffset({ 1.0f, 1.0f });
     }
     else
     {
-        m_CursorMaterial->setParamValue<JumaRE::ShaderUniformType::Vec2>(JSTR("uOffset"), { 1.0f, -1.0f });
+        m_UICursorElement->setOffset({ 1.0f, -1.0f });
     }
-    m_CursorMaterial->setParamValue<JumaRE::ShaderUniformType::Float>(JSTR("uDepth"), 0.0f);
-    
-    JE::Mesh* plane = meshesSubsystem->generatePlane2DMesh(plane2DMaterial);
-    JE::Mesh* cursor = meshesSubsystem->generatePlane2DMesh(m_CursorMaterial);
 
+    JE::UIElement* backgroundElement = m_UIObject->addElement();
+    backgroundElement->setMaterial(plane2DMaterial);
+    backgroundElement->setDepth(1.0f);
+    plane2DMaterial->setParamValue<JumaRE::ShaderUniformType::Texture>(JSTR("uTexture"), renderTarget);
+    //plane2DMaterial->setParamValue<JumaRE::ShaderUniformType::Texture>(JSTR("uTexture"), texture->getTexture());
+    
     getGameRenderTarget()->setDepthEnabled(true);
     m_Primitives.add({ renderTarget, cube, cubeMaterial });
-    m_Primitives.add({ getGameRenderTarget(), plane, plane2DMaterial });
-    m_Primitives.add({ getGameRenderTarget(), cursor, m_CursorMaterial });
     //m_Primitives.add({ getGameRenderTarget(), cube, cubeMaterial });
     return true;
 }
@@ -96,33 +92,27 @@ bool TestAppGameInstance::update(float deltaTime)
     }
 
     JumaRE::RenderEngine* renderEngine = getEngine()->getRenderEngine();
-    for (const auto& primitive : m_Primitives)
-    {
-        renderEngine->addPrimitiveToRenderList(primitive.renderTarget, primitive.mesh->getVertexBuffer(0), primitive.material->getMaterial());
-    }
-
     const math::vector2 screenCoordsModifier = renderEngine->getRenderAPI() == JumaRE::RenderAPI::Vulkan ? 
         math::vector2(1.0f) : math::vector2(1.0f, -1.0f);
 
     const jutils::math::uvector2 renderTargetSize = getGameRenderTarget()->getSize();
     const jutils::math::vector2 cursorPosition = getCursorPosition();
     const jutils::math::vector2 cursorLocation = (2.0f * (cursorPosition / renderTargetSize) - 1.0f) * screenCoordsModifier;
-    m_CursorMaterial->setParamValue<JumaRE::ShaderUniformType::Vec2>(JSTR("uLocation"), cursorLocation);
+    m_UICursorElement->setLocation(cursorLocation);
 
-    const jutils::math::vector2 cursorSize = { 24.0f, 24.0f };
-    m_CursorMaterial->setParamValue<JumaRE::ShaderUniformType::Vec2>(JSTR("uSize"), cursorSize / renderTargetSize);
+    for (const auto& primitive : m_Primitives)
+    {
+        renderEngine->addPrimitiveToRenderList(primitive.renderTarget, primitive.mesh->getVertexBuffer(0), primitive.material->getMaterial());
+    }
+    m_UIObject->update();
 
     return true;
 }
 
 void TestAppGameInstance::stopLogic()
 {
-    JumaRE::RenderTarget* renderTarget = getGameRenderTarget();
-    if (renderTarget != nullptr)
-    {
-        getEngine()->getSubsystem<JE::ShadersSubsystem>()->destroyMaterial(m_CursorMaterial);
-        m_CursorMaterial = nullptr;
-    }
+    m_UICursorElement = nullptr;
+    m_UIObject = nullptr;
 
     Super::stopLogic();
 }

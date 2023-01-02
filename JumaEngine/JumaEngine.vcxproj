@@ -21,6 +21,9 @@
     <ClCompile Include="JumaEngine\src\subsystems\shaders\ShadersSubsystem.cpp" />
     <ClCompile Include="JumaEngine\src\subsystems\textures\Texture.cpp" />
     <ClCompile Include="JumaEngine\src\subsystems\textures\TexturesSubsystem.cpp" />
+    <ClCompile Include="JumaEngine\src\subsystems\ui\UIObject.cpp" />
+    <ClCompile Include="JumaEngine\src\subsystems\ui\UISubsystem.cpp" />
+    <ClCompile Include="JumaEngine\src\subsystems\ui\UIElement.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="JumaEngine\include\JumaEngine\core.h" />
@@ -32,11 +35,16 @@
     <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\EngineSubsystem.h" />
     <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\meshes\Mesh.h" />
     <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\meshes\MeshesSubsystem.h" />
+    <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\meshes\VertexBuffer.h" />
+    <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\meshes\VertexComponent.h" />
     <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\shaders\Material.h" />
     <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\shaders\Shader.h" />
     <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\shaders\ShadersSubsystem.h" />
     <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\textures\Texture.h" />
     <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\textures\TexturesSubsystem.h" />
+    <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\ui\UIObject.h" />
+    <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\ui\UISubsystem.h" />
+    <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\ui\UIElement.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -81,7 +89,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)JumaRE\JumaRE\include\;$(LIBS_DIR)stb\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)JumaEngine\JumaEngine\include\;$(SolutionDir)JumaRE\JumaRE\include\;$(LIBS_DIR)stb\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>

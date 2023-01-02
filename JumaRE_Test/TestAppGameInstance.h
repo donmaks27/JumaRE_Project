@@ -1,4 +1,4 @@
-﻿// Copyright 2022 Leonov Maksim. All Rights Reserved.
+﻿// Copyright © 2022-2023 Leonov Maksim. All Rights Reserved.
 
 #pragma once
 
@@ -6,6 +6,7 @@
 
 #include <JumaEngine/subsystems/meshes/Mesh.h>
 #include <JumaEngine/subsystems/shaders/Material.h>
+#include <JumaEngine/subsystems/ui/UIObject.h>
 #include <JumaRE/input/InputButtons.h>
 
 class TestAppGameInstance : public JE::GameInstance
@@ -34,5 +35,7 @@ private:
     };
 
     jutils::jarray<primitive> m_Primitives;
-    JE::Material* m_CursorMaterial = nullptr;
+
+    JE::UIObject* m_UIObject = nullptr;
+    JE::UIElement* m_UICursorElement = nullptr;
 };

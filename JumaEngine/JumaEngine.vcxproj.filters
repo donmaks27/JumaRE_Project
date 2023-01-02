@@ -37,6 +37,12 @@
     <Filter Include="Source Files\subsystems\meshes">
       <UniqueIdentifier>{38f82787-5bd5-43cf-850e-193441e24fd7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\subsystems\ui">
+      <UniqueIdentifier>{6f8f12b0-d463-4345-b1c3-b9c167bb7898}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\subsystems\ui">
+      <UniqueIdentifier>{c964a612-334b-4b78-be8f-1ae92a9889ec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="JumaEngine\src\GameEngine.cpp">
@@ -68,6 +74,15 @@
     </ClCompile>
     <ClCompile Include="JumaEngine\src\subsystems\meshes\Mesh.cpp">
       <Filter>Source Files\subsystems\meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaEngine\src\subsystems\ui\UISubsystem.cpp">
+      <Filter>Source Files\subsystems\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaEngine\src\subsystems\ui\UIElement.cpp">
+      <Filter>Source Files\subsystems\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaEngine\src\subsystems\ui\UIObject.cpp">
+      <Filter>Source Files\subsystems\ui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -112,6 +127,21 @@
     </ClInclude>
     <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\meshes\Mesh.h">
       <Filter>Header Files\subsystems\meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\meshes\VertexBuffer.h">
+      <Filter>Header Files\subsystems\meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\meshes\VertexComponent.h">
+      <Filter>Header Files\subsystems\meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\ui\UISubsystem.h">
+      <Filter>Header Files\subsystems\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\ui\UIElement.h">
+      <Filter>Header Files\subsystems\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\ui\UIObject.h">
+      <Filter>Header Files\subsystems\ui</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
