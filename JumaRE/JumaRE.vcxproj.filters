@@ -303,9 +303,6 @@
     <ClInclude Include="JumaRE\include\JumaRE\RenderEngineImpl_DirectX12.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="JumaRE\include\JumaRE\window\WindowMode.h">
-      <Filter>Header Files\window</Filter>
-    </ClInclude>
     <ClInclude Include="JumaRE\include\JumaRE\window\WindowController.h">
       <Filter>Header Files\window</Filter>
     </ClInclude>
@@ -362,6 +359,9 @@
     </ClInclude>
     <ClInclude Include="JumaRE\include\JumaRE\render_target_id.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaRE\include\JumaRE\window\window_state_enums.h">
+      <Filter>Header Files\window</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

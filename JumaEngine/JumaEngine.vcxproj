@@ -21,9 +21,10 @@
     <ClCompile Include="JumaEngine\src\subsystems\shaders\ShadersSubsystem.cpp" />
     <ClCompile Include="JumaEngine\src\subsystems\textures\Texture.cpp" />
     <ClCompile Include="JumaEngine\src\subsystems\textures\TexturesSubsystem.cpp" />
-    <ClCompile Include="JumaEngine\src\subsystems\ui\UIObject.cpp" />
+    <ClCompile Include="JumaEngine\src\subsystems\ui\TestWidget.cpp" />
     <ClCompile Include="JumaEngine\src\subsystems\ui\UISubsystem.cpp" />
-    <ClCompile Include="JumaEngine\src\subsystems\ui\UIElement.cpp" />
+    <ClCompile Include="JumaEngine\src\subsystems\ui\Widget.cpp" />
+    <ClCompile Include="JumaEngine\src\subsystems\ui\WidgetContainer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="JumaEngine\include\JumaEngine\core.h" />
@@ -32,6 +33,7 @@
     <ClInclude Include="JumaEngine\include\JumaEngine\EngineClass.h" />
     <ClInclude Include="JumaEngine\include\JumaEngine\GameEngine.h" />
     <ClInclude Include="JumaEngine\include\JumaEngine\GameInstance.h" />
+    <ClInclude Include="JumaEngine\include\JumaEngine\LogicObject.h" />
     <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\EngineSubsystem.h" />
     <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\meshes\Mesh.h" />
     <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\meshes\MeshesSubsystem.h" />
@@ -42,9 +44,10 @@
     <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\shaders\ShadersSubsystem.h" />
     <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\textures\Texture.h" />
     <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\textures\TexturesSubsystem.h" />
-    <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\ui\UIObject.h" />
+    <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\ui\TestWidget.h" />
     <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\ui\UISubsystem.h" />
-    <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\ui\UIElement.h" />
+    <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\ui\Widget.h" />
+    <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\ui\WidgetContainer.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

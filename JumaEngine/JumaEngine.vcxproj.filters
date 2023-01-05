@@ -78,10 +78,13 @@
     <ClCompile Include="JumaEngine\src\subsystems\ui\UISubsystem.cpp">
       <Filter>Source Files\subsystems\ui</Filter>
     </ClCompile>
-    <ClCompile Include="JumaEngine\src\subsystems\ui\UIElement.cpp">
+    <ClCompile Include="JumaEngine\src\subsystems\ui\Widget.cpp">
       <Filter>Source Files\subsystems\ui</Filter>
     </ClCompile>
-    <ClCompile Include="JumaEngine\src\subsystems\ui\UIObject.cpp">
+    <ClCompile Include="JumaEngine\src\subsystems\ui\WidgetContainer.cpp">
+      <Filter>Source Files\subsystems\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaEngine\src\subsystems\ui\TestWidget.cpp">
       <Filter>Source Files\subsystems\ui</Filter>
     </ClCompile>
   </ItemGroup>
@@ -137,10 +140,16 @@
     <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\ui\UISubsystem.h">
       <Filter>Header Files\subsystems\ui</Filter>
     </ClInclude>
-    <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\ui\UIElement.h">
+    <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\ui\Widget.h">
       <Filter>Header Files\subsystems\ui</Filter>
     </ClInclude>
-    <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\ui\UIObject.h">
+    <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\ui\WidgetContainer.h">
+      <Filter>Header Files\subsystems\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaEngine\include\JumaEngine\LogicObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\ui\TestWidget.h">
       <Filter>Header Files\subsystems\ui</Filter>
     </ClInclude>
   </ItemGroup>

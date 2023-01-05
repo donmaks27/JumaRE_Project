@@ -6,7 +6,7 @@
 
 #include <JumaEngine/subsystems/meshes/Mesh.h>
 #include <JumaEngine/subsystems/shaders/Material.h>
-#include <JumaEngine/subsystems/ui/UIObject.h>
+#include <JumaEngine/subsystems/ui/WidgetContainer.h>
 #include <JumaRE/input/InputButtons.h>
 
 class TestAppGameInstance : public JE::GameInstance
@@ -20,8 +20,10 @@ public:
 protected:
 
     virtual bool initLogic() override;
-    virtual bool update(float deltaTime) override;
-    virtual void stopLogic() override;
+    virtual void startLogic() override;
+    virtual void update(float deltaTime) override;
+    virtual void postUpdate() override;
+    virtual void clearLogic() override;
 
     virtual void onInputButton(JumaRE::InputDevice device, JumaRE::InputButton button, JumaRE::InputButtonAction action) override;
 
@@ -36,6 +38,5 @@ private:
 
     jutils::jarray<primitive> m_Primitives;
 
-    JE::UIObject* m_UIObject = nullptr;
-    JE::UIElement* m_UICursorElement = nullptr;
+    JE::WidgetContainer* m_WidgetContainer = nullptr;
 };

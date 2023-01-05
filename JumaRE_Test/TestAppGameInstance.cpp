@@ -6,8 +6,8 @@
 #include <JumaEngine/subsystems/shaders/ShadersSubsystem.h>
 #include <JumaEngine/subsystems/textures/TexturesSubsystem.h>
 #include <JumaEngine/subsystems/meshes/MeshesSubsystem.h>
-#include <JumaEngine/subsystems/ui/UIElement.h>
 #include <JumaEngine/subsystems/ui/UISubsystem.h>
+#include <JumaEngine/subsystems/ui/TestWidget.h>
 #include <JumaRE/RenderPipeline.h>
 #include <JumaRE/material/Material.h>
 #include <JumaRE/texture/Texture.h>
@@ -24,7 +24,10 @@ bool TestAppGameInstance::initLogic()
     JE::Engine* engine = getEngine();
     const JumaRE::RenderEngine* renderEngine = engine->getRenderEngine();
     const JumaRE::RenderAPI renderAPI = renderEngine->getRenderAPI();
+    JumaRE::WindowController* windowController = renderEngine->getWindowController();
     const JumaRE::render_target_id mainWindowRenderTargetID = getGameRenderTarget()->getID();
+
+    windowController->setCursorMode(windowController->getMainWindowID(), JumaRE::WindowCursorMode::Hidden);
 
     JE::ShadersSubsystem* shadersSubsystem = engine->getSubsystem<JE::ShadersSubsystem>();
     JE::TexturesSubsystem* texturesSubsystem = engine->getSubsystem<JE::TexturesSubsystem>();
@@ -57,25 +60,16 @@ bool TestAppGameInstance::initLogic()
     JE::Material* plane2DMaterial = shadersSubsystem->createMaterial(shader);
     JE::Material* cursorMaterial = shadersSubsystem->createMaterial(cursorShader);
 
-    m_UIObject = engine->getSubsystem<JE::UISubsystem>()->createUIObject();
-    m_UIObject->setRenderTarget(getGameRenderTarget());
+    m_WidgetContainer = engine->createObject<JE::WidgetContainer>();
+    m_WidgetContainer->setRenderTarget(getGameRenderTarget());
+    m_WidgetContainer->setRootWidget(JE::TestWidget::GetClassStatic());
+    dynamic_cast<JE::TestWidget*>(m_WidgetContainer->getRootWidget())->setMaterial(cursorMaterial);
+    m_WidgetContainer->initLogic();
 
-    m_UICursorElement = m_UIObject->addElement();
-    m_UICursorElement->setMaterial(cursorMaterial);
-    m_UICursorElement->setSize(math::vector2(24.0f, 24.0f) / getGameRenderTarget()->getSize());
-    if (renderAPI == JumaRE::RenderAPI::Vulkan)
-    {
-        m_UICursorElement->setOffset({ 1.0f, 1.0f });
-    }
-    else
-    {
-        m_UICursorElement->setOffset({ 1.0f, -1.0f });
-    }
-
-    JE::UIElement* backgroundElement = m_UIObject->addElement();
-    backgroundElement->setMaterial(plane2DMaterial);
-    backgroundElement->setDepth(1.0f);
-    plane2DMaterial->setParamValue<JumaRE::ShaderUniformType::Texture>(JSTR("uTexture"), renderTarget);
+    //JE::UIElement* backgroundElement = m_UIObject->addElement();
+    //backgroundElement->setMaterial(plane2DMaterial);
+    //backgroundElement->setDepth(1.0f);
+    //plane2DMaterial->setParamValue<JumaRE::ShaderUniformType::Texture>(JSTR("uTexture"), renderTarget);
     //plane2DMaterial->setParamValue<JumaRE::ShaderUniformType::Texture>(JSTR("uTexture"), texture->getTexture());
     
     getGameRenderTarget()->setDepthEnabled(true);
@@ -83,38 +77,41 @@ bool TestAppGameInstance::initLogic()
     //m_Primitives.add({ getGameRenderTarget(), cube, cubeMaterial });
     return true;
 }
-
-bool TestAppGameInstance::update(float deltaTime)
+void TestAppGameInstance::startLogic()
 {
-    if (!Super::update(deltaTime))
-    {
-        return false;
-    }
+    Super::startLogic();
+
+    m_WidgetContainer->startLogic();
+}
+
+void TestAppGameInstance::update(const float deltaTime)
+{
+    Super::update(deltaTime);
+
+    m_WidgetContainer->update(deltaTime);
+}
+void TestAppGameInstance::postUpdate()
+{
+    Super::postUpdate();
 
     JumaRE::RenderEngine* renderEngine = getEngine()->getRenderEngine();
-    const math::vector2 screenCoordsModifier = renderEngine->getRenderAPI() == JumaRE::RenderAPI::Vulkan ? 
-        math::vector2(1.0f) : math::vector2(1.0f, -1.0f);
-
-    const jutils::math::uvector2 renderTargetSize = getGameRenderTarget()->getSize();
-    const jutils::math::vector2 cursorPosition = getCursorPosition();
-    const jutils::math::vector2 cursorLocation = (2.0f * (cursorPosition / renderTargetSize) - 1.0f) * screenCoordsModifier;
-    m_UICursorElement->setLocation(cursorLocation);
-
     for (const auto& primitive : m_Primitives)
     {
         renderEngine->addPrimitiveToRenderList(primitive.renderTarget, primitive.mesh->getVertexBuffer(0), primitive.material->getMaterial());
     }
-    m_UIObject->update();
-
-    return true;
+    m_WidgetContainer->postUpdate();
 }
 
-void TestAppGameInstance::stopLogic()
+void TestAppGameInstance::clearLogic()
 {
-    m_UICursorElement = nullptr;
-    m_UIObject = nullptr;
+    if (m_WidgetContainer != nullptr)
+    {
+        m_WidgetContainer->clearLogic();
+        delete m_WidgetContainer;
+        m_WidgetContainer = nullptr;
+    }
 
-    Super::stopLogic();
+    Super::clearLogic();
 }
 
 void TestAppGameInstance::onInputButton(const JumaRE::InputDevice device, const JumaRE::InputButton button, const JumaRE::InputButtonAction action)
@@ -127,8 +124,13 @@ void TestAppGameInstance::onInputButton(const JumaRE::InputDevice device, const 
     {
         switch (button)
         {
-        case JumaRE::InputButton::L: 
-            windowController->setCursorLocked(!windowController->isCursorLocked());
+        case JumaRE::InputButton::L:
+            {
+                const JumaRE::WindowCursorMode cursorMode = windowController->getCursorMode(windowController->getMainWindowID());
+                windowController->setCursorMode(windowController->getMainWindowID(), 
+                    cursorMode == JumaRE::WindowCursorMode::Locked ? JumaRE::WindowCursorMode::Hidden : JumaRE::WindowCursorMode::Locked
+                );
+            }
             break;
         case JumaRE::InputButton::Q:
             windowController->setMainWindowMode(JumaRE::WindowMode::Normal);

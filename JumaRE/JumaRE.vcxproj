@@ -42,7 +42,7 @@
     <ClInclude Include="JumaRE\include\JumaRE\vertex\VertexBufferData.h" />
     <ClInclude Include="JumaRE\include\JumaRE\vertex\VertexDescription.h" />
     <ClInclude Include="JumaRE\include\JumaRE\window\WindowController.h" />
-    <ClInclude Include="JumaRE\include\JumaRE\window\WindowMode.h" />
+    <ClInclude Include="JumaRE\include\JumaRE\window\window_state_enums.h" />
     <ClInclude Include="JumaRE\include\JumaRE\window\window_id.h" />
     <ClInclude Include="JumaRE\src\DirectX11\Material_DirectX11.h" />
     <ClInclude Include="JumaRE\src\DirectX11\RenderEngine_DirectX11.h" />
@@ -257,6 +257,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)JumaRE\JumaRE\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

@@ -169,8 +169,13 @@ void TestApp_JRE::onInputButton(JumaRE::WindowController* windowController, cons
     {
         switch (button)
         {
-        case JumaRE::InputButton::L: 
-            windowController->setCursorLocked(!windowController->isCursorLocked());
+        case JumaRE::InputButton::L:
+            {
+                const JumaRE::WindowCursorMode cursorMode = windowController->getCursorMode(windowController->getMainWindowID());
+                windowController->setCursorMode(windowController->getMainWindowID(), 
+                    cursorMode == JumaRE::WindowCursorMode::Locked ? JumaRE::WindowCursorMode::Normal : JumaRE::WindowCursorMode::Locked
+                );
+            }
             break;
         case JumaRE::InputButton::Q:
             windowController->setMainWindowMode(JumaRE::WindowMode::Normal);
