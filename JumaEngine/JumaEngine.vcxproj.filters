@@ -87,6 +87,12 @@
     <ClCompile Include="JumaEngine\src\subsystems\ui\TestWidget.cpp">
       <Filter>Source Files\subsystems\ui</Filter>
     </ClCompile>
+    <ClCompile Include="JumaEngine\src\ILogicObjectOwner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JumaEngine\src\LogicObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="JumaEngine\include\JumaEngine\core.h">
@@ -151,6 +157,9 @@
     </ClInclude>
     <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\ui\TestWidget.h">
       <Filter>Header Files\subsystems\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaEngine\include\JumaEngine\ILogicObjectOwner.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

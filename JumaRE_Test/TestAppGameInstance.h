@@ -19,11 +19,10 @@ public:
 
 protected:
 
-    virtual bool initLogic() override;
-    virtual void startLogic() override;
-    virtual void update(float deltaTime) override;
-    virtual void postUpdate() override;
-    virtual void clearLogic() override;
+    virtual void onLogicStarted() override;
+    virtual void onUpdate(float deltaTime) override;
+    virtual void onPostUpdate() override;
+    virtual void onLogicStopping() override;
 
     virtual void onInputButton(JumaRE::InputDevice device, JumaRE::InputButton button, JumaRE::InputButtonAction action) override;
 
@@ -37,6 +36,4 @@ private:
     };
 
     jutils::jarray<primitive> m_Primitives;
-
-    JE::WidgetContainer* m_WidgetContainer = nullptr;
 };

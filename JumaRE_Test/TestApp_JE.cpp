@@ -12,7 +12,6 @@ void TestApp_JE::run()
     if (engine->init<TestAppGameInstance>())
     {
         engine->start();
-        engine->clear();
     }
     else
     {

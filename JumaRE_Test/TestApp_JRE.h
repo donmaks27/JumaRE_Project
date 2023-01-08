@@ -30,6 +30,7 @@ private:
 
     void destroy();
 
+    void onWindowInput(JumaRE::WindowController* windowController, const JumaRE::WindowData* windowData, const JumaRE::InputActionData& input);
     void onInputButton(JumaRE::WindowController* windowController, const JumaRE::WindowData* windowData, 
         JumaRE::InputDevice device, JumaRE::InputButton button, JumaRE::InputButtonAction action);
     void onInputAxis(JumaRE::WindowController* windowController, const JumaRE::WindowData* windowData, 

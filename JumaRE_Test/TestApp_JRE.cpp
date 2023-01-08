@@ -114,9 +114,7 @@ bool TestApp_JRE::initData()
     m_VertexBuffer = vertexBuffer;
     m_Material = material;
 
-    windowController->OnInputButton.bind(this, &TestApp_JRE::onInputButton);
-    windowController->OnInputAxis.bind(this, &TestApp_JRE::onInputAxis);
-    windowController->OnInputAxis2D.bind(this, &TestApp_JRE::onInputAxis2D);
+    windowController->onWindowInput.bind(this, &TestApp_JRE::onWindowInput);
     return true;
 }
 
@@ -150,9 +148,7 @@ void TestApp_JRE::destroy()
     m_Material = nullptr;
 
     JumaRE::WindowController* windowController = m_Engine->getWindowController();
-    windowController->OnInputButton.unbind(this, &TestApp_JRE::onInputButton);
-    windowController->OnInputAxis.unbind(this, &TestApp_JRE::onInputAxis);
-    windowController->OnInputAxis2D.unbind(this, &TestApp_JRE::onInputAxis2D);
+    windowController->onWindowInput.unbind(this, &TestApp_JRE::onWindowInput);
 
     delete m_Engine;
     jutils::jstring_hash_table::ClearInstance();
@@ -160,6 +156,28 @@ void TestApp_JRE::destroy()
     JUTILS_LOG(info, JSTR("Render engine destroyed"));
 }
 
+void TestApp_JRE::onWindowInput(JumaRE::WindowController* windowController, const JumaRE::WindowData* windowData,
+    const JumaRE::InputActionData& input)
+{
+    if (input.device != JumaRE::InputDevice::NONE)
+    {
+        if (input.button != JumaRE::InputButton::NONE)
+        {
+            onInputButton(windowController, windowData, input.device, input.button, input.buttonAction);
+        }
+        else if (input.axis != JumaRE::InputAxis::NONE)
+        {
+            if (JumaRE::IsInputAxis2D(input.axis))
+            {
+                onInputAxis2D(windowController, windowData, input.device, input.axis, input.axisValue);
+            }
+            else
+            {
+                onInputAxis(windowController, windowData, input.device, input.axis, input.axisValue[0]);
+            }
+        }
+    }
+}
 void TestApp_JRE::onInputButton(JumaRE::WindowController* windowController, const JumaRE::WindowData* windowData,
     const JumaRE::InputDevice device, const JumaRE::InputButton button, 
     const JumaRE::InputButtonAction action)

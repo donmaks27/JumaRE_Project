@@ -14,14 +14,11 @@
 
 using namespace jutils;
 
-bool TestAppGameInstance::initLogic()
+void TestAppGameInstance::onLogicStarted()
 {
-    if (!Super::initLogic())
-    {
-        return false;
-    }
+    Super::onLogicStarted();
 
-    JE::Engine* engine = getEngine();
+    const JE::Engine* engine = getEngine();
     const JumaRE::RenderEngine* renderEngine = engine->getRenderEngine();
     const JumaRE::RenderAPI renderAPI = renderEngine->getRenderAPI();
     JumaRE::WindowController* windowController = renderEngine->getWindowController();
@@ -60,11 +57,8 @@ bool TestAppGameInstance::initLogic()
     JE::Material* plane2DMaterial = shadersSubsystem->createMaterial(shader);
     JE::Material* cursorMaterial = shadersSubsystem->createMaterial(cursorShader);
 
-    m_WidgetContainer = engine->createObject<JE::WidgetContainer>();
-    m_WidgetContainer->setRenderTarget(getGameRenderTarget());
-    m_WidgetContainer->setRootWidget(JE::TestWidget::GetClassStatic());
-    dynamic_cast<JE::TestWidget*>(m_WidgetContainer->getRootWidget())->setMaterial(cursorMaterial);
-    m_WidgetContainer->initLogic();
+    JE::WidgetContainer* widgetContainer = createWidget(getGameRenderTarget());
+    widgetContainer->setRootWidget<JE::TestWidget>()->setMaterial(cursorMaterial);
 
     //JE::UIElement* backgroundElement = m_UIObject->addElement();
     //backgroundElement->setMaterial(plane2DMaterial);
@@ -75,43 +69,27 @@ bool TestAppGameInstance::initLogic()
     getGameRenderTarget()->setDepthEnabled(true);
     m_Primitives.add({ renderTarget, cube, cubeMaterial });
     //m_Primitives.add({ getGameRenderTarget(), cube, cubeMaterial });
-    return true;
-}
-void TestAppGameInstance::startLogic()
-{
-    Super::startLogic();
-
-    m_WidgetContainer->startLogic();
 }
 
-void TestAppGameInstance::update(const float deltaTime)
+void TestAppGameInstance::onUpdate(float deltaTime)
 {
-    Super::update(deltaTime);
-
-    m_WidgetContainer->update(deltaTime);
+    Super::onUpdate(deltaTime);
 }
-void TestAppGameInstance::postUpdate()
+
+void TestAppGameInstance::onPostUpdate()
 {
-    Super::postUpdate();
+    Super::onPostUpdate();
 
     JumaRE::RenderEngine* renderEngine = getEngine()->getRenderEngine();
     for (const auto& primitive : m_Primitives)
     {
         renderEngine->addPrimitiveToRenderList(primitive.renderTarget, primitive.mesh->getVertexBuffer(0), primitive.material->getMaterial());
     }
-    m_WidgetContainer->postUpdate();
 }
 
-void TestAppGameInstance::clearLogic()
+void TestAppGameInstance::onLogicStopping()
 {
-    if (m_WidgetContainer != nullptr)
-    {
-        m_WidgetContainer->clearLogic();
-        delete m_WidgetContainer;
-        m_WidgetContainer = nullptr;
-    }
-
-    Super::clearLogic();
+    Super::onLogicStopping();
 }
 
 void TestAppGameInstance::onInputButton(const JumaRE::InputDevice device, const JumaRE::InputButton button, const JumaRE::InputButtonAction action)
