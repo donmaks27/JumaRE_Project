@@ -93,6 +93,9 @@
     <ClCompile Include="JumaEngine\src\LogicObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="JumaEngine\src\subsystems\ui\OverlayWidget.cpp">
+      <Filter>Source Files\subsystems\ui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="JumaEngine\include\JumaEngine\core.h">
@@ -160,6 +163,9 @@
     </ClInclude>
     <ClInclude Include="JumaEngine\include\JumaEngine\ILogicObjectOwner.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\ui\OverlayWidget.h">
+      <Filter>Header Files\subsystems\ui</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

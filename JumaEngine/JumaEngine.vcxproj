@@ -23,6 +23,7 @@
     <ClCompile Include="JumaEngine\src\subsystems\shaders\ShadersSubsystem.cpp" />
     <ClCompile Include="JumaEngine\src\subsystems\textures\Texture.cpp" />
     <ClCompile Include="JumaEngine\src\subsystems\textures\TexturesSubsystem.cpp" />
+    <ClCompile Include="JumaEngine\src\subsystems\ui\OverlayWidget.cpp" />
     <ClCompile Include="JumaEngine\src\subsystems\ui\TestWidget.cpp" />
     <ClCompile Include="JumaEngine\src\subsystems\ui\UISubsystem.cpp" />
     <ClCompile Include="JumaEngine\src\subsystems\ui\Widget.cpp" />
@@ -47,6 +48,7 @@
     <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\shaders\ShadersSubsystem.h" />
     <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\textures\Texture.h" />
     <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\textures\TexturesSubsystem.h" />
+    <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\ui\OverlayWidget.h" />
     <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\ui\TestWidget.h" />
     <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\ui\UISubsystem.h" />
     <ClInclude Include="JumaEngine\include\JumaEngine\subsystems\ui\Widget.h" />

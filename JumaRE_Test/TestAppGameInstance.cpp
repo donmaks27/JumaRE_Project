@@ -8,6 +8,7 @@
 #include <JumaEngine/subsystems/meshes/MeshesSubsystem.h>
 #include <JumaEngine/subsystems/ui/UISubsystem.h>
 #include <JumaEngine/subsystems/ui/TestWidget.h>
+#include <JumaEngine/subsystems/ui/OverlayWidget.h>
 #include <JumaRE/RenderPipeline.h>
 #include <JumaRE/material/Material.h>
 #include <JumaRE/texture/Texture.h>
@@ -57,15 +58,18 @@ void TestAppGameInstance::onLogicStarted()
     JE::Material* plane2DMaterial = shadersSubsystem->createMaterial(shader);
     JE::Material* cursorMaterial = shadersSubsystem->createMaterial(cursorShader);
 
-    JE::WidgetContainer* widgetContainer = createWidget(getGameRenderTarget());
-    widgetContainer->setRootWidget<JE::TestWidget>()->setMaterial(cursorMaterial);
+    JE::WidgetContainer* widgetContainer = createWidgetContainer(getGameRenderTarget());
+    JE::OverlayWidget* overlayWidget = widgetContainer->setRootWidget<JE::OverlayWidget>();
 
-    //JE::UIElement* backgroundElement = m_UIObject->addElement();
-    //backgroundElement->setMaterial(plane2DMaterial);
-    //backgroundElement->setDepth(1.0f);
-    //plane2DMaterial->setParamValue<JumaRE::ShaderUniformType::Texture>(JSTR("uTexture"), renderTarget);
+    JE::TestWidget* backgroundWidget = overlayWidget->addWidget<JE::TestWidget>();
+    plane2DMaterial->setParamValue<JumaRE::ShaderUniformType::Texture>(JSTR("uTexture"), renderTarget);
     //plane2DMaterial->setParamValue<JumaRE::ShaderUniformType::Texture>(JSTR("uTexture"), texture->getTexture());
-    
+    backgroundWidget->setMaterial(plane2DMaterial, false);
+    backgroundWidget->setDepth(1.0f);
+
+    JE::TestWidget* cursorWidget = overlayWidget->addWidget<JE::TestWidget>();
+    cursorWidget->setMaterial(cursorMaterial, true);
+
     getGameRenderTarget()->setDepthEnabled(true);
     m_Primitives.add({ renderTarget, cube, cubeMaterial });
     //m_Primitives.add({ getGameRenderTarget(), cube, cubeMaterial });
